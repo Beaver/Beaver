@@ -1,4 +1,5 @@
 /// A type representing a user action
+
 public protocol Action {
     /// Type of the expected state update after the action has been triggered
     associatedtype SuccessStateType: SuccessState
@@ -11,7 +12,7 @@ public protocol Action {
     static func create(coreAction: CoreAction) -> Self
 }
 
-public enum CoreAction{
+public enum CoreAction {
     case navigation(NavigationAction)
     case lifeCycle(LifeCycleAction)
 }
@@ -27,7 +28,8 @@ public enum NavigationAction {
 }
 
 /// Type encapsulated an action and adding extra information
-public struct ActionEnvelop<ActionType: Action> {
+
+public struct ActionEnvelop<ActionType:Action> {
     public let action: ActionType
 
     /// Emitter name
@@ -36,14 +38,10 @@ public struct ActionEnvelop<ActionType: Action> {
     /// Extra payload
     public let payload: [AnyHashable: Any]?
 
-    /// Emitting file
-    public let file: String
-
-    /// Emitting function
-    public let function: String
-
-    /// Emitting line
-    public let line: Int
+    /// File, Function and Line which produced the action
+    public let debugInfo: (file: String,
+                           function: String,
+                           line: Int)
 
     public init(emitter: String,
                 action: ActionType,
@@ -54,20 +52,23 @@ public struct ActionEnvelop<ActionType: Action> {
         self.emitter = emitter
         self.action = action
         self.payload = payload
-        self.file = file
-        self.function = function
-        self.line = line
+        self.debugInfo = (
+                file: file,
+                function: function,
+                line: line
+        )
     }
 }
 
 extension ActionEnvelop: CustomDebugStringConvertible {
     public var debugDescription: String {
         return "ActionEnvelop\n" +
-                "    Emitter:  \(emitter)\n" +
-                "    Action:   \(action)\n" +
-                "    Payload:  \(String(describing: payload))\n" +
-                "    File:     \(file)\n" +
-                "    Function: \(function)\n" +
-                "    Line:     \(line)"
+                "    Emitter:      \(emitter)\n" +
+                "    Action:       \(action)\n" +
+                "    Payload:      \(String(describing: payload))\n" +
+                "    Produced by:\n" +
+                "        File:     \(debugInfo.file)\n" +
+                "        Function: \(debugInfo.function)\n" +
+                "        Line:     \(debugInfo.line)"
     }
 }

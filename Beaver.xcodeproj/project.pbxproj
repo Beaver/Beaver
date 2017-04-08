@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7CDA2FCE1E98BF0F00C05EA8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CDA2FCC1E98BF0F00C05EA8 /* Info.plist */; };
 		7CDA2FD61E98BF3700C05EA8 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA2FD51E98BF3700C05EA8 /* Tests.swift */; };
 		7CDA2FD81E98BF3700C05EA8 /* Beaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA2FBF1E98BEC800C05EA8 /* Beaver.framework */; };
 		7CDA2FDE1E98D6FE00C05EA8 /* Beaver.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CDA2FCB1E98BF0F00C05EA8 /* Beaver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC6F8422396BE95EE4C75952 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8272763DF72CB648E195 /* Action.swift */; };
 		CC6F8A347DE36B27BDD0DB38 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F846B28831EC1BF30CEEA /* State.swift */; };
 		CC6F8DB1707ECA343396C8E4 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F82E7DD97329D63416F56 /* Context.swift */; };
+		CC6F8FA4085528EFA86B999D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F890A03ECD64363BECBFF /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +36,7 @@
 		CC6F8272763DF72CB648E195 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		CC6F82E7DD97329D63416F56 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		CC6F846B28831EC1BF30CEEA /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		CC6F890A03ECD64363BECBFF /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +101,7 @@
 				CC6F8272763DF72CB648E195 /* Action.swift */,
 				CC6F82E7DD97329D63416F56 /* Context.swift */,
 				CC6F846B28831EC1BF30CEEA /* State.swift */,
+				CC6F890A03ECD64363BECBFF /* Router.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -199,7 +201,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CDA2FCE1E98BF0F00C05EA8 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +221,7 @@
 				CC6F8422396BE95EE4C75952 /* Action.swift in Sources */,
 				CC6F8DB1707ECA343396C8E4 /* Context.swift in Sources */,
 				CC6F8A347DE36B27BDD0DB38 /* State.swift in Sources */,
+				CC6F8FA4085528EFA86B999D /* Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
