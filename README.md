@@ -1,2 +1,2 @@
 # Beaver
-Beaver is delightful framework to build your iOS application
+Beaver is a delightful framework to build your iOS application
