@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7F3B4FDC37368086AE4FC289201AA99E"
-               BuildableName = "Pods_Tests.framework"
-               BlueprintName = "Pods-Tests"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "7CDA2FBE1E98BEC800C05EA8"
+               BuildableName = "Beaver.framework"
+               BlueprintName = "Beaver"
+               ReferencedContainer = "container:Beaver.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7CDA2FD21E98BF3700C05EA8"
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
+               ReferencedContainer = "container:Beaver.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7CDA2FBE1E98BEC800C05EA8"
+            BuildableName = "Beaver.framework"
+            BlueprintName = "Beaver"
+            ReferencedContainer = "container:Beaver.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -45,10 +64,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7F3B4FDC37368086AE4FC289201AA99E"
-            BuildableName = "Pods_Tests.framework"
-            BlueprintName = "Pods-Tests"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            BlueprintIdentifier = "7CDA2FBE1E98BEC800C05EA8"
+            BuildableName = "Beaver.framework"
+            BlueprintName = "Beaver"
+            ReferencedContainer = "container:Beaver.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -60,6 +79,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7CDA2FBE1E98BEC800C05EA8"
+            BuildableName = "Beaver.framework"
+            BlueprintName = "Beaver"
+            ReferencedContainer = "container:Beaver.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
