@@ -93,6 +93,8 @@ extension Store {
     public final func subscribe(_ subscriber: Subscriber) {
         subscribers.insert(subscriber)
 
+        // Dispatching the state update permits to avoid infinite recursions when
+        // the `stateDidUpdate` method implementation refers the script
         DispatchQueue.main.async {
             subscriber.stateDidUpdate(nil, nil, self.state) {
                 // do nothing

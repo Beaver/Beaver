@@ -23,6 +23,7 @@
 		CC6F87CCDF0B3CA57016445A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F833E4D7768C01ACB9661 /* View.swift */; };
 		CC6F8BE3F2D0752E5A1A3854 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8335EE9D35A16B798E39 /* Subscriber.swift */; };
 		CC6F8D5084E954DF4A47074B /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F86ABDB10F6EFE498D21D /* Reducer.swift */; };
+		CC6F8EEC6B83EA5041715096 /* Presenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */; };
 		E4EF908F00F938A12B04A08C /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEDF8C4F9DC9911081E6C16 /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		7CDA2FD51E98BF3700C05EA8 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7CDA2FD71E98BF3700C05EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C6E6DCA8B3EB8BC850634A7 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenting.swift; sourceTree = "<group>"; };
 		CC6F8335EE9D35A16B798E39 /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		CC6F833E4D7768C01ACB9661 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		CC6F86ABDB10F6EFE498D21D /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				CC6F8335EE9D35A16B798E39 /* Subscriber.swift */,
 				CC6F8E38C04E741E47787C50 /* MiddleWare.swift */,
 				CC6F833E4D7768C01ACB9661 /* View.swift */,
+				CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				CC6F87873FAE5B87C0EF3B28 /* MiddleWare.swift in Sources */,
 				CC6F80A0B03E6C7723FBE281 /* CompositeMiddleWare.swift in Sources */,
 				CC6F87CCDF0B3CA57016445A /* View.swift in Sources */,
+				CC6F8EEC6B83EA5041715096 /* Presenting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
