@@ -7,6 +7,10 @@
 //
 
 import XCTest
+import Quick
+import Nimble
+
+@testable import Beaver
 
 class Tests: XCTestCase {
     
