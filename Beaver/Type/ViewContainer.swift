@@ -1,4 +1,4 @@
-open class View<AActionType: Action>: UIViewController, Subscribing {
+open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
     public typealias ActionType = AActionType
     
     public let store: Store<ActionType>
