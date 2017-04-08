@@ -1,5 +1,4 @@
 /// A type representing a user action
-
 public protocol Action {
     /// Type of the expected state update after the action has been triggered
     associatedtype SuccessStateType: SuccessState
@@ -7,21 +6,33 @@ public protocol Action {
     /// Type of the failure state update after the action has been triggered
     associatedtype FailureStateType: FailureState
 
+    /// Determine either the action is a life cycle action or not
+    var isLifeCycle: Bool { get }
+
     /// Used by the base stage which needs to be able to build a core action
     /// scoped with its ActionType
     static func create(coreAction: CoreAction) -> Self
 }
 
+extension Action {
+    public var isLifeCycle: Bool {
+        return "\(self)".contains("CoreAction.lifeCycle")
+    }
+}
+
+/// Type containing any commonly used actions
 public enum CoreAction {
     case navigation(NavigationAction)
     case lifeCycle(LifeCycleAction)
 }
 
+/// Actions dispatched on lifecycle events
 public enum LifeCycleAction {
     case didLoadView
     case didShowView
 }
 
+/// Actions dispatched on navigation events
 public enum NavigationAction {
     case didTapOnBackButton
     case didTapOnCloseButton
