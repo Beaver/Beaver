@@ -1,3 +1,4 @@
+/// Type representing a
 public protocol Context {
     func present(stage: UIViewController, completion: () -> ())
 

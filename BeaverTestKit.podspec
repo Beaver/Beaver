@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
-  s.name         = "Beaver"
-  s.version      = "0.0.1"
-  s.summary      = "A delightful framework to build your iOS application"
+  s.name         = "BeaverTestKit"
+  s.version      = "0.1.0"
+  s.summary      = "A delightful framework to test your Beaver application"
   s.homepage     = "https://github.com/trupin/Beaver"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.authors      = { "Theophane Rupin" => "theophane.rupin@gmail.com" }
@@ -12,5 +12,9 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "9.0"
   s.watchos.deployment_target = "2.0"
 
-  s.source_files = "Beaver/*.swift"
+  s.source_files = "BeaverTestKit/*.swift"
+
+  s.framework = "XCTest"
+
+  s.dependency = "Beaver", "~> 0.1"
 end
