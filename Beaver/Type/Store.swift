@@ -23,7 +23,9 @@ public final class Store<ActionType: Action> {
         middleware.run(action, (oldState: state, newState: newState))
 
         for subscriber in subscribers {
-            subscriber.stateDidUpdate(action, state, newState)
+            subscriber.stateDidUpdate(action, state, newState) {
+                // do nothing
+            }
         }
 
         self.state = newState
@@ -64,7 +66,7 @@ public final class Store<ActionType: Action> {
 
 extension Store {
     /// Responsible of dispatching an action and the produced state to subscribers
-    public typealias Dispatch = (_ action: ActionEnvelop<ActionType>) -> Void
+    public typealias Dispatch = (_ action: ActionEnvelop<ActionType>) -> ()
 
     /// Dispatching interface
     ///
@@ -90,7 +92,12 @@ extension Store {
     /// Adds a new subscriber
     public final func subscribe(_ subscriber: Subscriber) {
         subscribers.insert(subscriber)
-        subscriber.stateDidUpdate(nil, nil, state)
+
+        DispatchQueue.main.async {
+            subscriber.stateDidUpdate(nil, nil, self.state) {
+                // do nothing
+            }
+        }
     }
 
     /// Build and add a new subscriber

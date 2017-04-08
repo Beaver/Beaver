@@ -7,9 +7,11 @@ extension Store {
         ///     - source: action that generated the state update
         ///     - oldState: previous state
         ///     - newState: generated state
+        ///     - completion: a completion handler called when done
         public typealias StateDidUpdate = (_ source: ActionEnvelop<ActionType>?,
                                            _ oldState: StateType?,
-                                           _ newState: StateType) -> ()
+                                           _ newState: StateType,
+                                           _ completion: () -> ()) -> ()
 
         public let name: String
 
@@ -59,7 +61,17 @@ public protocol Subscribing: class {
 
     func stateDidUpdate(source: ActionEnvelop<ActionType>?,
                         oldState: Store<ActionType>.StateType?,
-                        newState: Store<ActionType>.StateType)
+                        newState: Store<ActionType>.StateType,
+                        completion: () -> ())
+
+    func didStartStateUpdate(source: ActionEnvelop<ActionType>?,
+                             oldState: Store<ActionType>.StateType?,
+                             newState: Store<ActionType>.StateType)
+
+    func didFinishStateUpdate(source: ActionEnvelop<ActionType>?,
+                              oldState: Store<ActionType>.StateType?,
+                              newState: Store<ActionType>.StateType)
+
 }
 
 extension Subscribing {
@@ -70,23 +82,47 @@ extension Subscribing {
     var isSubscriptionWeak: Bool {
         return true
     }
+    
+    public typealias StateUpdateEvent = (_ source: ActionEnvelop<ActionType>?,
+                                         _ oldState: Store<ActionType>.StateType?,
+                                         _ newState: Store<ActionType>.StateType) -> ()
+
+    // Default implementation
+    public func didStartStateUpdate(source: ActionEnvelop<ActionType>?,
+                                    oldState: Store<ActionType>.StateType?,
+                                    newState: Store<ActionType>.StateType) {
+        // Do nothing
+    }
+
+    // Default implementation
+    public func didFinishStateUpdate(source: ActionEnvelop<ActionType>?,
+                                     oldState: Store<ActionType>.StateType?,
+                                     newState: Store<ActionType>.StateType) {
+        // Do nothing
+    }
 
     /// Subscribes to a store.
     public func subscribe(to store: Store<ActionType>) {
         if isSubscriptionWeak {
-            store.subscribe(name: subscriptionName) { [weak self] source, oldState, newState in
-                self?.stateDidUpdate(source: source, oldState: oldState, newState: newState)
+            store.subscribe(name: subscriptionName) { [weak self] source, oldState, newState, completion in
+                self?.didStartStateUpdate(source: source, oldState: oldState, newState: newState)
+                self?.stateDidUpdate(source: source, oldState: oldState, newState: newState) { [weak self] in
+                    self?.didFinishStateUpdate(source: source, oldState: oldState, newState: newState)
+                }
             }
         } else {
-            store.subscribe(name: subscriptionName) { source, oldState, newState in
-                self.stateDidUpdate(source: source, oldState: oldState, newState: newState)
+            store.subscribe(name: subscriptionName) { source, oldState, newState, completion in
+                self.didStartStateUpdate(source: source, oldState: oldState, newState: newState)
+                self.stateDidUpdate(source: source, oldState: oldState, newState: newState) {
+                    self.didFinishStateUpdate(source: source, oldState: oldState, newState: newState)
+                }
             }
         }
     }
 }
 
 extension Subscribing where Self: UIViewController {
-    var isSubscriptionWeak: Bool {
+    public var isSubscriptionWeak: Bool {
         return false
     }
 }
