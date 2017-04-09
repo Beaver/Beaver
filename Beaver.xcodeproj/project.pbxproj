@@ -17,23 +17,23 @@
 		7C0169D31E98F38D0019672F /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169CD1E98F38D0019672F /* Context.swift */; };
 		7C0169D41E98F38D0019672F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169CE1E98F38D0019672F /* Router.swift */; };
 		7C0169D51E98F38D0019672F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169CF1E98F38D0019672F /* State.swift */; };
-		7C0169E61E9A6BEC0019672F /* BeaverPromiseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C0169E41E9A6BEC0019672F /* BeaverPromiseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C0169EA1E9A6C240019672F /* Beaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA2FBF1E98BEC800C05EA8 /* Beaver.framework */; };
+		7C0169F51E9A75730019672F /* BeaverPromiseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C0169ED1E9A75730019672F /* BeaverPromiseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C0169F71E9A75730019672F /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F01E9A75730019672F /* Context.swift */; };
+		7C0169F81E9A75730019672F /* Promise+Safety.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F11E9A75730019672F /* Promise+Safety.swift */; };
+		7C0169F91E9A75730019672F /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F21E9A75730019672F /* Reducer.swift */; };
+		7C0169FA1E9A75730019672F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F31E9A75730019672F /* Router.swift */; };
+		7C0169FB1E9A75730019672F /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F41E9A75730019672F /* Subscriber.swift */; };
 		7CDA2FD61E98BF3700C05EA8 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA2FD51E98BF3700C05EA8 /* Tests.swift */; };
 		CC6F808061AD6E3E8B154A70 /* LoggingMiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8334D0DCC7810E339CD3 /* LoggingMiddleWare.swift */; };
 		CC6F80A0B03E6C7723FBE281 /* CompositeMiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8B385257CFD6F7C32981 /* CompositeMiddleWare.swift */; };
-		CC6F80A3B6D584CB6C148D9D /* Promise+Safety.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8715EDB71841A9F3B2AD /* Promise+Safety.swift */; };
 		CC6F80E1E22234D50464FC6C /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */; };
-		CC6F837069F0A73B3D0F8242 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8664C102E84A07317889 /* Subscriber.swift */; };
 		CC6F83AEF30B409B741BC29C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8F7FB1F96B89A87BE653 /* Store.swift */; };
-		CC6F869251678776FE811B46 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F81DEE3B718C5951A3385 /* Context.swift */; };
 		CC6F87873FAE5B87C0EF3B28 /* MiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8E38C04E741E47787C50 /* MiddleWare.swift */; };
 		CC6F87CCDF0B3CA57016445A /* ViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */; };
 		CC6F89D4EC6A69CF767C00F2 /* WindowContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8EBC43D32F2F278454F1 /* WindowContext.swift */; };
-		CC6F8AC5E83B7F02F86A433F /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8ED5E41A9AE13773E378 /* Reducer.swift */; };
 		CC6F8BE3F2D0752E5A1A3854 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8335EE9D35A16B798E39 /* Subscriber.swift */; };
 		CC6F8D5084E954DF4A47074B /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F86ABDB10F6EFE498D21D /* Reducer.swift */; };
-		CC6F8E3A2CDCDA8A2EDF0299 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8029E4AD11D0E30F3DE3 /* Router.swift */; };
 		CC6F8EEC6B83EA5041715096 /* Presenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */; };
 		E4EF908F00F938A12B04A08C /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEDF8C4F9DC9911081E6C16 /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -78,27 +78,27 @@
 		7C0169CE1E98F38D0019672F /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		7C0169CF1E98F38D0019672F /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		7C0169DB1E9A6B830019672F /* BeaverPromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BeaverPromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C0169E41E9A6BEC0019672F /* BeaverPromiseKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaverPromiseKit.h; sourceTree = "<group>"; };
-		7C0169E51E9A6BEC0019672F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C0169ED1E9A75730019672F /* BeaverPromiseKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaverPromiseKit.h; sourceTree = "<group>"; };
+		7C0169EE1E9A75730019672F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C0169F01E9A75730019672F /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		7C0169F11E9A75730019672F /* Promise+Safety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Safety.swift"; sourceTree = "<group>"; };
+		7C0169F21E9A75730019672F /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
+		7C0169F31E9A75730019672F /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		7C0169F41E9A75730019672F /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		7CDA2FBF1E98BEC800C05EA8 /* Beaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Beaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDA2FD31E98BF3700C05EA8 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDA2FD51E98BF3700C05EA8 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7CDA2FD71E98BF3700C05EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C6E6DCA8B3EB8BC850634A7 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenting.swift; sourceTree = "<group>"; };
-		CC6F8029E4AD11D0E30F3DE3 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		CC6F81DEE3B718C5951A3385 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		CC6F8334D0DCC7810E339CD3 /* LoggingMiddleWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingMiddleWare.swift; sourceTree = "<group>"; };
 		CC6F8335EE9D35A16B798E39 /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewContainer.swift; sourceTree = "<group>"; };
 		CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
-		CC6F8664C102E84A07317889 /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		CC6F86ABDB10F6EFE498D21D /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
-		CC6F8715EDB71841A9F3B2AD /* Promise+Safety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Safety.swift"; sourceTree = "<group>"; };
 		CC6F8B385257CFD6F7C32981 /* CompositeMiddleWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeMiddleWare.swift; sourceTree = "<group>"; };
 		CC6F8E38C04E741E47787C50 /* MiddleWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleWare.swift; sourceTree = "<group>"; };
 		CC6F8EBC43D32F2F278454F1 /* WindowContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowContext.swift; sourceTree = "<group>"; };
-		CC6F8ED5E41A9AE13773E378 /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		CC6F8F7FB1F96B89A87BE653 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		E3806C2AAFAF0BBC6577975D /* Pods-BeaverPromiseKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverPromiseKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverPromiseKit/Pods-BeaverPromiseKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,14 +199,34 @@
 			path = Type;
 			sourceTree = "<group>";
 		};
-		7C0169E31E9A6BEC0019672F /* PromiseKit */ = {
+		7C0169EB1E9A75730019672F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7C0169E41E9A6BEC0019672F /* BeaverPromiseKit.h */,
-				7C0169E51E9A6BEC0019672F /* Info.plist */,
-				CC6F8F21AEB5B77AADD8F58B /* Type */,
+				7C0169EC1E9A75730019672F /* PromiseKit */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		7C0169EC1E9A75730019672F /* PromiseKit */ = {
+			isa = PBXGroup;
+			children = (
+				7C0169ED1E9A75730019672F /* BeaverPromiseKit.h */,
+				7C0169EE1E9A75730019672F /* Info.plist */,
+				7C0169EF1E9A75730019672F /* Type */,
 			);
 			path = PromiseKit;
+			sourceTree = "<group>";
+		};
+		7C0169EF1E9A75730019672F /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				7C0169F01E9A75730019672F /* Context.swift */,
+				7C0169F11E9A75730019672F /* Promise+Safety.swift */,
+				7C0169F21E9A75730019672F /* Reducer.swift */,
+				7C0169F31E9A75730019672F /* Router.swift */,
+				7C0169F41E9A75730019672F /* Subscriber.swift */,
+			);
+			path = Type;
 			sourceTree = "<group>";
 		};
 		7CDA2FB51E98BEC800C05EA8 = {
@@ -214,11 +234,11 @@
 			children = (
 				7C0169C81E98F38D0019672F /* Beaver */,
 				7C0169C11E98F3810019672F /* BeaverTestKit */,
+				7C0169EB1E9A75730019672F /* Extension */,
 				7CDA2FD41E98BF3700C05EA8 /* Tests */,
 				7CDA2FC01E98BEC800C05EA8 /* Products */,
 				1DDE1D091378469F6E6EF4B7 /* Pods */,
 				280FA3B91731755F2D3CE525 /* Frameworks */,
-				CC6F834D01557AC11DA0BD48 /* Extensions */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,14 +262,6 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		CC6F834D01557AC11DA0BD48 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				7C0169E31E9A6BEC0019672F /* PromiseKit */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		CC6F85F5032A34FC90D6B520 /* Context */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,18 +280,6 @@
 			path = Middleware;
 			sourceTree = "<group>";
 		};
-		CC6F8F21AEB5B77AADD8F58B /* Type */ = {
-			isa = PBXGroup;
-			children = (
-				CC6F81DEE3B718C5951A3385 /* Context.swift */,
-				CC6F8715EDB71841A9F3B2AD /* Promise+Safety.swift */,
-				CC6F8029E4AD11D0E30F3DE3 /* Router.swift */,
-				CC6F8ED5E41A9AE13773E378 /* Reducer.swift */,
-				CC6F8664C102E84A07317889 /* Subscriber.swift */,
-			);
-			path = Type;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -295,7 +295,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C0169E61E9A6BEC0019672F /* BeaverPromiseKit.h in Headers */,
+				7C0169F51E9A75730019672F /* BeaverPromiseKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,11 +563,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC6F869251678776FE811B46 /* Context.swift in Sources */,
-				CC6F80A3B6D584CB6C148D9D /* Promise+Safety.swift in Sources */,
-				CC6F8E3A2CDCDA8A2EDF0299 /* Router.swift in Sources */,
-				CC6F8AC5E83B7F02F86A433F /* Reducer.swift in Sources */,
-				CC6F837069F0A73B3D0F8242 /* Subscriber.swift in Sources */,
+				7C0169FA1E9A75730019672F /* Router.swift in Sources */,
+				7C0169F71E9A75730019672F /* Context.swift in Sources */,
+				7C0169FB1E9A75730019672F /* Subscriber.swift in Sources */,
+				7C0169F81E9A75730019672F /* Promise+Safety.swift in Sources */,
+				7C0169F91E9A75730019672F /* Reducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,7 +671,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Extensions/PromiseKit/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Extension/PromiseKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.BeaverPromiseKit;
@@ -691,7 +691,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Extensions/PromiseKit/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Extension/PromiseKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.BeaverPromiseKit;
