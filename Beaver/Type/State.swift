@@ -1,9 +1,9 @@
 /// A type representing a successful state update
-public protocol SuccessState {
+public protocol SuccessState: Equatable {
 }
 
 /// A type representing a failed state update
-public protocol FailureState: CustomStringConvertible {
+public protocol FailureState: CustomStringConvertible, Equatable {
 }
 
 /// A type representing a state
@@ -14,5 +14,18 @@ public protocol FailureState: CustomStringConvertible {
 /// 3. It should not contain any business logic since it is the result of the module business logic
 public enum State<SuccessStateType: SuccessState, FailureStateType: FailureState> {
     case success(SuccessStateType)
-    case failure(error: FailureStateType, previousSuccess: SuccessStateType)
+    case failure(error: FailureStateType)
+}
+
+extension State: Equatable {
+    public static func ==(lhs: State<SuccessStateType, FailureStateType>, rhs: State<SuccessStateType, FailureStateType>) -> Bool {
+        switch (lhs, rhs) {
+        case (.success(let left), .success(let right)):
+            return left == right
+        case (.failure(error: let left), .failure(error: let right)):
+            return left == right
+        default:
+            return false
+        }
+    }
 }

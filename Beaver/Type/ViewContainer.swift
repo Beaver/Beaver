@@ -3,7 +3,8 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
     
     public let store: Store<ActionType>
 
-    // MARK: init
+    // MARK: - Init
+    
     public required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -16,10 +17,11 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
         subscribe(to: self.store)
     }
 
-    // MARK: lifecycle
+    // MARK: - Lifecycle
+    
     deinit {
 #if DEBUG
-        print("--- deinit --- \(self)")
+        print("[\(self)] --- DEINIT ---")
 #endif
     }
 
@@ -37,6 +39,7 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
         dispatch(action: .lifeCycle(.didLoadView))
     }
 
+    /// Method called when a state update has occured
     open func stateDidUpdate(source: ActionEnvelop<ActionType>?,
                              oldState: Store<ActionType>.StateType?,
                              newState: Store<ActionType>.StateType,
