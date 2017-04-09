@@ -7,11 +7,11 @@ public protocol Action: Equatable {
     associatedtype FailureStateType: FailureState
 }
 
-/// Type containing any commonly used actions
+/// Type containing commonly used actions and business actions
 public enum CoreAction<ActionType: Action> {
     case navigation(NavigationAction)
     case lifeCycle(LifeCycleAction)
-    case main(ActionType)
+    case business(ActionType)
 }
 
 /// Actions dispatched on lifecycle events
