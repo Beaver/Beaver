@@ -40,7 +40,7 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
     }
 
     /// Method called when a state update has occurred
-    open func git sstateDidUpdate(source: ActionEnvelop<ActionType>?,
+    open func stateDidUpdate(source: ActionEnvelop<ActionType>?,
                              oldState: Store<ActionType>.StateType?,
                              newState: Store<ActionType>.StateType,
                              completion: @escaping () -> ()) {
