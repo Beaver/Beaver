@@ -8,15 +8,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/trupin/Beaver.git", :tag => "#{s.version}" }
 
   s.ios.deployment_target = "8.0"
-  s.default_subspec = "Core"
 
-  s.subspec "Core" do |ss|
-    ss.source_files = "Beaver/**/*.swift"
-  end
-
-  s.subspec "PromiseKit" do |ss|
-    ss.source_files = "Extension/PromiseKit/**/*.swift"
-    ss.dependency "PromiseKit", "~> 4.1"
-    ss.dependency "Beaver/Core"
-  end
+  s.source_files = "Beaver/**/*.swift"
 end
