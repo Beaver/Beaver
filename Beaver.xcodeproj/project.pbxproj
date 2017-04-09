@@ -39,6 +39,7 @@
 		CC6F8D733A13AE81445D2C54 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8F31CF3AB3564C31421E /* Subscriber.swift */; };
 		CC6F8D980E59F555D1365965 /* StateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88F6AC2C63398FFE1396 /* StateMock.swift */; };
 		CC6F8EEC6B83EA5041715096 /* Presenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */; };
+		CC6F8F60AEFA85AB2F2E19EF /* ViewContainerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8AE94653B8DE4C198626 /* ViewContainerMock.swift */; };
 		E4EF908F00F938A12B04A08C /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEDF8C4F9DC9911081E6C16 /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		CC6F8959622A1845E852A085 /* SubscriberMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriberMock.swift; sourceTree = "<group>"; };
 		CC6F8A22D09F106012EE2862 /* StoreMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMock.swift; sourceTree = "<group>"; };
 		CC6F8AC0C78C8F5AE635AE16 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		CC6F8AE94653B8DE4C198626 /* ViewContainerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewContainerMock.swift; sourceTree = "<group>"; };
 		CC6F8B385257CFD6F7C32981 /* CompositeMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeMiddleware.swift; sourceTree = "<group>"; };
 		CC6F8EBC43D32F2F278454F1 /* WindowContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowContext.swift; sourceTree = "<group>"; };
 		CC6F8EBD64A674D1E06F0EDC /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reducer.swift; path = ../Reducer.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				CC6F8959622A1845E852A085 /* SubscriberMock.swift */,
 				CC6F8231570EB3C222F17325 /* ReducerMock.swift */,
 				CC6F8A22D09F106012EE2862 /* StoreMock.swift */,
+				CC6F8AE94653B8DE4C198626 /* ViewContainerMock.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				CC6F8C0D9BFCB2ACD4815B6A /* SubscriberMock.swift in Sources */,
 				CC6F8087156296F749CAFB97 /* ReducerMock.swift in Sources */,
 				CC6F829B3F8E9E31D25FE92B /* StoreMock.swift in Sources */,
+				CC6F8F60AEFA85AB2F2E19EF /* ViewContainerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

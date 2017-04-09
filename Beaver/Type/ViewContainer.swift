@@ -53,7 +53,7 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
     ///
     /// ## Important Note ##
     /// - Should be overridden if two instances of the same stage are subscribing
-    open var name: String {
+    open var subscriptionName: String {
         return String(describing: type(of: self))
     }
 
@@ -65,7 +65,7 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
                        debugInfo: ActionEnvelop<ActionType>.DebugInfo = (file: #file, function: #function, line: #line)) {
         didStartLoading(silent: silent)
         store.dispatch(ActionEnvelop(
-                emitter: name,
+                emitter: subscriptionName,
                 action: action,
                 payload: ["silent": silent],
                 debugInfo: debugInfo))
