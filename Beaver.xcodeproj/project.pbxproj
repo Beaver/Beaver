@@ -11,7 +11,6 @@
 		7C0169BD1E98F2550019672F /* BeaverTestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0169AE1E98F06E0019672F /* BeaverTestKit.framework */; };
 		7C0169C01E98F2690019672F /* Beaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA2FBF1E98BEC800C05EA8 /* Beaver.framework */; };
 		7C0169C51E98F3810019672F /* BeaverTestKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C0169C21E98F3810019672F /* BeaverTestKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C0169C61E98F3810019672F /* ContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169C31E98F3810019672F /* ContextMock.swift */; };
 		7C0169D01E98F38D0019672F /* Beaver.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C0169C91E98F38D0019672F /* Beaver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C0169D21E98F38D0019672F /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169CC1E98F38D0019672F /* Action.swift */; };
 		7C0169D31E98F38D0019672F /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169CD1E98F38D0019672F /* Context.swift */; };
@@ -26,13 +25,19 @@
 		7C0169FB1E9A75730019672F /* Subscriber+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F41E9A75730019672F /* Subscriber+Promise.swift */; };
 		7CDA2FD61E98BF3700C05EA8 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA2FD51E98BF3700C05EA8 /* Tests.swift */; };
 		CC6F808061AD6E3E8B154A70 /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8334D0DCC7810E339CD3 /* LoggingMiddleware.swift */; };
+		CC6F8087156296F749CAFB97 /* ReducerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8231570EB3C222F17325 /* ReducerMock.swift */; };
 		CC6F80A0B03E6C7723FBE281 /* CompositeMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8B385257CFD6F7C32981 /* CompositeMiddleware.swift */; };
 		CC6F80E1E22234D50464FC6C /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */; };
+		CC6F829B3F8E9E31D25FE92B /* StoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8A22D09F106012EE2862 /* StoreMock.swift */; };
 		CC6F83AEF30B409B741BC29C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8F7FB1F96B89A87BE653 /* Store.swift */; };
+		CC6F8444A38B0621C081CC2A /* ActionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F827C0CEDB47F12326B3C /* ActionMock.swift */; };
 		CC6F87CCDF0B3CA57016445A /* ViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */; };
 		CC6F89D4EC6A69CF767C00F2 /* WindowContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8EBC43D32F2F278454F1 /* WindowContext.swift */; };
 		CC6F8BE3F2D0752E5A1A3854 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8335EE9D35A16B798E39 /* Subscriber.swift */; };
+		CC6F8C0D9BFCB2ACD4815B6A /* SubscriberMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8959622A1845E852A085 /* SubscriberMock.swift */; };
+		CC6F8C12980A72AFBB9F9FE1 /* ContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8302B1637B044CA9EE97 /* ContextMock.swift */; };
 		CC6F8D5084E954DF4A47074B /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F86ABDB10F6EFE498D21D /* Reducer.swift */; };
+		CC6F8D980E59F555D1365965 /* StateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88F6AC2C63398FFE1396 /* StateMock.swift */; };
 		CC6F8EEC6B83EA5041715096 /* Presenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */; };
 		E4EF908F00F938A12B04A08C /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEDF8C4F9DC9911081E6C16 /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -68,7 +73,6 @@
 		625EA1D2B2DB957CAFCECF90 /* Pods-BeaverPromiseKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverPromiseKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverPromiseKit/Pods-BeaverPromiseKit.release.xcconfig"; sourceTree = "<group>"; };
 		7C0169AE1E98F06E0019672F /* BeaverTestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BeaverTestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0169C21E98F3810019672F /* BeaverTestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaverTestKit.h; sourceTree = "<group>"; };
-		7C0169C31E98F3810019672F /* ContextMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMock.swift; sourceTree = "<group>"; };
 		7C0169C41E98F3810019672F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C0169C91E98F38D0019672F /* Beaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beaver.h; sourceTree = "<group>"; };
 		7C0169CA1E98F38D0019672F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,11 +94,17 @@
 		7CDA2FD71E98BF3700C05EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C6E6DCA8B3EB8BC850634A7 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenting.swift; sourceTree = "<group>"; };
+		CC6F8231570EB3C222F17325 /* ReducerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReducerMock.swift; sourceTree = "<group>"; };
+		CC6F827C0CEDB47F12326B3C /* ActionMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionMock.swift; sourceTree = "<group>"; };
+		CC6F8302B1637B044CA9EE97 /* ContextMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMock.swift; sourceTree = "<group>"; };
 		CC6F8334D0DCC7810E339CD3 /* LoggingMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
 		CC6F8335EE9D35A16B798E39 /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewContainer.swift; sourceTree = "<group>"; };
 		CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
 		CC6F86ABDB10F6EFE498D21D /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
+		CC6F88F6AC2C63398FFE1396 /* StateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMock.swift; sourceTree = "<group>"; };
+		CC6F8959622A1845E852A085 /* SubscriberMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriberMock.swift; sourceTree = "<group>"; };
+		CC6F8A22D09F106012EE2862 /* StoreMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMock.swift; sourceTree = "<group>"; };
 		CC6F8B385257CFD6F7C32981 /* CompositeMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeMiddleware.swift; sourceTree = "<group>"; };
 		CC6F8EBC43D32F2F278454F1 /* WindowContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowContext.swift; sourceTree = "<group>"; };
 		CC6F8F7FB1F96B89A87BE653 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -162,8 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				7C0169C21E98F3810019672F /* BeaverTestKit.h */,
-				7C0169C31E98F3810019672F /* ContextMock.swift */,
 				7C0169C41E98F3810019672F /* Info.plist */,
+				CC6F88C3963CAADBE308ABEE /* Type */,
 			);
 			path = BeaverTestKit;
 			sourceTree = "<group>";
@@ -266,6 +276,19 @@
 				CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */,
 			);
 			path = Context;
+			sourceTree = "<group>";
+		};
+		CC6F88C3963CAADBE308ABEE /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				CC6F8302B1637B044CA9EE97 /* ContextMock.swift */,
+				CC6F827C0CEDB47F12326B3C /* ActionMock.swift */,
+				CC6F88F6AC2C63398FFE1396 /* StateMock.swift */,
+				CC6F8959622A1845E852A085 /* SubscriberMock.swift */,
+				CC6F8231570EB3C222F17325 /* ReducerMock.swift */,
+				CC6F8A22D09F106012EE2862 /* StoreMock.swift */,
+			);
+			path = Type;
 			sourceTree = "<group>";
 		};
 		CC6F8C9FCD0C954FD1C484AC /* Middleware */ = {
@@ -552,7 +575,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C0169C61E98F3810019672F /* ContextMock.swift in Sources */,
+				CC6F8C12980A72AFBB9F9FE1 /* ContextMock.swift in Sources */,
+				CC6F8444A38B0621C081CC2A /* ActionMock.swift in Sources */,
+				CC6F8D980E59F555D1365965 /* StateMock.swift in Sources */,
+				CC6F8C0D9BFCB2ACD4815B6A /* SubscriberMock.swift in Sources */,
+				CC6F8087156296F749CAFB97 /* ReducerMock.swift in Sources */,
+				CC6F829B3F8E9E31D25FE92B /* StoreMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
