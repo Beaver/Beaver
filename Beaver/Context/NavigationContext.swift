@@ -1,3 +1,5 @@
+import UIKit
+
 public final class NavigationContext: Context {
     public weak var navigationController: UINavigationController!
 

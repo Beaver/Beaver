@@ -1,7 +1,7 @@
-extension Store.MiddleWare {
+extension Store.Middleware {
     /// A MiddleWare logging every actions and state updates
-    public static var logging: Store<ActionType>.MiddleWare {
-        return Store<ActionType>.MiddleWare(name: "LoggingMiddleWare") { action, update in
+    public static var logging: Store<ActionType>.Middleware {
+        return Store<ActionType>.Middleware(name: "LoggingMiddleware") { action, update in
 #if DEBUG
             print(">>>>>>>>>>>")
             print("action: \(String(describing: action))")

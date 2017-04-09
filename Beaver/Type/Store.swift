@@ -13,6 +13,22 @@
 /// 3. Subscribers registration is based on their name. Meaning that two subscribers with
 ///    the same name would override each others
 public final class Store<ActionType: Action> {
+
+    /// Responsible of applying side effects for a given action or a state update
+    public struct Middleware {
+        public typealias Run = (_ action: ActionEnvelop<ActionType>?,
+            _ stateUpdate: (oldState: StateType?, newState: StateType)?) -> Void
+        
+        public let name: String
+        
+        public let run: Run
+        
+        public init(name: String, run: @escaping Run) {
+            self.name = name
+            self.run = run
+        }
+    }
+
     /// State type
     public typealias StateType = State<ActionType.SuccessStateType, ActionType.FailureStateType>
 
@@ -35,14 +51,14 @@ public final class Store<ActionType: Action> {
 
     fileprivate(set) public var subscribers = Set<Subscriber>()
 
-    fileprivate var middleware: MiddleWare {
-        return MiddleWare.composite(middleWares)
+    fileprivate var middleware: Middleware {
+        return Middleware.composite(middlewares)
     }
 
     fileprivate var cancellable = Cancellable()
 
     /// Registered actors
-    public let middleWares: [MiddleWare]
+    public let middlewares: [Middleware]
 
     /// Store initialization
     ///
@@ -51,11 +67,11 @@ public final class Store<ActionType: Action> {
     ///     - middleWares: a list of middleWares, responsible of side effects like logging, tracking, ...
     ///     - reducer: the reducer, responsible for new states generation
     public init(initialState: StateType,
-                middleWares: [MiddleWare] = [],
+                middleWares: [Middleware] = [],
                 reducer: @escaping Reducer) {
         self.reducer = reducer
         state = initialState
-        self.middleWares = middleWares
+        self.middlewares = middleWares
 
         // stateDidSet is not called so we need to dispatch to actors here
         middleware.run(nil, (oldState: nil, newState: initialState))

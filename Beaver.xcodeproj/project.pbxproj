@@ -19,17 +19,16 @@
 		7C0169D51E98F38D0019672F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169CF1E98F38D0019672F /* State.swift */; };
 		7C0169EA1E9A6C240019672F /* Beaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA2FBF1E98BEC800C05EA8 /* Beaver.framework */; };
 		7C0169F51E9A75730019672F /* BeaverPromiseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C0169ED1E9A75730019672F /* BeaverPromiseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C0169F71E9A75730019672F /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F01E9A75730019672F /* Context.swift */; };
+		7C0169F71E9A75730019672F /* Context+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F01E9A75730019672F /* Context+Promise.swift */; };
 		7C0169F81E9A75730019672F /* Promise+Safety.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F11E9A75730019672F /* Promise+Safety.swift */; };
-		7C0169F91E9A75730019672F /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F21E9A75730019672F /* Reducer.swift */; };
-		7C0169FA1E9A75730019672F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F31E9A75730019672F /* Router.swift */; };
-		7C0169FB1E9A75730019672F /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F41E9A75730019672F /* Subscriber.swift */; };
+		7C0169F91E9A75730019672F /* Reducer+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F21E9A75730019672F /* Reducer+Promise.swift */; };
+		7C0169FA1E9A75730019672F /* Router+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F31E9A75730019672F /* Router+Promise.swift */; };
+		7C0169FB1E9A75730019672F /* Subscriber+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169F41E9A75730019672F /* Subscriber+Promise.swift */; };
 		7CDA2FD61E98BF3700C05EA8 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA2FD51E98BF3700C05EA8 /* Tests.swift */; };
-		CC6F808061AD6E3E8B154A70 /* LoggingMiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8334D0DCC7810E339CD3 /* LoggingMiddleWare.swift */; };
-		CC6F80A0B03E6C7723FBE281 /* CompositeMiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8B385257CFD6F7C32981 /* CompositeMiddleWare.swift */; };
+		CC6F808061AD6E3E8B154A70 /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8334D0DCC7810E339CD3 /* LoggingMiddleware.swift */; };
+		CC6F80A0B03E6C7723FBE281 /* CompositeMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8B385257CFD6F7C32981 /* CompositeMiddleware.swift */; };
 		CC6F80E1E22234D50464FC6C /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */; };
 		CC6F83AEF30B409B741BC29C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8F7FB1F96B89A87BE653 /* Store.swift */; };
-		CC6F87873FAE5B87C0EF3B28 /* MiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8E38C04E741E47787C50 /* MiddleWare.swift */; };
 		CC6F87CCDF0B3CA57016445A /* ViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */; };
 		CC6F89D4EC6A69CF767C00F2 /* WindowContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8EBC43D32F2F278454F1 /* WindowContext.swift */; };
 		CC6F8BE3F2D0752E5A1A3854 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8335EE9D35A16B798E39 /* Subscriber.swift */; };
@@ -80,24 +79,23 @@
 		7C0169DB1E9A6B830019672F /* BeaverPromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BeaverPromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0169ED1E9A75730019672F /* BeaverPromiseKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaverPromiseKit.h; sourceTree = "<group>"; };
 		7C0169EE1E9A75730019672F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C0169F01E9A75730019672F /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		7C0169F01E9A75730019672F /* Context+Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Context+Promise.swift"; sourceTree = "<group>"; };
 		7C0169F11E9A75730019672F /* Promise+Safety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Safety.swift"; sourceTree = "<group>"; };
-		7C0169F21E9A75730019672F /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
-		7C0169F31E9A75730019672F /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		7C0169F41E9A75730019672F /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
+		7C0169F21E9A75730019672F /* Reducer+Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reducer+Promise.swift"; sourceTree = "<group>"; };
+		7C0169F31E9A75730019672F /* Router+Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Router+Promise.swift"; sourceTree = "<group>"; };
+		7C0169F41E9A75730019672F /* Subscriber+Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subscriber+Promise.swift"; sourceTree = "<group>"; };
 		7CDA2FBF1E98BEC800C05EA8 /* Beaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Beaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDA2FD31E98BF3700C05EA8 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDA2FD51E98BF3700C05EA8 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7CDA2FD71E98BF3700C05EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C6E6DCA8B3EB8BC850634A7 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenting.swift; sourceTree = "<group>"; };
-		CC6F8334D0DCC7810E339CD3 /* LoggingMiddleWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingMiddleWare.swift; sourceTree = "<group>"; };
+		CC6F8334D0DCC7810E339CD3 /* LoggingMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
 		CC6F8335EE9D35A16B798E39 /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewContainer.swift; sourceTree = "<group>"; };
 		CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
 		CC6F86ABDB10F6EFE498D21D /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
-		CC6F8B385257CFD6F7C32981 /* CompositeMiddleWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeMiddleWare.swift; sourceTree = "<group>"; };
-		CC6F8E38C04E741E47787C50 /* MiddleWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleWare.swift; sourceTree = "<group>"; };
+		CC6F8B385257CFD6F7C32981 /* CompositeMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeMiddleware.swift; sourceTree = "<group>"; };
 		CC6F8EBC43D32F2F278454F1 /* WindowContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowContext.swift; sourceTree = "<group>"; };
 		CC6F8F7FB1F96B89A87BE653 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		E3806C2AAFAF0BBC6577975D /* Pods-BeaverPromiseKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverPromiseKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverPromiseKit/Pods-BeaverPromiseKit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 				CC6F8F7FB1F96B89A87BE653 /* Store.swift */,
 				CC6F86ABDB10F6EFE498D21D /* Reducer.swift */,
 				CC6F8335EE9D35A16B798E39 /* Subscriber.swift */,
-				CC6F8E38C04E741E47787C50 /* MiddleWare.swift */,
 				CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */,
 				CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */,
 			);
@@ -220,11 +217,11 @@
 		7C0169EF1E9A75730019672F /* Type */ = {
 			isa = PBXGroup;
 			children = (
-				7C0169F01E9A75730019672F /* Context.swift */,
+				7C0169F01E9A75730019672F /* Context+Promise.swift */,
 				7C0169F11E9A75730019672F /* Promise+Safety.swift */,
-				7C0169F21E9A75730019672F /* Reducer.swift */,
-				7C0169F31E9A75730019672F /* Router.swift */,
-				7C0169F41E9A75730019672F /* Subscriber.swift */,
+				7C0169F21E9A75730019672F /* Reducer+Promise.swift */,
+				7C0169F31E9A75730019672F /* Router+Promise.swift */,
+				7C0169F41E9A75730019672F /* Subscriber+Promise.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -274,8 +271,8 @@
 		CC6F8C9FCD0C954FD1C484AC /* Middleware */ = {
 			isa = PBXGroup;
 			children = (
-				CC6F8B385257CFD6F7C32981 /* CompositeMiddleWare.swift */,
-				CC6F8334D0DCC7810E339CD3 /* LoggingMiddleWare.swift */,
+				CC6F8B385257CFD6F7C32981 /* CompositeMiddleware.swift */,
+				CC6F8334D0DCC7810E339CD3 /* LoggingMiddleware.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -563,11 +560,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C0169FA1E9A75730019672F /* Router.swift in Sources */,
-				7C0169F71E9A75730019672F /* Context.swift in Sources */,
-				7C0169FB1E9A75730019672F /* Subscriber.swift in Sources */,
+				7C0169FA1E9A75730019672F /* Router+Promise.swift in Sources */,
+				7C0169F71E9A75730019672F /* Context+Promise.swift in Sources */,
+				7C0169FB1E9A75730019672F /* Subscriber+Promise.swift in Sources */,
 				7C0169F81E9A75730019672F /* Promise+Safety.swift in Sources */,
-				7C0169F91E9A75730019672F /* Reducer.swift in Sources */,
+				7C0169F91E9A75730019672F /* Reducer+Promise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,13 +579,12 @@
 				CC6F83AEF30B409B741BC29C /* Store.swift in Sources */,
 				CC6F8D5084E954DF4A47074B /* Reducer.swift in Sources */,
 				CC6F8BE3F2D0752E5A1A3854 /* Subscriber.swift in Sources */,
-				CC6F87873FAE5B87C0EF3B28 /* MiddleWare.swift in Sources */,
-				CC6F80A0B03E6C7723FBE281 /* CompositeMiddleWare.swift in Sources */,
+				CC6F80A0B03E6C7723FBE281 /* CompositeMiddleware.swift in Sources */,
 				CC6F87CCDF0B3CA57016445A /* ViewContainer.swift in Sources */,
 				CC6F8EEC6B83EA5041715096 /* Presenting.swift in Sources */,
 				CC6F89D4EC6A69CF767C00F2 /* WindowContext.swift in Sources */,
 				CC6F80E1E22234D50464FC6C /* NavigationContext.swift in Sources */,
-				CC6F808061AD6E3E8B154A70 /* LoggingMiddleWare.swift in Sources */,
+				CC6F808061AD6E3E8B154A70 /* LoggingMiddleware.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

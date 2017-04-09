@@ -5,13 +5,13 @@ public final class ContextMock: Context {
 
     public private(set) var dismissedUntilViews = [UIViewController?]()
 
-    public func present(view: UIViewController, completion: () -> ()) {
-        presentedViews.append(view)
+    public func present(controller: UIViewController, completion: @escaping () -> ()) {
+        presentedViews.append(controller)
         completion()
     }
 
-    public func dismiss(until view: UIViewController?, completion: () -> ()) {
-        dismissedUntilViews.append(view)
+    public func dismiss(until controller: UIViewController?, completion: @escaping () -> ()) {
+        dismissedUntilViews.append(controller)
         completion()
     }
 }

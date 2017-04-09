@@ -4,7 +4,7 @@ public protocol Presenting: Subscribing {
 
     weak var store: Store<ActionType>? { get }
 
-    var middleWares: [Store<ActionType>.MiddleWare] { get }
+    var middleWares: [Store<ActionType>.Middleware] { get }
 }
 
 extension Presenting {
