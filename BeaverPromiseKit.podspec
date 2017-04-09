@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = "8.0"
 
-  s.source_files = "Extension/PromiseKit/**/*.swift"
+  s.source_files = "BeaverPromiseKit/**/*.swift"
 
   s.dependency "PromiseKit", "~> 4.1"
   s.dependency "Beaver", "~> 0.1"
