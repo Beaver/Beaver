@@ -19,9 +19,4 @@ Pod::Spec.new do |s|
     ss.dependency "PromiseKit", "~> 4.1"
     ss.dependency "Beaver/Core"
   end
-
-  s.subspec "TestKit" do |ss|
-    ss.source_files = "BeaverTestKit/**/*.swift"
-    ss.dependency "Beaver/Core"
-  end
 end
