@@ -1,6 +1,6 @@
 import Beaver
 
-protocol PMKReducing: Reducing {
+public protocol PMKReducing: Reducing {
     func handle(envelop: ActionEnvelop<ActionType>, state: Store<ActionType>.StateType) -> SafePromise<Store<ActionType>.StateType>
 }
 
