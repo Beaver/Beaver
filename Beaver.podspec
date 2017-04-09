@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Beaver"
-  s.version      = "0.0.1"
+  s.version      = "0.1.0"
   s.summary      = "A delightful framework to build your iOS application"
   s.homepage     = "https://github.com/trupin/Beaver"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.source_files = "Beaver/*.swift"
 
   s.subspec "PromiseKit" do |ss|
-    ss.source_files = "Extensions/PromiseKit/*"
+    ss.source_files = "Extensions/PromiseKit/*.swift"
     ss.dependency "PromiseKit", "~> 4.1" 
   end
 end
