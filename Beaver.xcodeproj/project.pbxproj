@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AFF06F8C408C3169CDC0D50 /* Pods_BeaverPromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3D4B20E00B18625B9F25D9 /* Pods_BeaverPromiseKit.framework */; };
 		7C0169BD1E98F2550019672F /* BeaverTestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0169AE1E98F06E0019672F /* BeaverTestKit.framework */; };
 		7C0169C01E98F2690019672F /* Beaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA2FBF1E98BEC800C05EA8 /* Beaver.framework */; };
 		7C0169C51E98F3810019672F /* BeaverTestKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C0169C21E98F3810019672F /* BeaverTestKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -16,11 +17,15 @@
 		7C0169D31E98F38D0019672F /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169CD1E98F38D0019672F /* Context.swift */; };
 		7C0169D41E98F38D0019672F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169CE1E98F38D0019672F /* Router.swift */; };
 		7C0169D51E98F38D0019672F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0169CF1E98F38D0019672F /* State.swift */; };
+		7C0169E61E9A6BEC0019672F /* BeaverPromiseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C0169E41E9A6BEC0019672F /* BeaverPromiseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C0169EA1E9A6C240019672F /* Beaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA2FBF1E98BEC800C05EA8 /* Beaver.framework */; };
 		7CDA2FD61E98BF3700C05EA8 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA2FD51E98BF3700C05EA8 /* Tests.swift */; };
 		CC6F808061AD6E3E8B154A70 /* LoggingMiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8334D0DCC7810E339CD3 /* LoggingMiddleWare.swift */; };
 		CC6F80A0B03E6C7723FBE281 /* CompositeMiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8B385257CFD6F7C32981 /* CompositeMiddleWare.swift */; };
+		CC6F80A3B6D584CB6C148D9D /* Promise+Safety.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8715EDB71841A9F3B2AD /* Promise+Safety.swift */; };
 		CC6F80E1E22234D50464FC6C /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */; };
 		CC6F83AEF30B409B741BC29C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8F7FB1F96B89A87BE653 /* Store.swift */; };
+		CC6F869251678776FE811B46 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F81DEE3B718C5951A3385 /* Context.swift */; };
 		CC6F87873FAE5B87C0EF3B28 /* MiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8E38C04E741E47787C50 /* MiddleWare.swift */; };
 		CC6F87CCDF0B3CA57016445A /* ViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */; };
 		CC6F89D4EC6A69CF767C00F2 /* WindowContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8EBC43D32F2F278454F1 /* WindowContext.swift */; };
@@ -45,11 +50,20 @@
 			remoteGlobalIDString = 7CDA2FBE1E98BEC800C05EA8;
 			remoteInfo = Beaver;
 		};
+		7C0169E81E9A6C1E0019672F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CDA2FB61E98BEC800C05EA8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CDA2FBE1E98BEC800C05EA8;
+			remoteInfo = Beaver;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1E33B3864D3CC8549F3A1B9B /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2BEDF8C4F9DC9911081E6C16 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D3D4B20E00B18625B9F25D9 /* Pods_BeaverPromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaverPromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		625EA1D2B2DB957CAFCECF90 /* Pods-BeaverPromiseKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverPromiseKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverPromiseKit/Pods-BeaverPromiseKit.release.xcconfig"; sourceTree = "<group>"; };
 		7C0169AE1E98F06E0019672F /* BeaverTestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BeaverTestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0169C21E98F3810019672F /* BeaverTestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaverTestKit.h; sourceTree = "<group>"; };
 		7C0169C31E98F3810019672F /* ContextMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMock.swift; sourceTree = "<group>"; };
@@ -60,21 +74,27 @@
 		7C0169CD1E98F38D0019672F /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		7C0169CE1E98F38D0019672F /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		7C0169CF1E98F38D0019672F /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		7C0169DB1E9A6B830019672F /* BeaverPromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BeaverPromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C0169E41E9A6BEC0019672F /* BeaverPromiseKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaverPromiseKit.h; sourceTree = "<group>"; };
+		7C0169E51E9A6BEC0019672F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CDA2FBF1E98BEC800C05EA8 /* Beaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Beaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDA2FD31E98BF3700C05EA8 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDA2FD51E98BF3700C05EA8 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7CDA2FD71E98BF3700C05EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C6E6DCA8B3EB8BC850634A7 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenting.swift; sourceTree = "<group>"; };
+		CC6F81DEE3B718C5951A3385 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		CC6F8334D0DCC7810E339CD3 /* LoggingMiddleWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingMiddleWare.swift; sourceTree = "<group>"; };
 		CC6F8335EE9D35A16B798E39 /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewContainer.swift; sourceTree = "<group>"; };
 		CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
 		CC6F86ABDB10F6EFE498D21D /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
+		CC6F8715EDB71841A9F3B2AD /* Promise+Safety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Safety.swift"; sourceTree = "<group>"; };
 		CC6F8B385257CFD6F7C32981 /* CompositeMiddleWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeMiddleWare.swift; sourceTree = "<group>"; };
 		CC6F8E38C04E741E47787C50 /* MiddleWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleWare.swift; sourceTree = "<group>"; };
 		CC6F8EBC43D32F2F278454F1 /* WindowContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowContext.swift; sourceTree = "<group>"; };
 		CC6F8F7FB1F96B89A87BE653 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		E3806C2AAFAF0BBC6577975D /* Pods-BeaverPromiseKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverPromiseKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverPromiseKit/Pods-BeaverPromiseKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +103,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C0169C01E98F2690019672F /* Beaver.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C0169D71E9A6B830019672F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C0169EA1E9A6C240019672F /* Beaver.framework in Frameworks */,
+				4AFF06F8C408C3169CDC0D50 /* Pods_BeaverPromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +139,8 @@
 			children = (
 				1E33B3864D3CC8549F3A1B9B /* Pods-Tests.debug.xcconfig */,
 				8C6E6DCA8B3EB8BC850634A7 /* Pods-Tests.release.xcconfig */,
+				E3806C2AAFAF0BBC6577975D /* Pods-BeaverPromiseKit.debug.xcconfig */,
+				625EA1D2B2DB957CAFCECF90 /* Pods-BeaverPromiseKit.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -118,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				2BEDF8C4F9DC9911081E6C16 /* Pods_Tests.framework */,
+				5D3D4B20E00B18625B9F25D9 /* Pods_BeaverPromiseKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -161,6 +193,16 @@
 			path = Type;
 			sourceTree = "<group>";
 		};
+		7C0169E31E9A6BEC0019672F /* PromiseKit */ = {
+			isa = PBXGroup;
+			children = (
+				7C0169E41E9A6BEC0019672F /* BeaverPromiseKit.h */,
+				7C0169E51E9A6BEC0019672F /* Info.plist */,
+				CC6F8F21AEB5B77AADD8F58B /* Type */,
+			);
+			path = PromiseKit;
+			sourceTree = "<group>";
+		};
 		7CDA2FB51E98BEC800C05EA8 = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +212,7 @@
 				7CDA2FC01E98BEC800C05EA8 /* Products */,
 				1DDE1D091378469F6E6EF4B7 /* Pods */,
 				280FA3B91731755F2D3CE525 /* Frameworks */,
+				CC6F834D01557AC11DA0BD48 /* Extensions */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,6 +222,7 @@
 				7CDA2FBF1E98BEC800C05EA8 /* Beaver.framework */,
 				7CDA2FD31E98BF3700C05EA8 /* Tests.xctest */,
 				7C0169AE1E98F06E0019672F /* BeaverTestKit.framework */,
+				7C0169DB1E9A6B830019672F /* BeaverPromiseKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,6 +234,14 @@
 				7CDA2FD71E98BF3700C05EA8 /* Info.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		CC6F834D01557AC11DA0BD48 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7C0169E31E9A6BEC0019672F /* PromiseKit */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CC6F85F5032A34FC90D6B520 /* Context */ = {
@@ -210,6 +262,15 @@
 			path = Middleware;
 			sourceTree = "<group>";
 		};
+		CC6F8F21AEB5B77AADD8F58B /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				CC6F81DEE3B718C5951A3385 /* Context.swift */,
+				CC6F8715EDB71841A9F3B2AD /* Promise+Safety.swift */,
+			);
+			path = Type;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -218,6 +279,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C0169C51E98F3810019672F /* BeaverTestKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C0169D81E9A6B830019672F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C0169E61E9A6BEC0019672F /* BeaverPromiseKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +318,27 @@
 			name = BeaverTestKit;
 			productName = BeaverTestKit;
 			productReference = 7C0169AE1E98F06E0019672F /* BeaverTestKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7C0169DA1E9A6B830019672F /* BeaverPromiseKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C0169E21E9A6B830019672F /* Build configuration list for PBXNativeTarget "BeaverPromiseKit" */;
+			buildPhases = (
+				5FDAB5067830821BE42467C5 /* [CP] Check Pods Manifest.lock */,
+				7C0169D61E9A6B830019672F /* Sources */,
+				7C0169D71E9A6B830019672F /* Frameworks */,
+				7C0169D81E9A6B830019672F /* Headers */,
+				7C0169D91E9A6B830019672F /* Resources */,
+				A836CE09E4F0F2D8A9D1B59D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7C0169E91E9A6C1E0019672F /* PBXTargetDependency */,
+			);
+			name = BeaverPromiseKit;
+			productName = BeaverPromiseKit;
+			productReference = 7C0169DB1E9A6B830019672F /* BeaverPromiseKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7CDA2FBE1E98BEC800C05EA8 /* Beaver */ = {
@@ -305,6 +395,11 @@
 						DevelopmentTeam = QUQ2Y9T688;
 						ProvisioningStyle = Automatic;
 					};
+					7C0169DA1E9A6B830019672F = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = QUQ2Y9T688;
+						ProvisioningStyle = Automatic;
+					};
 					7CDA2FBE1E98BEC800C05EA8 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = QUQ2Y9T688;
@@ -332,12 +427,20 @@
 				7CDA2FBE1E98BEC800C05EA8 /* Beaver */,
 				7C0169AD1E98F06E0019672F /* BeaverTestKit */,
 				7CDA2FD21E98BF3700C05EA8 /* Tests */,
+				7C0169DA1E9A6B830019672F /* BeaverPromiseKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7C0169AC1E98F06E0019672F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C0169D91E9A6B830019672F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -406,6 +509,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5FDAB5067830821BE42467C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A836CE09E4F0F2D8A9D1B59D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaverPromiseKit/Pods-BeaverPromiseKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -414,6 +547,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C0169C61E98F3810019672F /* ContextMock.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C0169D61E9A6B830019672F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC6F869251678776FE811B46 /* Context.swift in Sources */,
+				CC6F80A3B6D584CB6C148D9D /* Promise+Safety.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +601,11 @@
 			target = 7CDA2FBE1E98BEC800C05EA8 /* Beaver */;
 			targetProxy = 7C0169BE1E98F2600019672F /* PBXContainerItemProxy */;
 		};
+		7C0169E91E9A6C1E0019672F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CDA2FBE1E98BEC800C05EA8 /* Beaver */;
+			targetProxy = 7C0169E81E9A6C1E0019672F /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -496,6 +643,46 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.BeaverTestKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		7C0169E01E9A6B830019672F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3806C2AAFAF0BBC6577975D /* Pods-BeaverPromiseKit.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QUQ2Y9T688;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Extensions/PromiseKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.BeaverPromiseKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7C0169E11E9A6B830019672F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 625EA1D2B2DB957CAFCECF90 /* Pods-BeaverPromiseKit.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QUQ2Y9T688;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Extensions/PromiseKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.BeaverPromiseKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -685,6 +872,15 @@
 			buildConfigurations = (
 				7C0169B41E98F06E0019672F /* Debug */,
 				7C0169B51E98F06E0019672F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7C0169E21E9A6B830019672F /* Build configuration list for PBXNativeTarget "BeaverPromiseKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C0169E01E9A6B830019672F /* Debug */,
+				7C0169E11E9A6B830019672F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

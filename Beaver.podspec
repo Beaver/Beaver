@@ -13,4 +13,9 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = "2.0"
 
   s.source_files = "Beaver/*.swift"
+
+  s.subspec "PromiseKit" do |ss|
+    ss.source_files = "Extensions/PromiseKit/*"
+    ss.dependency "PromiseKit", "~> 4.1" 
+  end
 end
