@@ -11,7 +11,5 @@ Pod::Spec.new do |s|
 
   s.source_files = "BeaverTestKit/**/*.swift"
 
-  s.framework = "XCTest"
-
-  s.dependency = "Beaver", "~> 0.1"
+  s.dependency "Beaver", "~> 0.1"
 end
