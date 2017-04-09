@@ -1,29 +1,17 @@
 /// A type representing a user action
-public protocol Action {
+public protocol Action: Equatable {
     /// Type of the expected state update after the action has been triggered
     associatedtype SuccessStateType: SuccessState
 
     /// Type of the failure state update after the action has been triggered
     associatedtype FailureStateType: FailureState
-
-    /// Determine either the action is a life cycle action or not
-    var isLifeCycle: Bool { get }
-
-    /// Used by the base stage which needs to be able to build a core action
-    /// scoped with its ActionType
-    static func create(coreAction: CoreAction) -> Self
-}
-
-extension Action {
-    public var isLifeCycle: Bool {
-        return "\(self)".contains("CoreAction.lifeCycle")
-    }
 }
 
 /// Type containing any commonly used actions
-public enum CoreAction {
+public enum CoreAction<ActionType: Action> {
     case navigation(NavigationAction)
     case lifeCycle(LifeCycleAction)
+    case main(ActionType)
 }
 
 /// Actions dispatched on lifecycle events
@@ -41,7 +29,7 @@ public enum NavigationAction {
 /// Type encapsulated an action and adding extra information
 
 public struct ActionEnvelop<ActionType:Action> {
-    public let action: ActionType
+    public let action: CoreAction<ActionType>
 
     /// Emitter name
     public let emitter: String
@@ -55,7 +43,7 @@ public struct ActionEnvelop<ActionType:Action> {
                            line: Int)
 
     public init(emitter: String,
-                action: ActionType,
+                action: CoreAction<ActionType>,
                 payload: [AnyHashable: Any]? = nil,
                 file: String = #file,
                 function: String = #function,
@@ -68,6 +56,18 @@ public struct ActionEnvelop<ActionType:Action> {
                 function: function,
                 line: line
         )
+    }
+}
+
+extension ActionEnvelop {
+    /// Determine either the action is a life cycle action or not
+    public var isLifeCycleAction: Bool {
+        switch action {
+        case .lifeCycle:
+            return true
+        default:
+            return false
+        }
     }
 }
 

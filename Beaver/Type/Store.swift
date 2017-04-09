@@ -7,7 +7,7 @@
 /// ## Important Notes: ##
 /// 1. Subscribers are store in a set, which means they are called with an indefinite order!
 /// 2. Subscribers are blocks, which means that the subscriber itself is responsible
-///    of telling if its `self` should be retained or not by the script.
+///    of telling if its `self` should be retained or not by the store.
 ///    In main cases, stages need to declare a `weak self` in order to prevent retain cycles, when the scene
 ///    needs to declare a `strong self`.
 /// 3. Subscribers registration is based on their name. Meaning that two subscribers with
@@ -44,12 +44,12 @@ public final class Store<ActionType: Action> {
     /// Registered actors
     public let middleWares: [MiddleWare]
 
-    /// Script initialization
+    /// Store initialization
     ///
     /// - Parameters:
     ///     - initialState: the first current state
-    ///     - director: the director responsible for generating new states
-    ///     - actors: a list of actors, responsible of side effects like logging, tracking, ...
+    ///     - middleWares: a list of middleWares, responsible of side effects like logging, tracking, ...
+    ///     - reducer: the reducer, responsible for new states generation
     public init(initialState: StateType,
                 middleWares: [MiddleWare] = [],
                 reducer: @escaping Reducer) {
@@ -65,15 +65,16 @@ public final class Store<ActionType: Action> {
 // MARK: - Dispatching
 
 extension Store {
-    /// Responsible of dispatching an action and the produced state to subscribers
+    /// Responsible for dispatching an action and the produced state to subscribers
     public typealias Dispatch = (_ action: ActionEnvelop<ActionType>) -> ()
 
     /// Dispatching interface
     ///
-    /// It is retaining a reference on the script
+    /// It is retaining a reference on the store
     public final var dispatch: Dispatch {
         return { (envelop: ActionEnvelop<ActionType>) -> () in
-            let cancellable = envelop.action.isLifeCycle ? Cancellable() : self.newCancellable()
+            // Lifecycle actions are not cancellable
+            let cancellable = envelop.isLifeCycleAction ? Cancellable() : self.newCancellable()
 
             self.middleware.run(envelop, nil)
 
@@ -94,7 +95,7 @@ extension Store {
         subscribers.insert(subscriber)
 
         // Dispatching the state update permits to avoid infinite recursions when
-        // the `stateDidUpdate` method implementation refers the script
+        // the `stateDidUpdate` method implementation refers the store
         DispatchQueue.main.async {
             subscriber.stateDidUpdate(nil, nil, self.state) {
                 // do nothing

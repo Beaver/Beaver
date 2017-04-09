@@ -4,7 +4,7 @@ public protocol Presenting: Subscribing {
 
 extension Presenting {
     /// Dispatches an action to the store and automatically sets the emitter to the scene's subscription nameScript<ActionType>
-    public func dispatch(_ action: ActionType,
+    public func dispatch(_ action: CoreAction<ActionType>,
                          on store: Store<ActionType>,
                          payload: [AnyHashable: Any]? = nil,
                          file: String = #file,

@@ -26,7 +26,7 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        dispatch(action: ActionType.create(coreAction: .lifeCycle(.didShowView)), silent: true)
+        dispatch(action: .lifeCycle(.didShowView), silent: true)
     }
 
     open override func viewDidLoad() {
@@ -34,7 +34,7 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
 
         self.navigationController?.isNavigationBarHidden = true
 
-        dispatch(action: ActionType.create(coreAction: .lifeCycle(.didLoadView)))
+        dispatch(action: .lifeCycle(.didLoadView))
     }
 
     open func stateDidUpdate(source: ActionEnvelop<ActionType>?,
@@ -54,7 +54,7 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
 
     // MARK: Dispatch
 
-    open func dispatch(action: ActionType,
+    open func dispatch(action: CoreAction<ActionType>,
                        file: String = #file,
                        function: String = #function,
                        line: Int = #line,
