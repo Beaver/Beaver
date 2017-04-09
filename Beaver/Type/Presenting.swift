@@ -7,14 +7,10 @@ extension Presenting {
     public func dispatch(_ action: CoreAction<ActionType>,
                          on store: Store<ActionType>,
                          payload: [AnyHashable: Any]? = nil,
-                         file: String = #file,
-                         function: String = #function,
-                         line: Int = #line) {
+                         debugInfo: ActionEnvelop<ActionType>.DebugInfo = (file: #file, function: #function, line: #line)) {
         store.dispatch(ActionEnvelop(emitter: subscriptionName,
                                      action: action,
                                      payload: payload,
-                                     file: file,
-                                     function: function,
-                                     line: line))
+                                     debugInfo: debugInfo))
     }
 }

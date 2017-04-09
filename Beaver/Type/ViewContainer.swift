@@ -56,17 +56,14 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
 
     open func dispatch(action: CoreAction<ActionType>,
                        file: String = #file,
-                       function: String = #function,
-                       line: Int = #line,
-                       silent: Bool = true) {
+                       silent: Bool = false,
+                       debugInfo: ActionEnvelop<ActionType>.DebugInfo = (file: #file, function: #function, line: #line)) {
         didStartLoading(silent: silent)
         store.dispatch(ActionEnvelop(
                 emitter: name,
                 action: action,
                 payload: ["silent": silent],
-                file: file,
-                function: function,
-                line: line))
+                debugInfo: debugInfo))
     }
 
     // MARK: - Loading

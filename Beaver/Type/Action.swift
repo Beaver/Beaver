@@ -26,8 +26,7 @@ public enum NavigationAction {
     case didTapOnCloseButton
 }
 
-/// Type encapsulated an action and adding extra information
-
+/// Type encapsulating an action and adding extra information
 public struct ActionEnvelop<ActionType:Action> {
     public let action: CoreAction<ActionType>
 
@@ -38,24 +37,18 @@ public struct ActionEnvelop<ActionType:Action> {
     public let payload: [AnyHashable: Any]?
 
     /// File, Function and Line which produced the action
-    public let debugInfo: (file: String,
-                           function: String,
-                           line: Int)
+    public typealias DebugInfo = (file: String, function: String, line: Int)
+
+    public let debugInfo: DebugInfo
 
     public init(emitter: String,
                 action: CoreAction<ActionType>,
                 payload: [AnyHashable: Any]? = nil,
-                file: String = #file,
-                function: String = #function,
-                line: Int = #line) {
+                debugInfo: DebugInfo = (file: #file, function: #function, line: #line)) {
         self.emitter = emitter
         self.action = action
         self.payload = payload
-        self.debugInfo = (
-                file: file,
-                function: function,
-                line: line
-        )
+        self.debugInfo = debugInfo
     }
 }
 
