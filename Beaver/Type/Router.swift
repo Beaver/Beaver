@@ -26,7 +26,9 @@ public protocol Route {
 
 /// Responsible to emit the modules routes and dispatch its data to the store
 public struct Router<RouteType:Route> {
-    public typealias Completion = (_ result: RouteResult<RouteType.RouteSuccessType, RouteType.RouteErrorType>) -> ()
+    public typealias RouteResultType = RouteResult<RouteType.RouteSuccessType, RouteType.RouteErrorType>
+
+    public typealias Completion = (_ result: RouteResultType) -> ()
 
     /// Emits a route and call the completion when done.
     ///

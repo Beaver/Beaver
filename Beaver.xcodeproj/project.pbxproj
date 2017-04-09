@@ -31,6 +31,7 @@
 		CC6F89D4EC6A69CF767C00F2 /* WindowContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8EBC43D32F2F278454F1 /* WindowContext.swift */; };
 		CC6F8BE3F2D0752E5A1A3854 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8335EE9D35A16B798E39 /* Subscriber.swift */; };
 		CC6F8D5084E954DF4A47074B /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F86ABDB10F6EFE498D21D /* Reducer.swift */; };
+		CC6F8E3A2CDCDA8A2EDF0299 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8029E4AD11D0E30F3DE3 /* Router.swift */; };
 		CC6F8EEC6B83EA5041715096 /* Presenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */; };
 		E4EF908F00F938A12B04A08C /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEDF8C4F9DC9911081E6C16 /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		7CDA2FD71E98BF3700C05EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C6E6DCA8B3EB8BC850634A7 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenting.swift; sourceTree = "<group>"; };
+		CC6F8029E4AD11D0E30F3DE3 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		CC6F81DEE3B718C5951A3385 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		CC6F8334D0DCC7810E339CD3 /* LoggingMiddleWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingMiddleWare.swift; sourceTree = "<group>"; };
 		CC6F8335EE9D35A16B798E39 /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			children = (
 				CC6F81DEE3B718C5951A3385 /* Context.swift */,
 				CC6F8715EDB71841A9F3B2AD /* Promise+Safety.swift */,
+				CC6F8029E4AD11D0E30F3DE3 /* Router.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 			files = (
 				CC6F869251678776FE811B46 /* Context.swift in Sources */,
 				CC6F80A3B6D584CB6C148D9D /* Promise+Safety.swift in Sources */,
+				CC6F8E3A2CDCDA8A2EDF0299 /* Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
