@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
 
   s.source_files = "BeaverTestKit/**/*.swift"
 
-  s.dependency "Beaver", "~> 0.1"
+  s.dependency "Beaver", "~> #{s.version}"
 end
