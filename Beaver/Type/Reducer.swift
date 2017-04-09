@@ -7,7 +7,7 @@ extension Store {
     ///     - completion: completion handler called when the new state is ready
     public typealias Reducer = (_ envelop: ActionEnvelop<ActionType>,
                                 _ state: StateType,
-                                _ completion: (StateType) -> ()) -> ()
+                                _ completion: @escaping (StateType) -> ()) -> ()
 }
 
 /// Responsible of generating a state for a given action and the current state
@@ -22,7 +22,7 @@ public protocol Reducing {
     ///     - completion: completion handler called when the new state is ready
     func handle(envelop: ActionEnvelop<ActionType>,
                 state: Store<ActionType>.StateType,
-                completion: (Store<ActionType>.StateType) -> ())
+                completion: @escaping (Store<ActionType>.StateType) -> ())
 }
 
 extension Reducing {

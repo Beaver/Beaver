@@ -39,11 +39,11 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
         dispatch(action: .lifeCycle(.didLoadView))
     }
 
-    /// Method called when a state update has occured
+    /// Method called when a state update has occurred
     open func stateDidUpdate(source: ActionEnvelop<ActionType>?,
                              oldState: Store<ActionType>.StateType?,
                              newState: Store<ActionType>.StateType,
-                             completion: () -> ()) {
+                             completion: @escaping () -> ()) {
         fatalError("stateDidUpdate(source:oldState:newState:completion:) has not been implemented")
     }
 

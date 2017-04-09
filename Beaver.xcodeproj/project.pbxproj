@@ -24,11 +24,13 @@
 		CC6F80A0B03E6C7723FBE281 /* CompositeMiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8B385257CFD6F7C32981 /* CompositeMiddleWare.swift */; };
 		CC6F80A3B6D584CB6C148D9D /* Promise+Safety.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8715EDB71841A9F3B2AD /* Promise+Safety.swift */; };
 		CC6F80E1E22234D50464FC6C /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */; };
+		CC6F837069F0A73B3D0F8242 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8664C102E84A07317889 /* Subscriber.swift */; };
 		CC6F83AEF30B409B741BC29C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8F7FB1F96B89A87BE653 /* Store.swift */; };
 		CC6F869251678776FE811B46 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F81DEE3B718C5951A3385 /* Context.swift */; };
 		CC6F87873FAE5B87C0EF3B28 /* MiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8E38C04E741E47787C50 /* MiddleWare.swift */; };
 		CC6F87CCDF0B3CA57016445A /* ViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */; };
 		CC6F89D4EC6A69CF767C00F2 /* WindowContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8EBC43D32F2F278454F1 /* WindowContext.swift */; };
+		CC6F8AC5E83B7F02F86A433F /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8ED5E41A9AE13773E378 /* Reducer.swift */; };
 		CC6F8BE3F2D0752E5A1A3854 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8335EE9D35A16B798E39 /* Subscriber.swift */; };
 		CC6F8D5084E954DF4A47074B /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F86ABDB10F6EFE498D21D /* Reducer.swift */; };
 		CC6F8E3A2CDCDA8A2EDF0299 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8029E4AD11D0E30F3DE3 /* Router.swift */; };
@@ -90,11 +92,13 @@
 		CC6F8335EE9D35A16B798E39 /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewContainer.swift; sourceTree = "<group>"; };
 		CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
+		CC6F8664C102E84A07317889 /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		CC6F86ABDB10F6EFE498D21D /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		CC6F8715EDB71841A9F3B2AD /* Promise+Safety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Promise+Safety.swift"; sourceTree = "<group>"; };
 		CC6F8B385257CFD6F7C32981 /* CompositeMiddleWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeMiddleWare.swift; sourceTree = "<group>"; };
 		CC6F8E38C04E741E47787C50 /* MiddleWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleWare.swift; sourceTree = "<group>"; };
 		CC6F8EBC43D32F2F278454F1 /* WindowContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowContext.swift; sourceTree = "<group>"; };
+		CC6F8ED5E41A9AE13773E378 /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		CC6F8F7FB1F96B89A87BE653 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		E3806C2AAFAF0BBC6577975D /* Pods-BeaverPromiseKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverPromiseKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverPromiseKit/Pods-BeaverPromiseKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -270,6 +274,8 @@
 				CC6F81DEE3B718C5951A3385 /* Context.swift */,
 				CC6F8715EDB71841A9F3B2AD /* Promise+Safety.swift */,
 				CC6F8029E4AD11D0E30F3DE3 /* Router.swift */,
+				CC6F8ED5E41A9AE13773E378 /* Reducer.swift */,
+				CC6F8664C102E84A07317889 /* Subscriber.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -560,6 +566,8 @@
 				CC6F869251678776FE811B46 /* Context.swift in Sources */,
 				CC6F80A3B6D584CB6C148D9D /* Promise+Safety.swift in Sources */,
 				CC6F8E3A2CDCDA8A2EDF0299 /* Router.swift in Sources */,
+				CC6F8AC5E83B7F02F86A433F /* Reducer.swift in Sources */,
+				CC6F837069F0A73B3D0F8242 /* Subscriber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

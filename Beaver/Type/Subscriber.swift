@@ -11,7 +11,7 @@ extension Store {
         public typealias StateDidUpdate = (_ source: ActionEnvelop<ActionType>?,
                                            _ oldState: StateType?,
                                            _ newState: StateType,
-                                           _ completion: () -> ()) -> ()
+                                           _ completion: @escaping () -> ()) -> ()
 
         public let name: String
 
@@ -62,7 +62,7 @@ public protocol Subscribing: class {
     func stateDidUpdate(source: ActionEnvelop<ActionType>?,
                         oldState: Store<ActionType>.StateType?,
                         newState: Store<ActionType>.StateType,
-                        completion: () -> ())
+                        completion: @escaping () -> ())
 
     func didStartStateUpdate(source: ActionEnvelop<ActionType>?,
                              oldState: Store<ActionType>.StateType?,

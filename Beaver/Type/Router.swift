@@ -35,7 +35,7 @@ public struct Router<RouteType:Route> {
     /// - Parameters:
     ///    - route: a route to emit
     ///    - completion: a completion handler called when done emitting
-    public typealias Emitter = (_ route: RouteType, _ completion: Completion) -> ()
+    public typealias Emitter = (_ route: RouteType, _ completion: @escaping Completion) -> ()
 
     public let emit: Emitter
 
@@ -53,7 +53,7 @@ public protocol Routing {
     /// - Parameters:
     ///    - route: a route to emit
     ///    - completion: a completion handler called when done emitting
-    func handle(route: RouteType, completion: Router<RouteType>.Completion)
+    func handle(route: RouteType, completion: @escaping Router<RouteType>.Completion)
 }
 
 extension Routing {
