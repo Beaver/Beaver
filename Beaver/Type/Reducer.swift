@@ -37,7 +37,7 @@ extension Reducing {
     public func createStore(initialState: Store<ActionType>.StateType,
                             middleWares: [Store<ActionType>.Middleware]) -> Store<ActionType> {
         return Store<ActionType>(initialState: initialState,
-                                 middleWares: middleWares,
+                                 middlewares: middleWares,
                                  reducer: reducer)
     }
 }
@@ -47,7 +47,7 @@ extension Reducing where Self: Subscribing {
     public func createStore(initialState: Store<ActionType>.StateType,
                             middleWares: [Store<ActionType>.Middleware]) -> Store<ActionType> {
         let store = Store<ActionType>(initialState: initialState,
-                                      middleWares: middleWares,
+                                      middlewares: middleWares,
                                       reducer: reducer)
         store.subscribe(name: subscriptionName,
                         stateDidUpdate: stateDidUpdate)

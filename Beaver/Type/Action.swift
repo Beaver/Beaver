@@ -14,6 +14,21 @@ public enum CoreAction<ActionType: Action> {
     case business(ActionType)
 }
 
+extension CoreAction: Equatable {
+    public static func ==(lhs: CoreAction<ActionType>, rhs: CoreAction<ActionType>) -> Bool {
+        switch (lhs, rhs) {
+        case (.navigation(let left), .navigation(let right)):
+            return left == right
+        case (.lifeCycle(let left), .lifeCycle(let right)):
+            return left == right
+        case (.business(let left), .business(let right)):
+            return left == right
+        default:
+            return false
+        }
+    }
+}
+
 /// Actions dispatched on lifecycle events
 public enum LifeCycleAction {
     case didLoadView

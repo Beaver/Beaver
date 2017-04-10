@@ -5,7 +5,11 @@ public struct ActionMock: Action {
 
     public typealias FailureStateType = FailureStateMock
 
-    public var name: String = "ActionMock"
+    public var name: String
+    
+    public init(name: String = "ActionMock") {
+        self.name = name
+    }
 
     public static func ==(lhs: ActionMock, rhs: ActionMock) -> Bool {
         return lhs.name == rhs.name

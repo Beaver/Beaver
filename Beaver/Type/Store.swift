@@ -67,11 +67,11 @@ public final class Store<ActionType: Action> {
     ///     - middleWares: a list of middleWares, responsible of side effects like logging, tracking, ...
     ///     - reducer: the reducer, responsible for new states generation
     public init(initialState: StateType,
-                middleWares: [Middleware] = [],
+                middlewares: [Middleware] = [],
                 reducer: @escaping Reducer) {
         self.reducer = reducer
         state = initialState
-        self.middlewares = middleWares
+        self.middlewares = middlewares
 
         // stateDidSet is not called so we need to dispatch to actors here
         middleware.run(nil, (oldState: nil, newState: initialState))
