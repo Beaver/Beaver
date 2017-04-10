@@ -64,7 +64,7 @@ public final class Store<ActionType: Action> {
     ///
     /// - Parameters:
     ///     - initialState: the first current state
-    ///     - middleWares: a list of middleWares, responsible of side effects like logging, tracking, ...
+    ///     - middlewares: a list of middleWares, responsible of side effects like logging, tracking, ...
     ///     - reducer: the reducer, responsible for new states generation
     public init(initialState: StateType,
                 middlewares: [Middleware] = [],
@@ -81,23 +81,18 @@ public final class Store<ActionType: Action> {
 // MARK: - Dispatching
 
 extension Store {
-    /// Responsible for dispatching an action and the produced state to subscribers
-    public typealias Dispatch = (_ action: ActionEnvelop<ActionType>) -> ()
-
     /// Dispatching interface
     ///
     /// It is retaining a reference on the store
-    public final var dispatch: Dispatch {
-        return { (envelop: ActionEnvelop<ActionType>) -> () in
-            // Lifecycle actions are not cancellable
-            let cancellable = envelop.isLifeCycleAction ? Cancellable() : self.newCancellable()
+    public func dispatch(_ envelop: ActionEnvelop<ActionType>) {
+        // Lifecycle actions are not cancellable
+        let cancellable = envelop.isLifeCycleAction ? Cancellable() : self.newCancellable()
 
-            self.middleware.run(envelop, nil)
+        self.middleware.run(envelop, nil)
 
-            self.reducer(envelop, self.state) { newState in
-                if !cancellable.isCancelled {
-                    self.setState(newState, for: envelop)
-                }
+        self.reducer(envelop, self.state) { newState in
+            if !cancellable.isCancelled {
+                self.setState(newState, for: envelop)
             }
         }
     }
@@ -112,10 +107,8 @@ extension Store {
 
         // Dispatching the state update permits to avoid infinite recursions when
         // the `stateDidUpdate` method implementation refers the store
-        DispatchQueue.main.async {
-            subscriber.stateDidUpdate(nil, nil, self.state) {
-                // do nothing
-            }
+        subscriber.stateDidUpdate(nil, nil, self.state) {
+            // do nothing
         }
     }
 

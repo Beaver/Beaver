@@ -8,7 +8,7 @@ public final class MiddlewareMock<ActionType: Action> {
     public private(set) var stateUpdates: [(oldState: Store<ActionType>.StateType?,
                                      newState: Store<ActionType>.StateType)?] = []
 
-    public var name: String = "ActorMock"
+    public var name: String = "MiddlewareMock"
     
     public init() {
         // Do nothing
