@@ -14,7 +14,7 @@ public protocol FailureState: CustomStringConvertible, Equatable {
 /// 3. It should not contain any business logic since it is the result of the reducer's business logic
 public enum State<SuccessStateType: SuccessState, FailureStateType: FailureState> {
     case success(SuccessStateType)
-    case failure(FailureStateType)
+    case failure(FailureStateType, previous: SuccessStateType)
 }
 
 extension State: Equatable {
@@ -22,8 +22,8 @@ extension State: Equatable {
         switch (lhs, rhs) {
         case (.success(let left), .success(let right)):
             return left == right
-        case (.failure(let left), .failure(let right)):
-            return left == right
+        case (.failure(let leftError, let leftPrevious), .failure(let rightError, let rightPrevious)):
+            return leftError == rightError && leftPrevious == rightPrevious
         default:
             return false
         }

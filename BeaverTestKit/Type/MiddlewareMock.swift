@@ -1,7 +1,7 @@
 import Beaver
 
 public final class MiddlewareMock<ActionType: Action> {
-    public private(set) var actCallCount = 0
+    public private(set) var runCallCount = 0
 
     public private(set) var actions: [ActionEnvelop<ActionType>?] = []
 
@@ -18,7 +18,7 @@ public final class MiddlewareMock<ActionType: Action> {
         return Store<ActionType>.Middleware(name: name) { action, stateUpdate in
             self.actions.append(action)
             self.stateUpdates.append(stateUpdate)
-            self.actCallCount += 1
+            self.runCallCount += 1
         }
     }
 }

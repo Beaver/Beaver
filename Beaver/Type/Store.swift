@@ -36,6 +36,10 @@ public final class Store<ActionType: Action> {
     fileprivate(set) public var state: StateType
 
     fileprivate func setState(_ newState: StateType, for action: ActionEnvelop<ActionType>) {
+        guard state != newState else {
+            return
+        }
+
         middleware.run(action, (oldState: state, newState: newState))
 
         for subscriber in subscribers {

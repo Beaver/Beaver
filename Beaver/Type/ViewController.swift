@@ -1,6 +1,6 @@
 import UIKit
 
-open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
+open class ViewController<AActionType: Action>: UIViewController, Subscribing {
     public typealias ActionType = AActionType
     
     public let store: Store<ActionType>
@@ -30,7 +30,7 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        dispatch(action: .lifeCycle(.didShowView), silent: true)
+        dispatch(action: .lifeCycle(.didShowView))
     }
 
     open override func viewDidLoad() {
@@ -59,15 +59,22 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
 
     // MARK: Dispatch
 
+    /// Dispatches an action to the store
+    ///
+    /// - Parameters:
+    ///    - action: the action to be dispatched
+    ///    - silent: if true, the `didStartLoading(silent:)` and `didFinishLoading(state:silent:)` will be called with
+    ///              the parameter `silent` set to `true`
+    ///    - debugInfo: a tuple containing the file, function and line from where the action has been dispatched
     open func dispatch(action: CoreAction<ActionType>,
-                       file: String = #file,
-                       silent: Bool = false,
+                       silent: Bool? = nil,
                        debugInfo: ActionEnvelop<ActionType>.DebugInfo = (file: #file, function: #function, line: #line)) {
-        didStartLoading(silent: silent)
+        let resolvedSilent = silent ?? isActionSilent(action)
+        didStartLoading(silent: resolvedSilent)
         store.dispatch(ActionEnvelop(
                 emitter: subscriptionName,
                 action: action,
-                payload: ["silent": silent],
+                payload: ["silent": resolvedSilent],
                 debugInfo: debugInfo))
     }
 
@@ -93,11 +100,25 @@ open class ViewContainer<AActionType: Action>: UIViewController, Subscribing {
         didFinishLoading(state: newState, silent: silent)
     }
 
+    /// Method called to know if an action should be dispatched silently or not.
+    ///
+    /// ## Important Note ##
+    /// Should be overridden for custom behaviors
+    open func isActionSilent(_ action: CoreAction<ActionType>) -> Bool {
+        return true
+    }
+
     /// Method called when the stage starts loading.
+    ///
+    /// ## Important Note ##
+    /// Should be overridden for custom behaviors
     open func didStartLoading(silent: Bool) {
     }
 
     /// Method called when the stage finished loading.
+    ///
+    /// ## Important Note ##
+    /// Should be overridden for custom behaviors
     open func didFinishLoading(state: Store<ActionType>.StateType, silent: Bool) {
     }
 }

@@ -1,6 +1,6 @@
 import Beaver
 
-public final class ViewContainerMock<ActionType:Action>: ViewContainer<ActionType> {
+public final class ViewControllerMock<ActionType:Action>: ViewController<ActionType> {
     public private(set) var stateDidUpdateCallCount = 0
 
     public private(set) var source: ActionEnvelop<ActionType>?
@@ -16,7 +16,7 @@ public final class ViewContainerMock<ActionType:Action>: ViewContainer<ActionTyp
     public private(set) var silent: Bool?
 
     public override var subscriptionName: String {
-        return "ViewContainerMock"
+        return "ViewControllerMock"
     }
 
     public override func stateDidUpdate(source: ActionEnvelop<ActionType>?,

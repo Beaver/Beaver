@@ -30,7 +30,7 @@
 		CC6F8444A38B0621C081CC2A /* ActionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F827C0CEDB47F12326B3C /* ActionMock.swift */; };
 		CC6F852729BC65F783F7964A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8AC0C78C8F5AE635AE16 /* Router.swift */; };
 		CC6F862CA9002A2FCC2516EB /* Promise+Safety.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F879CA647C6BA37550E74 /* Promise+Safety.swift */; };
-		CC6F87CCDF0B3CA57016445A /* ViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */; };
+		CC6F87CCDF0B3CA57016445A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F833E4D7768C01ACB9661 /* ViewController.swift */; };
 		CC6F891C73236C2BCD148E99 /* BeaverPromiseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC6F850D02762A3684C32DB9 /* BeaverPromiseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC6F89D4EC6A69CF767C00F2 /* WindowContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8EBC43D32F2F278454F1 /* WindowContext.swift */; };
 		CC6F8BE3F2D0752E5A1A3854 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8335EE9D35A16B798E39 /* Subscriber.swift */; };
@@ -107,7 +107,7 @@
 		CC6F8302B1637B044CA9EE97 /* ContextMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMock.swift; sourceTree = "<group>"; };
 		CC6F8334D0DCC7810E339CD3 /* LoggingMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
 		CC6F8335EE9D35A16B798E39 /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
-		CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewContainer.swift; sourceTree = "<group>"; };
+		CC6F833E4D7768C01ACB9661 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
 		CC6F850D02762A3684C32DB9 /* BeaverPromiseKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaverPromiseKit.h; sourceTree = "<group>"; };
 		CC6F86ABDB10F6EFE498D21D /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 				CC6F8F7FB1F96B89A87BE653 /* Store.swift */,
 				CC6F86ABDB10F6EFE498D21D /* Reducer.swift */,
 				CC6F8335EE9D35A16B798E39 /* Subscriber.swift */,
-				CC6F833E4D7768C01ACB9661 /* ViewContainer.swift */,
+				CC6F833E4D7768C01ACB9661 /* ViewController.swift */,
 				CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */,
 			);
 			path = Type;
@@ -630,7 +630,7 @@
 				CC6F8D5084E954DF4A47074B /* Reducer.swift in Sources */,
 				CC6F8BE3F2D0752E5A1A3854 /* Subscriber.swift in Sources */,
 				CC6F80A0B03E6C7723FBE281 /* CompositeMiddleware.swift in Sources */,
-				CC6F87CCDF0B3CA57016445A /* ViewContainer.swift in Sources */,
+				CC6F87CCDF0B3CA57016445A /* ViewController.swift in Sources */,
 				CC6F8EEC6B83EA5041715096 /* Presenting.swift in Sources */,
 				CC6F89D4EC6A69CF767C00F2 /* WindowContext.swift in Sources */,
 				CC6F80E1E22234D50464FC6C /* NavigationContext.swift in Sources */,
