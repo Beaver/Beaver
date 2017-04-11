@@ -1,9 +1,10 @@
 import Beaver
+import PromiseKit
 
 public protocol PMKSubscribing: Subscribing {
     func stateDidUpdate(source: ActionEnvelop<ActionType>?,
                         oldState: Store<ActionType>.StateType?,
-                        newState: Store<ActionType>.StateType) -> SafePromise<()>
+                        newState: Store<ActionType>.StateType) -> Promise<()>
 }
 
 extension PMKSubscribing {

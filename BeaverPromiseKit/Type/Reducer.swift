@@ -1,7 +1,8 @@
 import Beaver
+import PromiseKit
 
 public protocol PMKReducing: Reducing {
-    func handle(envelop: ActionEnvelop<ActionType>, state: Store<ActionType>.StateType) -> SafePromise<Store<ActionType>.StateType>
+    func handle(envelop: ActionEnvelop<ActionType>, state: Store<ActionType>.StateType) -> Promise<Store<ActionType>.StateType>
 }
 
 extension PMKReducing {

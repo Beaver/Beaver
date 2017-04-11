@@ -51,7 +51,7 @@ open class ViewController<AActionType: Action>: UIViewController, Subscribing {
 
     /// Registered name for the script
     ///
-    /// ## Important Note ##
+    /// ## Important Note: ##
     /// - Should be overridden if two instances of the same stage are subscribing
     open var subscriptionName: String {
         return String(describing: type(of: self))
@@ -102,23 +102,23 @@ open class ViewController<AActionType: Action>: UIViewController, Subscribing {
 
     /// Method called to know if an action should be dispatched silently or not.
     ///
-    /// ## Important Note ##
-    /// Should be overridden for custom behaviors
+    /// ## Important Note: ##
+    /// - Should be overridden for custom behaviors
     open func isActionSilent(_ action: CoreAction<ActionType>) -> Bool {
         return true
     }
 
     /// Method called when the stage starts loading.
     ///
-    /// ## Important Note ##
+    /// ## Important Note: ##
     /// Should be overridden for custom behaviors
     open func didStartLoading(silent: Bool) {
     }
 
     /// Method called when the stage finished loading.
     ///
-    /// ## Important Note ##
-    /// Should be overridden for custom behaviors
+    /// ## Important Note: ##
+    /// - Should be overridden for custom behaviors
     open func didFinishLoading(state: Store<ActionType>.StateType, silent: Bool) {
     }
 }
