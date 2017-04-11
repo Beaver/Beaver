@@ -10,6 +10,7 @@
 		516DD1611F97A477E3C7388D /* MiddlewareMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD59ECD02E9DD9136D3C9 /* MiddlewareMock.swift */; };
 		516DD39F53E5A5F6E2655F70 /* StoreSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDB153FABB4EB09DAAFAD /* StoreSpec.swift */; };
 		516DD73C55DCFAB4B63CB518 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD73394C7C36002C28B8C /* Context.swift */; };
+		516DD7511E830529503134DE /* SubscriberSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD43A22F2CD5FB315D81E /* SubscriberSpec.swift */; };
 		516DDDF0E331C2E098A190DA /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD80BEA74BE24A093CB19 /* Reducer.swift */; };
 		760A219A1E9B5B580095655D /* BeaverPromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0169DB1E9A6B830019672F /* BeaverPromiseKit.framework */; };
 		7C0169BD1E98F2550019672F /* BeaverTestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0169AE1E98F06E0019672F /* BeaverTestKit.framework */; };
@@ -80,6 +81,7 @@
 		163988A050F1E779389F0E75 /* Pods-BeaverPromiseKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverPromiseKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverPromiseKit/Pods-BeaverPromiseKit.release.xcconfig"; sourceTree = "<group>"; };
 		2CF113F8129ED865686C8C94 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB6AD3D469927EBBBC88922 /* Pods_BeaverPromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaverPromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		516DD43A22F2CD5FB315D81E /* SubscriberSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriberSpec.swift; sourceTree = "<group>"; };
 		516DD59ECD02E9DD9136D3C9 /* MiddlewareMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddlewareMock.swift; sourceTree = "<group>"; };
 		516DD73394C7C36002C28B8C /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		516DD80BEA74BE24A093CB19 /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				516DDB153FABB4EB09DAAFAD /* StoreSpec.swift */,
+				516DD43A22F2CD5FB315D81E /* SubscriberSpec.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				516DD39F53E5A5F6E2655F70 /* StoreSpec.swift in Sources */,
+				516DD7511E830529503134DE /* SubscriberSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

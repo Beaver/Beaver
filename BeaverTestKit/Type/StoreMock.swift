@@ -6,9 +6,9 @@ public final class StoreMock<ActionType:Action> {
     public var reducerMock: ReducerMock<ActionType>
 
     public init(initialStateStub: Store<ActionType>.StateType,
-                directorMock: ReducerMock<ActionType>) {
+                reducerMock: ReducerMock<ActionType>) {
         self.initialStateStub = initialStateStub
-        self.reducerMock = directorMock
+        self.reducerMock = reducerMock
     }
 
     public var base: Store<ActionType> {

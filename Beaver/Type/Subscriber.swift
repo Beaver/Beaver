@@ -45,7 +45,7 @@ extension Store.Subscriber: Hashable {
 
 extension Store.Subscriber: CustomDebugStringConvertible {
     public var debugDescription: String {
-        return "\(name)"
+        return name
     }
 }
 

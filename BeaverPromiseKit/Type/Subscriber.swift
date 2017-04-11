@@ -12,8 +12,8 @@ extension PMKSubscribing {
                                oldState: Store<ActionType>.StateType?,
                                newState: Store<ActionType>.StateType,
                                completion: @escaping () -> ()) {
-        stateDidUpdate(source: source,
-                       oldState: oldState,
-                       newState: newState).then(execute: completion)
+        _ = stateDidUpdate(source: source,
+                           oldState: oldState,
+                           newState: newState).then(execute: completion)
     }
 }
