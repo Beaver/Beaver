@@ -22,6 +22,7 @@ final class ViewControllerSpec: QuickSpec {
                 controllerStub = ViewControllerStub(store: storeStub.base)
 
                 reducerMock.clear()
+                controllerStub.clear()
             }
 
             describe("viewDidAppear(animated:)") {
@@ -54,6 +55,10 @@ final class ViewControllerSpec: QuickSpec {
                         expect(reducerMock.callCount) == 1
                         expect(reducerMock.envelop?.action) == CoreAction.lifeCycle(.didShowView)
                         expect(reducerMock.envelop?.payload?["silent"] as? Bool) == true
+
+                        expect(controllerStub.didStartLoadingCallCount) == 1
+                        expect(controllerStub.didFinishLoadingCallCount) == 1
+                        expect(controllerStub.silent) == true
                     }
                 }
 
@@ -65,9 +70,12 @@ final class ViewControllerSpec: QuickSpec {
                         expect(reducerMock.callCount) == 1
                         expect(reducerMock.envelop?.action) == CoreAction.lifeCycle(.didShowView)
                         expect(reducerMock.envelop?.payload?["silent"] as? Bool) == false
+
+                        expect(controllerStub.didStartLoadingCallCount) == 1
+                        expect(controllerStub.didFinishLoadingCallCount) == 1
+                        expect(controllerStub.silent) == false
                     }
                 }
-
             }
         }
     }

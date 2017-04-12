@@ -45,4 +45,16 @@ public final class ViewControllerStub<ActionType:Action>: ViewController<ActionT
         self.action = action
         return super.isActionSilent(action)
     }
+
+    public func clear() {
+        stateDidUpdateCallCount = 0
+        source = nil
+        oldState = nil
+        newState = nil
+        didStartLoadingCallCount = 0
+        didFinishLoadingCallCount = 0
+        silent = nil
+        isActionSilentCallCount = 0
+        action = nil
+    }
 }
