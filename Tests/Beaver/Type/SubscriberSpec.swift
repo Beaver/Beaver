@@ -21,17 +21,25 @@ fileprivate final class DefaultSubscribing: Subscribing {
 fileprivate final class StrongSubscribing: Subscribing {
     typealias ActionType = ActionMock
 
-    private(set) var stateDidUpdateCallCount = 0
+    func stateDidUpdate(source: ActionEnvelop<ActionMock>?,
+                        oldState: Store<ActionMock>.StateType?,
+                        newState: Store<ActionMock>.StateType,
+                        completion: @escaping () -> ()) {
+        completion()
+    }
+
+    let isSubscriptionWeak: Bool = false
+}
+
+fileprivate final class ViewControllerSubscribing: UIViewController, Subscribing {
+    typealias ActionType = ActionMock
 
     func stateDidUpdate(source: ActionEnvelop<ActionMock>?,
                         oldState: Store<ActionMock>.StateType?,
                         newState: Store<ActionMock>.StateType,
                         completion: @escaping () -> ()) {
-        stateDidUpdateCallCount += 1
         completion()
     }
-
-    let isSubscriptionWeak: Bool = false
 }
 
 final class SubscriberSpec: QuickSpec {
@@ -99,6 +107,12 @@ final class SubscriberSpec: QuickSpec {
 
                         expect(self.lazyStrongSubscribing).toNot(beNil())
                     }
+                }
+            }
+
+            describe("Subscribing which is also a UIViewController") {
+                it("should be a strong subscriber") {
+                    expect(ViewControllerSubscribing().isSubscriptionWeak) == false
                 }
             }
         }
