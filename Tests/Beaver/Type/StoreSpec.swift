@@ -52,7 +52,7 @@ final class StoreSpec: QuickSpec {
                 }
 
                 it("should call subscriber one when dispatching an action") {
-                    let action = CoreAction.business(ActionMock())
+                    let action = ActionMock()
 
                     store.dispatch(ActionEnvelop(emitter: "emitter", action: action))
 
@@ -78,7 +78,7 @@ final class StoreSpec: QuickSpec {
                     }
 
                     it("should not call subscriber one when dispatching an action") {
-                        let action = CoreAction.business(ActionMock())
+                        let action = ActionMock()
 
                         store.dispatch(ActionEnvelop(emitter: "emitter", action: action))
 
@@ -108,7 +108,7 @@ final class StoreSpec: QuickSpec {
                         }
 
                         it("should call subscriber one when dispatching, not subscriber two") {
-                            let action = CoreAction.business(ActionMock())
+                            let action = ActionMock()
 
                             store.dispatch(ActionEnvelop(emitter: "emitter", action: action))
 
@@ -131,7 +131,7 @@ final class StoreSpec: QuickSpec {
 
                     context("where both are registered") {
                         it("should call both subscribers") {
-                            let action = CoreAction.business(ActionMock())
+                            let action = ActionMock()
 
                             store.dispatch(ActionEnvelop(emitter: "emitter", action: action))
 

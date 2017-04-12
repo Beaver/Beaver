@@ -9,8 +9,6 @@ public final class ViewControllerStub<ActionType:Action>: ViewController<ActionT
 
     public private(set) var newState: Store<ActionType>.StateType?
 
-    public private(set) var action: CoreAction<ActionType>?
-
     public override func stateDidUpdate(oldState: Store<ActionType>.StateType?,
                                         newState: Store<ActionType>.StateType,
                                         completion: @escaping () -> ()) {
@@ -25,6 +23,5 @@ public final class ViewControllerStub<ActionType:Action>: ViewController<ActionT
         source = nil
         oldState = nil
         newState = nil
-        action = nil
     }
 }
