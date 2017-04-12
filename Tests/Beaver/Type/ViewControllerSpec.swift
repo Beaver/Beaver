@@ -70,7 +70,7 @@ final class ViewControllerSpec: QuickSpec {
                     }
                 }
 
-                context("when silent is nil") {
+                context("when silent is false") {
                     it("should dispatch an action envelop with silent to false") {
                         controllerStub.dispatch(action: .lifeCycle(.didShowView), silent: false)
 
