@@ -17,12 +17,16 @@ extension Presenting {
     public func dispatch(_ action: CoreAction<ActionType>,
                          on store: Store<ActionType>? = nil,
                          payload: [AnyHashable: Any]? = nil,
-                         debugInfo: ActionEnvelop<ActionType>.DebugInfo = (file: #file, function: #function, line: #line)) {
+                         file: String = #file,
+                         function: String = #function,
+                         line: Int = #line) {
         if let store = store ?? self.store {
             store.dispatch(ActionEnvelop(emitter: subscriptionName,
                                          action: action,
                                          payload: payload,
-                                         debugInfo: debugInfo))
+                                         file: file,
+                                         function: function,
+                                         line: line))
         } else {
 #if DEBUG
             print("The store has been removed before dispatching, which means all your views has been removed as well")

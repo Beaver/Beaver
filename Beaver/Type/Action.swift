@@ -59,11 +59,13 @@ public struct ActionEnvelop<ActionType:Action> {
     public init(emitter: String,
                 action: CoreAction<ActionType>,
                 payload: [AnyHashable: Any]? = nil,
-                debugInfo: DebugInfo = (file: #file, function: #function, line: #line)) {
+                file: String = #file,
+                function: String = #function,
+                line: Int = #line) {
         self.emitter = emitter
         self.action = action
         self.payload = payload
-        self.debugInfo = debugInfo
+        self.debugInfo = (file: file, function: function, line: line)
     }
 }
 

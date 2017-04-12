@@ -46,6 +46,14 @@ final class ViewControllerSpec: QuickSpec {
             }
 
             describe("dispatch(action:silent:debugInfo:") {
+                it("should dispatch an action envelop with debug info") {
+                    controllerStub.dispatch(action: .lifeCycle(.didShowView))
+
+                    expect(reducerMock.envelop?.debugInfo.function).notTo(beEmpty())
+                    expect(reducerMock.envelop?.debugInfo.file).notTo(beEmpty())
+                    expect(reducerMock.envelop?.debugInfo.line).notTo(equal(0))
+                }
+
                 context("when silent is nil") {
                     it("should dispatch an action envelop with silent default value") {
                         controllerStub.dispatch(action: .lifeCycle(.didShowView))

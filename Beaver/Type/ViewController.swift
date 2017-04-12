@@ -60,14 +60,18 @@ open class ViewController<AActionType: Action>: UIViewController, Subscribing {
     ///    - debugInfo: a tuple containing the file, function and line from where the action has been dispatched
     open func dispatch(action: CoreAction<ActionType>,
                        silent: Bool? = nil,
-                       debugInfo: ActionEnvelop<ActionType>.DebugInfo = (file: #file, function: #function, line: #line)) {
+                       file: String = #file,
+                       function: String = #function,
+                       line: Int = #line) {
         let resolvedSilent = silent ?? isActionSilent(action)
         didStartLoading(silent: resolvedSilent)
         store.dispatch(ActionEnvelop(
                 emitter: subscriptionName,
                 action: action,
                 payload: ["silent": resolvedSilent],
-                debugInfo: debugInfo))
+                file: file,
+                function: function,
+                line: line))
     }
 
     // MARK: - Loading
