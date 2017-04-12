@@ -42,7 +42,6 @@ final class StoreSpec: QuickSpec {
                     expect(reducerMock.callCount).toEventually(equal(0))
 
                     expect(subscriberOne.callCount).toEventually(equal(1))
-                    expect(subscriberOne.source).toEventually(beNil())
                     expect(subscriberOne.oldState).toEventually(beNil())
                     expect(subscriberOne.newState).toEventually(equal(initialState))
 
@@ -59,7 +58,6 @@ final class StoreSpec: QuickSpec {
 
                     expect(reducerMock.callCount).toEventually(equal(1))
                     expect(subscriberOne.callCount).toEventually(equal(2))
-                    expect(subscriberOne.source?.action).toEventually(equal(action))
                     expect(subscriberOne.oldState).toEventually(equal(initialState))
                     expect(subscriberOne.newState).toEventually(equal(newState))
 
@@ -86,7 +84,6 @@ final class StoreSpec: QuickSpec {
 
                         expect(reducerMock.callCount).toEventually(equal(1))
                         expect(subscriberOne.callCount).toEventually(equal(1))
-                        expect(subscriberOne.source?.action).toEventually(beNil())
                         expect(subscriberOne.oldState).toEventually(beNil())
                         expect(subscriberOne.newState).toEventually(equal(newState))
 
@@ -118,12 +115,10 @@ final class StoreSpec: QuickSpec {
                             expect(reducerMock.callCount).toEventually(equal(1))
 
                             expect(subscriberOne.callCount).toEventually(equal(2))
-                            expect(subscriberOne.source?.action).toEventually(equal(action))
                             expect(subscriberOne.oldState).toEventually(equal(initialState))
                             expect(subscriberOne.newState).toEventually(equal(newState))
 
                             expect(subscriberTwo.callCount).toEventually(equal(1))
-                            expect(subscriberTwo.source).toEventually(beNil())
                             expect(subscriberTwo.oldState).toEventually(beNil())
                             expect(subscriberTwo.newState).toEventually(equal(initialState))
 
@@ -143,12 +138,10 @@ final class StoreSpec: QuickSpec {
                             expect(reducerMock.callCount).toEventually(equal(1))
 
                             expect(subscriberOne.callCount).toEventually(equal(2))
-                            expect(subscriberOne.source?.action).toEventually(equal(action))
                             expect(subscriberOne.oldState).toEventually(equal(initialState))
                             expect(subscriberOne.newState).toEventually(equal(newState))
 
                             expect(subscriberTwo.callCount).toEventually(equal(2))
-                            expect(subscriberTwo.source?.action).toEventually(equal(action))
                             expect(subscriberTwo.oldState).toEventually(equal(initialState))
                             expect(subscriberTwo.newState).toEventually(equal(newState))
 

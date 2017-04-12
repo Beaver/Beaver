@@ -27,23 +27,8 @@ open class ViewController<AActionType: Action>: UIViewController, Subscribing {
 #endif
     }
 
-    open override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        dispatch(action: .lifeCycle(.didShowView))
-    }
-
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.navigationController?.isNavigationBarHidden = true
-
-        dispatch(action: .lifeCycle(.didLoadView))
-    }
-
     /// Method called when a state update has occurred
-    open func stateDidUpdate(source: ActionEnvelop<ActionType>?,
-                             oldState: Store<ActionType>.StateType?,
+    open func stateDidUpdate(oldState: Store<ActionType>.StateType?,
                              newState: Store<ActionType>.StateType,
                              completion: @escaping () -> ()) {
         fatalError("stateDidUpdate(source:oldState:newState:completion:) has not been implemented")
@@ -58,63 +43,15 @@ open class ViewController<AActionType: Action>: UIViewController, Subscribing {
     ///    - silent: if true, the `didStartLoading(silent:)` and `didFinishLoading(state:silent:)` will be called with
     ///              the parameter `silent` set to `true`
     ///    - debugInfo: a tuple containing the file, function and line from where the action has been dispatched
-    open func dispatch(action: CoreAction<ActionType>,
-                       silent: Bool? = nil,
+    open func dispatch(action: ActionType,
                        file: String = #file,
                        function: String = #function,
                        line: Int = #line) {
-        let resolvedSilent = silent ?? isActionSilent(action)
-        didStartLoading(silent: resolvedSilent)
         store.dispatch(ActionEnvelop(
                 emitter: subscriptionName,
                 action: action,
-                payload: ["silent": resolvedSilent],
                 file: file,
                 function: function,
                 line: line))
-    }
-
-    // MARK: - Loading
-
-    public func didFinishStateUpdate(source: ActionEnvelop<ActionType>?,
-                                     oldState: Store<ActionType>.StateType?,
-                                     newState: Store<ActionType>.StateType) {
-        let silent: Bool = {
-            guard let sourceAction = source,
-                  let payload = sourceAction.payload,
-                  sourceAction.emitter == subscriptionName else {
-                return true
-            }
-
-            guard let value = payload["silent"] as? Bool else {
-                return true
-            }
-
-            return value
-        }()
-
-        didFinishLoading(state: newState, silent: silent)
-    }
-
-    /// Method called to know if an action should be dispatched silently or not.
-    ///
-    /// ## Important Note: ##
-    /// - Should be overridden for custom behaviors
-    open func isActionSilent(_ action: CoreAction<ActionType>) -> Bool {
-        return true
-    }
-
-    /// Method called when the stage starts loading.
-    ///
-    /// ## Important Note: ##
-    /// Should be overridden for custom behaviors
-    open func didStartLoading(silent: Bool) {
-    }
-
-    /// Method called when the stage finished loading.
-    ///
-    /// ## Important Note: ##
-    /// - Should be overridden for custom behaviors
-    open func didFinishLoading(state: Store<ActionType>.StateType, silent: Bool) {
     }
 }

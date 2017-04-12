@@ -3,8 +3,6 @@ import Beaver
 public final class SubscriberMock<ActionType:Action> {
     public var name: String
 
-    public private(set) var source: ActionEnvelop<ActionType>?
-
     public private(set) var oldState: Store<ActionType>.StateType?
 
     public private(set) var newState: Store<ActionType>.StateType?
@@ -16,8 +14,7 @@ public final class SubscriberMock<ActionType:Action> {
     }
 
     public var base: Store<ActionType>.Subscriber {
-        return Store<ActionType>.Subscriber(name: self.name) { source, oldState, newState, completion in
-            self.source = source
+        return Store<ActionType>.Subscriber(name: self.name) { oldState, newState, completion in
             self.oldState = oldState
             self.newState = newState
             self.callCount += 1
@@ -26,7 +23,6 @@ public final class SubscriberMock<ActionType:Action> {
     }
 
     public func clear() {
-        source = nil
         oldState = nil
         newState = nil
         callCount = 0

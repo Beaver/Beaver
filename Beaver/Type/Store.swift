@@ -43,7 +43,7 @@ public final class Store<ActionType: Action> {
         middleware.run(action, (oldState: state, newState: newState))
 
         for subscriber in subscribers {
-            subscriber.stateDidUpdate(action, state, newState) {
+            subscriber.stateDidUpdate(state, newState) {
                 // do nothing
             }
         }
@@ -90,7 +90,7 @@ extension Store {
     /// It is retaining a reference on the store
     public func dispatch(_ envelop: ActionEnvelop<ActionType>) {
         // Lifecycle actions are not cancellable
-        let cancellable = envelop.isLifeCycleAction ? Cancellable() : self.newCancellable()
+        let cancellable = self.newCancellable()
 
         self.middleware.run(envelop, nil)
 
@@ -111,7 +111,7 @@ extension Store {
 
         // Dispatching the state update permits to avoid infinite recursions when
         // the `stateDidUpdate` method implementation refers the store
-        subscriber.stateDidUpdate(nil, nil, self.state) {
+        subscriber.stateDidUpdate(nil, self.state) {
             // do nothing
         }
     }

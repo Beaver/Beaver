@@ -9,8 +9,7 @@ fileprivate final class DefaultSubscribing: Subscribing {
 
     private(set) var stateDidUpdateCallCount = 0
 
-    func stateDidUpdate(source: ActionEnvelop<ActionMock>?,
-                        oldState: Store<ActionMock>.StateType?,
+    func stateDidUpdate(oldState: Store<ActionMock>.StateType?,
                         newState: Store<ActionMock>.StateType,
                         completion: @escaping () -> ()) {
         stateDidUpdateCallCount += 1
@@ -21,8 +20,7 @@ fileprivate final class DefaultSubscribing: Subscribing {
 fileprivate final class StrongSubscribing: Subscribing {
     typealias ActionType = ActionMock
 
-    func stateDidUpdate(source: ActionEnvelop<ActionMock>?,
-                        oldState: Store<ActionMock>.StateType?,
+    func stateDidUpdate(oldState: Store<ActionMock>.StateType?,
                         newState: Store<ActionMock>.StateType,
                         completion: @escaping () -> ()) {
         completion()
@@ -34,8 +32,7 @@ fileprivate final class StrongSubscribing: Subscribing {
 fileprivate final class ViewControllerSubscribing: UIViewController, Subscribing {
     typealias ActionType = ActionMock
 
-    func stateDidUpdate(source: ActionEnvelop<ActionMock>?,
-                        oldState: Store<ActionMock>.StateType?,
+    func stateDidUpdate(oldState: Store<ActionMock>.StateType?,
                         newState: Store<ActionMock>.StateType,
                         completion: @escaping () -> ()) {
         completion()

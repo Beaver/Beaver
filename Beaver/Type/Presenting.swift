@@ -14,7 +14,7 @@ extension Presenting {
     }
 
     /// Dispatches an action to the store and automatically sets the emitter to the scene's subscription name
-    public func dispatch(_ action: CoreAction<ActionType>,
+    public func dispatch(_ action: ActionType,
                          on store: Store<ActionType>? = nil,
                          payload: [AnyHashable: Any]? = nil,
                          file: String = #file,
@@ -23,7 +23,6 @@ extension Presenting {
         if let store = store ?? self.store {
             store.dispatch(ActionEnvelop(emitter: subscriptionName,
                                          action: action,
-                                         payload: payload,
                                          file: file,
                                          function: function,
                                          line: line))
