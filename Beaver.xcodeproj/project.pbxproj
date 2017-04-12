@@ -11,6 +11,7 @@
 		516DD39F53E5A5F6E2655F70 /* StoreSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDB153FABB4EB09DAAFAD /* StoreSpec.swift */; };
 		516DD73C55DCFAB4B63CB518 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD73394C7C36002C28B8C /* Context.swift */; };
 		516DD7511E830529503134DE /* SubscriberSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD43A22F2CD5FB315D81E /* SubscriberSpec.swift */; };
+		516DDDCAAD7C26C3152B3417 /* ViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD1865D06D99151237079 /* ViewControllerSpec.swift */; };
 		516DDDF0E331C2E098A190DA /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD80BEA74BE24A093CB19 /* Reducer.swift */; };
 		760A219A1E9B5B580095655D /* BeaverPromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0169DB1E9A6B830019672F /* BeaverPromiseKit.framework */; };
 		7C0169BD1E98F2550019672F /* BeaverTestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0169AE1E98F06E0019672F /* BeaverTestKit.framework */; };
@@ -26,7 +27,7 @@
 		CC6F8087156296F749CAFB97 /* ReducerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8231570EB3C222F17325 /* ReducerMock.swift */; };
 		CC6F80A0B03E6C7723FBE281 /* CompositeMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8B385257CFD6F7C32981 /* CompositeMiddleware.swift */; };
 		CC6F80E1E22234D50464FC6C /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */; };
-		CC6F829B3F8E9E31D25FE92B /* StoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8A22D09F106012EE2862 /* StoreMock.swift */; };
+		CC6F829B3F8E9E31D25FE92B /* StoreStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8A22D09F106012EE2862 /* StoreStub.swift */; };
 		CC6F83AEF30B409B741BC29C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8F7FB1F96B89A87BE653 /* Store.swift */; };
 		CC6F8444A38B0621C081CC2A /* ActionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F827C0CEDB47F12326B3C /* ActionMock.swift */; };
 		CC6F852729BC65F783F7964A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8AC0C78C8F5AE635AE16 /* Router.swift */; };
@@ -81,6 +82,7 @@
 		163988A050F1E779389F0E75 /* Pods-BeaverPromiseKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverPromiseKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverPromiseKit/Pods-BeaverPromiseKit.release.xcconfig"; sourceTree = "<group>"; };
 		2CF113F8129ED865686C8C94 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB6AD3D469927EBBBC88922 /* Pods_BeaverPromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaverPromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		516DD1865D06D99151237079 /* ViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSpec.swift; sourceTree = "<group>"; };
 		516DD43A22F2CD5FB315D81E /* SubscriberSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriberSpec.swift; sourceTree = "<group>"; };
 		516DD59ECD02E9DD9136D3C9 /* MiddlewareMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddlewareMock.swift; sourceTree = "<group>"; };
 		516DD73394C7C36002C28B8C /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
@@ -114,7 +116,7 @@
 		CC6F86ABDB10F6EFE498D21D /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		CC6F88F6AC2C63398FFE1396 /* StateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMock.swift; sourceTree = "<group>"; };
 		CC6F8959622A1845E852A085 /* SubscriberMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriberMock.swift; sourceTree = "<group>"; };
-		CC6F8A22D09F106012EE2862 /* StoreMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMock.swift; sourceTree = "<group>"; };
+		CC6F8A22D09F106012EE2862 /* StoreStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreStub.swift; sourceTree = "<group>"; };
 		CC6F8AC0C78C8F5AE635AE16 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		CC6F8AE94653B8DE4C198626 /* ViewControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerMock.swift; sourceTree = "<group>"; };
 		CC6F8B385257CFD6F7C32981 /* CompositeMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeMiddleware.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				516DDB153FABB4EB09DAAFAD /* StoreSpec.swift */,
 				516DD43A22F2CD5FB315D81E /* SubscriberSpec.swift */,
+				516DD1865D06D99151237079 /* ViewControllerSpec.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -296,7 +299,7 @@
 				CC6F88F6AC2C63398FFE1396 /* StateMock.swift */,
 				CC6F8959622A1845E852A085 /* SubscriberMock.swift */,
 				CC6F8231570EB3C222F17325 /* ReducerMock.swift */,
-				CC6F8A22D09F106012EE2862 /* StoreMock.swift */,
+				CC6F8A22D09F106012EE2862 /* StoreStub.swift */,
 				CC6F8AE94653B8DE4C198626 /* ViewControllerMock.swift */,
 				516DD59ECD02E9DD9136D3C9 /* MiddlewareMock.swift */,
 			);
@@ -600,7 +603,7 @@
 				CC6F8D980E59F555D1365965 /* StateMock.swift in Sources */,
 				CC6F8C0D9BFCB2ACD4815B6A /* SubscriberMock.swift in Sources */,
 				CC6F8087156296F749CAFB97 /* ReducerMock.swift in Sources */,
-				CC6F829B3F8E9E31D25FE92B /* StoreMock.swift in Sources */,
+				CC6F829B3F8E9E31D25FE92B /* StoreStub.swift in Sources */,
 				CC6F8F60AEFA85AB2F2E19EF /* ViewControllerMock.swift in Sources */,
 				516DD1611F97A477E3C7388D /* MiddlewareMock.swift in Sources */,
 			);
@@ -643,6 +646,7 @@
 			files = (
 				516DD39F53E5A5F6E2655F70 /* StoreSpec.swift in Sources */,
 				516DD7511E830529503134DE /* SubscriberSpec.swift in Sources */,
+				516DDDCAAD7C26C3152B3417 /* ViewControllerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

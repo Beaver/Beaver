@@ -49,14 +49,6 @@ open class ViewController<AActionType: Action>: UIViewController, Subscribing {
         fatalError("stateDidUpdate(source:oldState:newState:completion:) has not been implemented")
     }
 
-    /// Registered name for the script
-    ///
-    /// ## Important Note: ##
-    /// - Should be overridden if two instances of the same stage are subscribing
-    open var subscriptionName: String {
-        return String(describing: type(of: self))
-    }
-
     // MARK: Dispatch
 
     /// Dispatches an action to the store

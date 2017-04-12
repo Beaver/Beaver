@@ -1,6 +1,6 @@
 import Beaver
 
-public final class ViewControllerMock<ActionType:Action>: ViewController<ActionType> {
+public final class ViewControllerStub<ActionType:Action>: ViewController<ActionType> {
     public private(set) var stateDidUpdateCallCount = 0
 
     public private(set) var source: ActionEnvelop<ActionType>?
@@ -15,9 +15,9 @@ public final class ViewControllerMock<ActionType:Action>: ViewController<ActionT
 
     public private(set) var silent: Bool?
 
-    public override var subscriptionName: String {
-        return "ViewControllerMock"
-    }
+    public private(set) var isActionSilentCallCount = 0
+
+    public private(set) var action: CoreAction<ActionType>?
 
     public override func stateDidUpdate(source: ActionEnvelop<ActionType>?,
                                         oldState: Store<ActionType>.StateType?,
@@ -38,5 +38,11 @@ public final class ViewControllerMock<ActionType:Action>: ViewController<ActionT
     public override func didFinishLoading(state: Store<ActionType>.StateType, silent: Bool) {
         newState = state
         didFinishLoadingCallCount += 1
+    }
+
+    public override func isActionSilent(_ action: CoreAction<ActionType>) -> Bool {
+        isActionSilentCallCount += 1
+        self.action = action
+        return super.isActionSilent(action)
     }
 }

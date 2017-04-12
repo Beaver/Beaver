@@ -1,6 +1,6 @@
 import Beaver
 
-public final class StoreMock<ActionType:Action> {
+public final class StoreStub<ActionType:Action> {
     public var initialStateStub: Store<ActionType>.StateType
 
     public var reducerMock: ReducerMock<ActionType>

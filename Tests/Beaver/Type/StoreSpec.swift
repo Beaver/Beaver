@@ -49,7 +49,7 @@ final class StoreSpec: QuickSpec {
                     expect(middlewareMock.actions.flatMap { $0 }).toEventually(beEmpty())
                     expect(middlewareMock.stateUpdates[1]?.oldState).toEventually(beNil())
                     expect(middlewareMock.stateUpdates[1]?.newState).toEventually(equal(initialState))
-                    expect(middlewareMock.runCallCount).toEventually(equal(2))
+                    expect(middlewareMock.callCount).toEventually(equal(2))
                 }
 
                 it("should call subscriber one when dispatching an action") {
@@ -66,7 +66,7 @@ final class StoreSpec: QuickSpec {
                     expect(middlewareMock.actions.filter { $0?.action == action }.count).toEventually(equal(4))
                     expect(middlewareMock.stateUpdates.filter { $0?.oldState == initialState }.count).toEventually(equal(2))
                     expect(middlewareMock.stateUpdates.filter { $0?.newState == newState }.count).toEventually(equal(2))
-                    expect(middlewareMock.runCallCount).toEventually(equal(6))
+                    expect(middlewareMock.callCount).toEventually(equal(6))
                 }
 
                 context("when initial and new state are the same") {
@@ -93,7 +93,7 @@ final class StoreSpec: QuickSpec {
                         expect(middlewareMock.actions.filter { $0?.action == action }.count).toEventually(equal(2))
                         expect(middlewareMock.stateUpdates[1]?.oldState).toEventually(beNil())
                         expect(middlewareMock.stateUpdates[1]?.newState).toEventually(equal(initialState))
-                        expect(middlewareMock.runCallCount).toEventually(equal(6))
+                        expect(middlewareMock.callCount).toEventually(equal(6))
                     }
                 }
 
@@ -130,7 +130,7 @@ final class StoreSpec: QuickSpec {
                             expect(middlewareMock.actions.filter { $0?.action == action }.count).toEventually(equal(4))
                             expect(middlewareMock.stateUpdates.filter { $0?.oldState == initialState }.count).toEventually(equal(2))
                             expect(middlewareMock.stateUpdates.filter { $0?.newState == newState }.count).toEventually(equal(2))
-                            expect(middlewareMock.runCallCount).toEventually(equal(6))
+                            expect(middlewareMock.callCount).toEventually(equal(6))
                         }
                     }
 
@@ -155,7 +155,7 @@ final class StoreSpec: QuickSpec {
                             expect(middlewareMock.actions.filter { $0?.action == action }.count).toEventually(equal(4))
                             expect(middlewareMock.stateUpdates.filter { $0?.oldState == initialState }.count).toEventually(equal(2))
                             expect(middlewareMock.stateUpdates.filter { $0?.newState == newState }.count).toEventually(equal(2))
-                            expect(middlewareMock.runCallCount).toEventually(equal(6))
+                            expect(middlewareMock.callCount).toEventually(equal(6))
                         }
                     }
                 }

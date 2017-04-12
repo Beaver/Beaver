@@ -24,4 +24,11 @@ public final class SubscriberMock<ActionType:Action> {
             completion()
         }
     }
+
+    public func clear() {
+        source = nil
+        oldState = nil
+        newState = nil
+        callCount = 0
+    }
 }

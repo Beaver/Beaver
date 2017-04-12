@@ -3,7 +3,7 @@ import Beaver
 public final class ReducerMock<ActionType: Action> {
     public private(set) var callCount = 0
 
-    public private(set) var action: ActionEnvelop<ActionType>?
+    public private(set) var envelop: ActionEnvelop<ActionType>?
 
     public private(set) var state: Store<ActionType>.StateType?
 
@@ -14,11 +14,17 @@ public final class ReducerMock<ActionType: Action> {
     }
 
     public var base: Store<ActionType>.Reducer {
-        return { action, state, completion in
-            self.action = action
+        return { envelop, state, completion in
+            self.envelop = envelop
             self.state = state
             self.callCount += 1
             completion(self.newStateStub)
         }
+    }
+
+    public func clear() {
+        callCount = 0
+        envelop = nil
+        state = nil
     }
 }

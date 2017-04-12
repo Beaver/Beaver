@@ -14,4 +14,9 @@ public final class ContextMock: Context {
         dismissedUntilViews.append(controller)
         completion()
     }
+
+    public func clear() {
+        presentedViews = []
+        dismissedUntilViews = []
+    }
 }
