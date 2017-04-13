@@ -35,14 +35,27 @@ public final class Store<ActionType: Action> {
     /// Current state
     fileprivate(set) public var state: StateType
 
-    fileprivate func setState(_ newState: StateType, for action: ActionEnvelop<ActionType>) {
+    fileprivate func setState(_ newState: StateType, for envelop: ActionEnvelop<ActionType>) {
         guard state != newState else {
             return
         }
 
-        middleware.run(action, (oldState: state, newState: newState))
+        middleware.run(envelop, (oldState: state, newState: newState))
 
         for subscriber in subscribers {
+            switch envelop.destScope {
+            case .emitter:
+                if subscriber.name != envelop.emitter {
+                    continue
+                }
+            case .authorized(to: let names):
+                if !names.contains(subscriber.name) {
+                    continue
+                }
+            default:
+                break
+            }
+            
             subscriber.stateDidUpdate(state, newState) {
                 // do nothing
             }
@@ -94,11 +107,13 @@ extension Store {
 
         self.middleware.run(envelop, nil)
 
-        self.reducer(envelop, self.state) { newState in
+        let newState = self.reducer(envelop, self.state) { newState in
             if !cancellable.isCancelled {
                 self.setState(newState, for: envelop)
             }
         }
+
+        self.setState(newState, for: envelop)
     }
 }
 

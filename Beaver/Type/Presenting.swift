@@ -4,12 +4,12 @@ public protocol Presenting: Subscribing {
 
     weak var store: Store<ActionType>? { get }
 
-    var middleWares: [Store<ActionType>.Middleware] { get }
+    var middlewares: [Store<ActionType>.Middleware] { get }
 }
 
 extension Presenting {
     /// Default implementation
-    public var middleWares: [Store<ActionType>.Middleware] {
+    public var middlewares: [Store<ActionType>.Middleware] {
         return []
     }
 

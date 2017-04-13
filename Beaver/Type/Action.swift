@@ -9,6 +9,12 @@ public protocol Action: Equatable {
 
 /// Type encapsulating an action and adding extra information
 public struct ActionEnvelop<ActionType:Action> {
+    public enum DestScope {
+        case emitter
+        case all
+        case authorized(to: Set<String>)
+    }
+
     public let action: ActionType
 
     /// Emitter name
@@ -19,13 +25,17 @@ public struct ActionEnvelop<ActionType:Action> {
 
     public let debugInfo: DebugInfo
 
+    public let destScope: DestScope
+
     public init(emitter: String,
                 action: ActionType,
+                destScope: DestScope = .all,
                 file: String = #file,
                 function: String = #function,
                 line: Int = #line) {
         self.emitter = emitter
         self.action = action
+        self.destScope = destScope
         self.debugInfo = (file: file, function: function, line: line)
     }
 }
