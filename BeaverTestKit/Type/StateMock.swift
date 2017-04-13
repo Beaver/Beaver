@@ -28,4 +28,16 @@ public struct FailureStateMock: FailureState {
     }
 }
 
-public typealias StateMock = State<SuccessStateMock, FailureStateMock>
+public struct PendingStateMock: PendingState {
+    public var name: String
+
+    public init(name: String = "PendingStateMock") {
+        self.name = name
+    }
+
+    public static func ==(lhs: PendingStateMock, rhs: PendingStateMock) -> Bool {
+        return lhs.name == rhs.name
+    }
+}
+
+public typealias StateMock = State<SuccessStateMock, FailureStateMock, PendingStateMock>

@@ -256,7 +256,7 @@ final class StoreSpec: QuickSpec {
                 var completedState: StateMock!
                 
                 beforeEach {
-                    completedState = .success(SuccessStateMock(name: "completed "))
+                    completedState = .success(SuccessStateMock(name: "completed state"))
                     reducerMock.newCompletedStateStub = completedState
                 }
 

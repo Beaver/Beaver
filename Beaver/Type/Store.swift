@@ -18,11 +18,11 @@ public final class Store<ActionType: Action> {
     public struct Middleware {
         public typealias Run = (_ action: ActionEnvelop<ActionType>?,
             _ stateUpdate: (oldState: StateType?, newState: StateType)?) -> Void
-        
+
         public let name: String
-        
+
         public let run: Run
-        
+
         public init(name: String, run: @escaping Run) {
             self.name = name
             self.run = run
@@ -30,7 +30,7 @@ public final class Store<ActionType: Action> {
     }
 
     /// State type
-    public typealias StateType = State<ActionType.SuccessStateType, ActionType.FailureStateType>
+    public typealias StateType = State<ActionType.SuccessStateType, ActionType.FailureStateType, ActionType.PendingStateType>
 
     /// Current state
     fileprivate(set) public var state: StateType
@@ -55,7 +55,7 @@ public final class Store<ActionType: Action> {
             default:
                 break
             }
-            
+
             subscriber.stateDidUpdate(state, newState) {
                 // do nothing
             }
