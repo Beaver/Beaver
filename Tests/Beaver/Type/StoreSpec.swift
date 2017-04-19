@@ -213,6 +213,41 @@ final class StoreSpec: QuickSpec {
                                 }
                             }
                         }
+
+                        context("when dispatching all excluding emitter") {
+                            beforeEach {
+                                destScope = .allExcludingEmitter
+                            }
+
+                            context("where both are registered") {
+                                it("should call both subscribers") {
+                                    let action = ActionMock()
+
+                                    store.dispatch(ActionEnvelop(emitter: subscriberOne.name, action: action, destScope: destScope))
+
+                                    expect(reducerMock.callCount).toEventually(equal(1))
+
+                                    expect(subscriberOne.callCount).toEventually(equal(1))
+                                    expect(subscriberOne.oldState).toEventually(beNil())
+                                    expect(subscriberOne.newState).toEventually(equal(initialState))
+
+                                    expect(subscriberTwo.callCount).toEventually(equal(2))
+                                    expect(subscriberTwo.oldState).toEventually(equal(initialState))
+                                    expect(subscriberTwo.newState).toEventually(equal(newState))
+
+                                    expect(middlewareMock.actions.filter {
+                                        $0?.action == action
+                                    }.count).toEventually(equal(4))
+                                    expect(middlewareMock.stateUpdates.filter {
+                                        $0?.oldState == initialState
+                                    }.count).toEventually(equal(2))
+                                    expect(middlewareMock.stateUpdates.filter {
+                                        $0?.newState == newState
+                                    }.count).toEventually(equal(2))
+                                    expect(middlewareMock.callCount).toEventually(equal(6))
+                                }
+                            }
+                        }
                         
                         context("when dispatching to a list of subscribers") {
                             beforeEach {

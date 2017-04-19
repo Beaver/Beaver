@@ -8,6 +8,11 @@ public protocol Action: Equatable {
     
     /// Type of the pending state update after an asynchronous action as been triggered
     associatedtype PendingStateType: PendingState
+
+    /// Type of the route
+    associatedtype RouteType: Route
+
+    static func createRouteAction(with route: RouteType) -> Self
 }
 
 /// Type encapsulating an action and adding extra information
@@ -15,6 +20,7 @@ public struct ActionEnvelop<ActionType:Action> {
     public enum DestScope {
         case emitter
         case all
+        case allExcludingEmitter
         case authorized(to: Set<String>)
     }
 

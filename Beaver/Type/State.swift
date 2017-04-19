@@ -1,15 +1,12 @@
 /// A type representing a successful state update
-
 public protocol SuccessState: Equatable {
 }
 
 /// A type representing a failed state update
-
 public protocol FailureState: CustomStringConvertible, Equatable {
 }
 
 /// A type representing a pending state
-
 public protocol PendingState: Equatable {
 }
 
@@ -19,7 +16,6 @@ public protocol PendingState: Equatable {
 /// 1. It represents the data showed by your views.
 /// 2. It should only contain literal types like `String`, `Int` or `Bool`.
 /// 3. It should not contain any business logic since it is the result of the reducer's business logic
-
 public enum State<SuccessStateType:SuccessState,
                  FailureStateType:FailureState,
                  PendingStateType:PendingState> {
@@ -47,8 +43,10 @@ extension State: Equatable {
         switch (lhs, rhs) {
         case (.success(let left), .success(let right)):
             return left == right
-        case (.failure(let leftError), .failure(let rightError)):
-            return leftError == rightError
+        case (.failure(let left), .failure(let right)):
+            return left == right
+        case (.pending(let left), .pending(let right)):
+            return left == right
         default:
             return false
         }

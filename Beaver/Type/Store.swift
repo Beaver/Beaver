@@ -48,6 +48,10 @@ public final class Store<ActionType: Action> {
                 if subscriber.name != envelop.emitter {
                     continue
                 }
+            case .allExcludingEmitter:
+                if subscriber.name == envelop.emitter {
+                    continue
+                }
             case .authorized(to: let names):
                 if !names.contains(subscriber.name) {
                     continue
