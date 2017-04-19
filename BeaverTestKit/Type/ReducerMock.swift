@@ -8,9 +8,18 @@ public final class ReducerMock<ActionType: Action> {
     public private(set) var state: Store<ActionType>.StateType?
 
     public var newStateStub: Store<ActionType>.StateType
+    
+    public var newCompletedStateStub: Store<ActionType>.StateType
 
+    public init(newStateStub: Store<ActionType>.StateType,
+                newCompletedStateStub: Store<ActionType>.StateType) {
+        self.newStateStub = newStateStub
+        self.newCompletedStateStub = newCompletedStateStub
+    }
+    
     public init(newStateStub: Store<ActionType>.StateType) {
         self.newStateStub = newStateStub
+        self.newCompletedStateStub = newStateStub
     }
 
     public var base: Store<ActionType>.Reducer {
@@ -18,7 +27,10 @@ public final class ReducerMock<ActionType: Action> {
             self.envelop = envelop
             self.state = state
             self.callCount += 1
-            completion(self.newStateStub)
+            DispatchQueue.main.async {
+                completion(self.newCompletedStateStub)
+            }
+            return self.newStateStub
         }
     }
 

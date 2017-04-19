@@ -60,13 +60,6 @@ public protocol Subscribing: class {
     func stateDidUpdate(oldState: Store<ActionType>.StateType?,
                         newState: Store<ActionType>.StateType,
                         completion: @escaping () -> ())
-
-    func didStartStateUpdate(oldState: Store<ActionType>.StateType?,
-                             newState: Store<ActionType>.StateType)
-
-    func didFinishStateUpdate(oldState: Store<ActionType>.StateType?,
-                              newState: Store<ActionType>.StateType)
-
 }
 
 extension Subscribing {
@@ -81,33 +74,15 @@ extension Subscribing {
     public typealias StateUpdateEvent = (_ oldState: Store<ActionType>.StateType?,
                                          _ newState: Store<ActionType>.StateType) -> ()
 
-    // Default implementation
-    public func didStartStateUpdate(oldState: Store<ActionType>.StateType?,
-                                    newState: Store<ActionType>.StateType) {
-        // Do nothing
-    }
-
-    // Default implementation
-    public func didFinishStateUpdate(oldState: Store<ActionType>.StateType?,
-                                     newState: Store<ActionType>.StateType) {
-        // Do nothing
-    }
-
     /// Subscribes to a store.
     public func subscribe(to store: Store<ActionType>) {
         if isSubscriptionWeak {
             store.subscribe(name: subscriptionName) { [weak self] oldState, newState, completion in
-                self?.didStartStateUpdate(oldState: oldState, newState: newState)
-                self?.stateDidUpdate(oldState: oldState, newState: newState) { [weak self] in
-                    self?.didFinishStateUpdate(oldState: oldState, newState: newState)
-                }
+                self?.stateDidUpdate(oldState: oldState, newState: newState, completion: completion)
             }
         } else {
             store.subscribe(name: subscriptionName) { oldState, newState, completion in
-                self.didStartStateUpdate(oldState: oldState, newState: newState)
-                self.stateDidUpdate(oldState: oldState, newState: newState) {
-                    self.didFinishStateUpdate(oldState: oldState, newState: newState)
-                }
+                self.stateDidUpdate(oldState: oldState, newState: newState, completion: completion)
             }
         }
     }

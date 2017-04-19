@@ -4,10 +4,11 @@ extension Store {
     /// - Parameters:
     ///     - envelop: the action provoking the state update
     ///     - state: the current state
-    ///     - completion: completion handler called when the new state is ready
+    ///     - completion: completion handler called if asynchronous work has began and need to be completed
+    /// - Returns: the new state
     public typealias Reducer = (_ envelop: ActionEnvelop<ActionType>,
                                 _ state: StateType,
-                                _ completion: @escaping (StateType) -> ()) -> ()
+                                _ completion: @escaping (StateType) -> ()) -> StateType
 }
 
 /// Responsible of generating a state for a given action and the current state
@@ -19,10 +20,11 @@ public protocol Reducing {
     /// - Parameters:
     ///     - envelop: the action provoking the state update
     ///     - state: the current state
-    ///     - completion: completion handler called when the new state is ready
+    ///     - completion: completion handler called if asynchronous work has began and need to be completed
+    /// - Returns: the new state
     func handle(envelop: ActionEnvelop<ActionType>,
                 state: Store<ActionType>.StateType,
-                completion: @escaping (Store<ActionType>.StateType) -> ())
+                completion: @escaping (Store<ActionType>.StateType) -> ()) -> Store<ActionType>.StateType
 }
 
 extension Reducing {

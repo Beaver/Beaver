@@ -18,11 +18,11 @@ public final class Store<ActionType: Action> {
     public struct Middleware {
         public typealias Run = (_ action: ActionEnvelop<ActionType>?,
             _ stateUpdate: (oldState: StateType?, newState: StateType)?) -> Void
-        
+
         public let name: String
-        
+
         public let run: Run
-        
+
         public init(name: String, run: @escaping Run) {
             self.name = name
             self.run = run
@@ -30,19 +30,36 @@ public final class Store<ActionType: Action> {
     }
 
     /// State type
-    public typealias StateType = State<ActionType.SuccessStateType, ActionType.FailureStateType>
+    public typealias StateType = State<ActionType.SuccessStateType, ActionType.FailureStateType, ActionType.PendingStateType>
 
     /// Current state
     fileprivate(set) public var state: StateType
 
-    fileprivate func setState(_ newState: StateType, for action: ActionEnvelop<ActionType>) {
+    fileprivate func setState(_ newState: StateType, for envelop: ActionEnvelop<ActionType>) {
         guard state != newState else {
             return
         }
 
-        middleware.run(action, (oldState: state, newState: newState))
+        middleware.run(envelop, (oldState: state, newState: newState))
 
         for subscriber in subscribers {
+            switch envelop.destScope {
+            case .emitter:
+                if subscriber.name != envelop.emitter {
+                    continue
+                }
+            case .allExcludingEmitter:
+                if subscriber.name == envelop.emitter {
+                    continue
+                }
+            case .authorized(to: let names):
+                if !names.contains(subscriber.name) {
+                    continue
+                }
+            default:
+                break
+            }
+
             subscriber.stateDidUpdate(state, newState) {
                 // do nothing
             }
@@ -94,11 +111,13 @@ extension Store {
 
         self.middleware.run(envelop, nil)
 
-        self.reducer(envelop, self.state) { newState in
+        let newState = self.reducer(envelop, self.state) { newState in
             if !cancellable.isCancelled {
                 self.setState(newState, for: envelop)
             }
         }
+
+        self.setState(newState, for: envelop)
     }
 }
 

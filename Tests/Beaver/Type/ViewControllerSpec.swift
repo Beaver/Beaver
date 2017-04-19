@@ -25,64 +25,15 @@ final class ViewControllerSpec: QuickSpec {
                 controllerStub.clear()
             }
 
-            describe("viewDidAppear(animated:)") {
-                it("should silently dispatch a didShowView action") {
-                    controllerStub.viewDidAppear(false)
-
-                    expect(reducerMock.callCount) == 1
-                    expect(reducerMock.envelop?.action) == .lifeCycle(.didShowView)
-                    expect(reducerMock.envelop?.payload?["silent"] as? Bool) == true
-                }
-            }
-
-            describe("viewWillAppear(animated:") {
-                it("should silently dispatch a didLoadView action") {
-                    controllerStub.viewDidLoad()
-
-                    expect(reducerMock.callCount) == 1
-                    expect(reducerMock.envelop?.action) == .lifeCycle(.didLoadView)
-                    expect(reducerMock.envelop?.payload?["silent"] as? Bool) == true
-                }
-            }
-
-            describe("dispatch(action:silent:debugInfo:") {
+            describe("dispatch(action:debugInfo:") {
                 it("should dispatch an action envelop with debug info") {
-                    controllerStub.dispatch(action: .lifeCycle(.didShowView))
+                    controllerStub.dispatch(action: ActionMock())
 
                     expect(reducerMock.envelop?.debugInfo.function).notTo(beEmpty())
                     expect(reducerMock.envelop?.debugInfo.file).notTo(beEmpty())
                     expect(reducerMock.envelop?.debugInfo.line).notTo(equal(0))
-                }
-
-                context("when silent is nil") {
-                    it("should dispatch an action envelop with silent default value") {
-                        controllerStub.dispatch(action: .lifeCycle(.didShowView))
-
-                        expect(controllerStub.isActionSilentCallCount) == 1
-                        expect(controllerStub.action) == CoreAction.lifeCycle(.didShowView)
-                        expect(reducerMock.callCount) == 1
-                        expect(reducerMock.envelop?.action) == CoreAction.lifeCycle(.didShowView)
-                        expect(reducerMock.envelop?.payload?["silent"] as? Bool) == true
-
-                        expect(controllerStub.didStartLoadingCallCount) == 1
-                        expect(controllerStub.didFinishLoadingCallCount) == 1
-                        expect(controllerStub.silent) == true
-                    }
-                }
-
-                context("when silent is false") {
-                    it("should dispatch an action envelop with silent to false") {
-                        controllerStub.dispatch(action: .lifeCycle(.didShowView), silent: false)
-
-                        expect(controllerStub.isActionSilentCallCount) == 0
-                        expect(reducerMock.callCount) == 1
-                        expect(reducerMock.envelop?.action) == CoreAction.lifeCycle(.didShowView)
-                        expect(reducerMock.envelop?.payload?["silent"] as? Bool) == false
-
-                        expect(controllerStub.didStartLoadingCallCount) == 1
-                        expect(controllerStub.didFinishLoadingCallCount) == 1
-                        expect(controllerStub.silent) == false
-                    }
+                    expect(reducerMock.callCount) == 1
+                    expect(reducerMock.envelop?.action) == ActionMock()
                 }
             }
         }

@@ -4,6 +4,8 @@ public struct ActionMock: Action {
     public typealias SuccessStateType = SuccessStateMock
 
     public typealias FailureStateType = FailureStateMock
+    
+    public typealias PendingStateType = PendingStateMock
 
     public var name: String
     
