@@ -36,13 +36,16 @@ public final class Store<ActionType: Action> {
     fileprivate(set) public var state: StateType
 
     fileprivate func setState(_ newState: StateType, for envelop: ActionEnvelop<ActionType>) {
-        guard state != newState else {
+        if state == newState {
             return
         }
 
-        middleware.run(envelop, (oldState: state, newState: newState))
+        let oldState = self.state
+        self.state = newState
 
-        for subscriber in subscribers {
+        middleware.run(envelop, (oldState: oldState, newState: newState))
+
+        for subscriber in subscribers.values {
             switch envelop.destScope {
             case .emitter:
                 if subscriber.name != envelop.emitter {
@@ -60,17 +63,15 @@ public final class Store<ActionType: Action> {
                 break
             }
 
-            subscriber.stateDidUpdate(state, newState) {
+            subscriber.stateDidUpdate(oldState, newState) {
                 // do nothing
             }
         }
-
-        self.state = newState
     }
 
     fileprivate let reducer: Reducer
 
-    fileprivate(set) public var subscribers = Set<Subscriber>()
+    fileprivate(set) public var subscribers = [String: Subscriber]()
 
     fileprivate var middleware: Middleware {
         return Middleware.composite(middlewares)
@@ -126,7 +127,7 @@ extension Store {
 extension Store {
     /// Adds a new subscriber
     public final func subscribe(_ subscriber: Subscriber) {
-        subscribers.insert(subscriber)
+        subscribers[subscriber.name] = subscriber
 
         // Dispatching the state update permits to avoid infinite recursions when
         // the `stateDidUpdate` method implementation refers the store
@@ -145,8 +146,8 @@ extension Store {
     }
 
     /// Removes a subscriber
-    public final func unsubscribe(_ subscriber: Subscriber) {
-        subscribers.remove(subscriber)
+    public final func unsubscribe(_ name: String) {
+        subscribers.removeValue(forKey: name)
     }
 }
 
@@ -154,7 +155,7 @@ extension Store {
 
 extension Store: CustomDebugStringConvertible {
     public var debugDescription: String {
-        return "\(self) - subscribers: [\(subscribers.map { $0.debugDescription })]"
+        return "\(self) - subscribers: [\(subscribers.map { $0.value.debugDescription })]"
     }
 }
 

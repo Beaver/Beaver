@@ -22,6 +22,8 @@ open class ViewController<AActionType: Action>: UIViewController, Subscribing {
     // MARK: - Lifecycle
     
     deinit {
+        store.unsubscribe(subscriptionName)
+
 #if DEBUG
         print("[\(self)] --- DEINIT ---")
 #endif
