@@ -107,7 +107,7 @@ final class StoreSpec: QuickSpec {
 
                     context("with two subscribers") {
                         var subscriberTwo: SubscriberMock<ActionMock>!
-                        var destScope: ActionEnvelop<ActionMock>.DestScope!
+                        var destScope: ActionEnvelop<ActionMock>.Scope!
 
                         beforeEach {
                             subscriberTwo = SubscriberMock(name: "SubscriberTwo")
@@ -124,7 +124,7 @@ final class StoreSpec: QuickSpec {
                                 it("should call subscriber one when dispatching, not subscriber two") {
                                     let action = ActionMock()
 
-                                    store.dispatch(ActionEnvelop(emitter: "emitter", action: action, destScope: destScope))
+                                    store.dispatch(ActionEnvelop(emitter: "emitter", action: action, scope: destScope))
 
                                     expect(reducerMock.callCount).toEventually(equal(1))
 
@@ -153,7 +153,7 @@ final class StoreSpec: QuickSpec {
                                 it("should call both subscribers") {
                                     let action = ActionMock()
 
-                                    store.dispatch(ActionEnvelop(emitter: "emitter", action: action, destScope: destScope))
+                                    store.dispatch(ActionEnvelop(emitter: "emitter", action: action, scope: destScope))
 
                                     expect(reducerMock.callCount).toEventually(equal(1))
 
@@ -188,7 +188,7 @@ final class StoreSpec: QuickSpec {
                                 it("should call both subscribers") {
                                     let action = ActionMock()
 
-                                    store.dispatch(ActionEnvelop(emitter: subscriberTwo.name, action: action, destScope: destScope))
+                                    store.dispatch(ActionEnvelop(emitter: subscriberTwo.name, action: action, scope: destScope))
 
                                     expect(reducerMock.callCount).toEventually(equal(1))
 
@@ -223,7 +223,7 @@ final class StoreSpec: QuickSpec {
                                 it("should call both subscribers") {
                                     let action = ActionMock()
 
-                                    store.dispatch(ActionEnvelop(emitter: subscriberOne.name, action: action, destScope: destScope))
+                                    store.dispatch(ActionEnvelop(emitter: subscriberOne.name, action: action, scope: destScope))
 
                                     expect(reducerMock.callCount).toEventually(equal(1))
 
@@ -258,7 +258,7 @@ final class StoreSpec: QuickSpec {
                                 it("should call both subscribers") {
                                     let action = ActionMock()
                                     
-                                    store.dispatch(ActionEnvelop(emitter: "emitter", action: action, destScope: destScope))
+                                    store.dispatch(ActionEnvelop(emitter: "emitter", action: action, scope: destScope))
                                     
                                     expect(reducerMock.callCount).toEventually(equal(1))
                                     

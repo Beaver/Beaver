@@ -6,7 +6,7 @@ extension Store {
     ///     - state: the current state
     ///     - completion: completion handler called if asynchronous work has began and need to be completed
     /// - Returns: the new state
-    public typealias Reducer = (_ envelop: ActionEnvelop<ActionType>,
+    public typealias Reducer = (_ envelop: ActionEnvelop<InternalAction>,
                                 _ state: StateType,
                                 _ completion: @escaping (StateType) -> ()) -> StateType
 }

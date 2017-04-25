@@ -65,9 +65,9 @@ extension Routing {
     }
 }
 
-extension Routing where Self: Presenting, Self: Reducing, Self: Subscribing {
-    /// Default implementation
-    public func handle(route: RouteType, completion: @escaping Router<RouteType>.Completion) {
-        dispatch(ActionType.createRouteAction(with: route))
-    }
-}
+//extension Routing where Self: Presenting, Self: Reducing {
+//    /// Default implementation
+//    public func handle(route: RouteType, completion: @escaping Router<RouteType>.Completion) {
+//        dispatch(ActionType.createRouteAction(with: route))
+//    }
+//}

@@ -8,16 +8,20 @@ public protocol Action: Equatable {
     
     /// Type of the pending state update after an asynchronous action as been triggered
     associatedtype PendingStateType: PendingState
+}
 
-    /// Type of the route
-    associatedtype RouteType: Route
-
-    static func createRouteAction(with route: RouteType) -> Self
+public enum ActionScope<InternalAction: Action, RoutingAction: Action>
+        where
+        InternalAction.SuccessStateType == RoutingAction.SuccessStateType,
+        InternalAction.FailureStateType == RoutingAction.FailureStateType,
+        InternalAction.PendingStateType == RoutingAction.PendingStateType {
+    case `internal`(InternalAction)
+    case routing(RoutingAction)
 }
 
 /// Type encapsulating an action and adding extra information
 public struct ActionEnvelop<ActionType:Action> {
-    public enum DestScope {
+    public enum Scope {
         case emitter
         case all
         case allExcludingEmitter
@@ -36,17 +40,17 @@ public struct ActionEnvelop<ActionType:Action> {
     public let debugInfo: DebugInfo
 
     /// Scope defining which subscribers to send the envelop to
-    public let destScope: DestScope
+    public let scope: Scope
 
     public init(emitter: String,
                 action: ActionType,
-                destScope: DestScope = .all,
+                scope: Scope = .all,
                 file: String = #file,
                 function: String = #function,
                 line: Int = #line) {
         self.emitter = emitter
         self.action = action
-        self.destScope = destScope
+        self.scope = scope
         self.debugInfo = (file: file, function: function, line: line)
     }
 }
