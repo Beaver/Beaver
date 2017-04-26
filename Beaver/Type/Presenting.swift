@@ -24,7 +24,7 @@ extension Presenting {
         if let store = store ?? self.weakStore {
             store.dispatch(ActionEnvelop(emitter: subscriptionName,
                                          action: action,
-                                         destScope: .allExcludingEmitter,
+                                         recipients: .allExcludingEmitter,
                                          file: file,
                                          function: function,
                                          line: line))

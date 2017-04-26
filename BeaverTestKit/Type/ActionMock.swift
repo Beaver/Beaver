@@ -1,6 +1,8 @@
 import Beaver
 
 public struct ActionMock: Action {
+    public typealias RouteType = RouteMock
+
     public typealias SuccessStateType = SuccessStateMock
 
     public typealias FailureStateType = FailureStateMock

@@ -46,7 +46,7 @@ public final class Store<ActionType: Action> {
         middleware.run(envelop, (oldState: oldState, newState: newState))
 
         for subscriber in subscribers.values {
-            switch envelop.destScope {
+            switch envelop.recipients {
             case .emitter:
                 if subscriber.name != envelop.emitter {
                     continue

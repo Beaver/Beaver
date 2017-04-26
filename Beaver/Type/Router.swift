@@ -35,7 +35,11 @@ public struct Router<RouteType:Route> {
     /// - Parameters:
     ///    - route: a route to emit
     ///    - completion: a completion handler called when done emitting
-    public typealias Emitter = (_ route: RouteType, _ completion: @escaping Completion) -> ()
+    public typealias Emitter = (_ route: RouteType,
+                                _ file: String,
+                                _ function: String,
+                                _ line: Int,
+                                _ completion: @escaping Completion) -> ()
 
     public let emit: Emitter
 
@@ -46,28 +50,38 @@ public struct Router<RouteType:Route> {
 
 /// A type representing an object able to handle routes
 public protocol Routing {
-    associatedtype RouteType: Route
+    associatedtype ActionType: Action
 
     /// Handles a route
     ///
     /// - Parameters:
     ///    - route: a route to emit
     ///    - completion: a completion handler called when done emitting
-    func handle(route: RouteType, completion: @escaping Router<RouteType>.Completion)
+    func handle(route: ActionType.RouteType,
+                file: String,
+                function: String,
+                line: Int,
+                completion: @escaping Router<ActionType.RouteType>.Completion)
 }
 
 extension Routing {
     /// Default implementation of the router
-    public var router: Router<RouteType> {
+    public var router: Router<ActionType.RouteType> {
         return Router(emit: {
-            self.handle(route: $0, completion: $1)
+            self.handle(route: $0, file: $1, function: $2, line: $3, completion: $4)
         })
     }
 }
 
-extension Routing where Self: Presenting, Self: Reducing, Self: Subscribing {
-    /// Default implementation
-    public func handle(route: RouteType, completion: @escaping Router<RouteType>.Completion) {
-        dispatch(ActionType.createRouteAction(with: route))
+extension Routing where Self: Presenting, Self: Reducing {
+    public func handle(route: ActionType.RouteType,
+                       file: String = #file,
+                       function: String = #function,
+                       line: Int = #line,
+                       completion: @escaping Router<ActionType.RouteType>.Completion) {
+        dispatch(ActionType.mapRouteToAction(from: route),
+                 file: file,
+                 function: function,
+                 line: line)
     }
 }

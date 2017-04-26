@@ -77,8 +77,15 @@ extension Subscribing {
     /// Subscribes to a store.
     public func subscribe(to store: Store<ActionType>) {
         if isSubscriptionWeak {
+            // Copy subscription name outside of self
+            let subscriptionName = self.subscriptionName
+
             store.subscribe(name: subscriptionName) { [weak self] oldState, newState, completion in
-                self?.stateDidUpdate(oldState: oldState, newState: newState, completion: completion)
+                if let weakSelf = self {
+                    weakSelf.stateDidUpdate(oldState: oldState, newState: newState, completion: completion)
+                } else {
+                    store.unsubscribe(subscriptionName)
+                }
             }
         } else {
             store.subscribe(name: subscriptionName) { oldState, newState, completion in

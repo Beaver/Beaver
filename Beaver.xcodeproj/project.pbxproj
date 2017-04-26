@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		516DD1611F97A477E3C7388D /* MiddlewareMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD59ECD02E9DD9136D3C9 /* MiddlewareMock.swift */; };
 		516DD39F53E5A5F6E2655F70 /* StoreSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDB153FABB4EB09DAAFAD /* StoreSpec.swift */; };
+		516DD5736F175F1B82D7EBD9 /* RouteMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDC1E116FB51FD15D77A2 /* RouteMock.swift */; };
 		516DD73C55DCFAB4B63CB518 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD73394C7C36002C28B8C /* Context.swift */; };
 		516DD7511E830529503134DE /* SubscriberSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD43A22F2CD5FB315D81E /* SubscriberSpec.swift */; };
 		516DDDCAAD7C26C3152B3417 /* ViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD1865D06D99151237079 /* ViewControllerSpec.swift */; };
@@ -88,6 +89,7 @@
 		516DD73394C7C36002C28B8C /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		516DD80BEA74BE24A093CB19 /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		516DDB153FABB4EB09DAAFAD /* StoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreSpec.swift; sourceTree = "<group>"; };
+		516DDC1E116FB51FD15D77A2 /* RouteMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteMock.swift; sourceTree = "<group>"; };
 		628E75033C3A0D521775042D /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7180A1D47C1F9BB732936254 /* Pods-BeaverPromiseKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverPromiseKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverPromiseKit/Pods-BeaverPromiseKit.debug.xcconfig"; sourceTree = "<group>"; };
 		7C0169AE1E98F06E0019672F /* BeaverTestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BeaverTestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,6 +304,7 @@
 				CC6F8A22D09F106012EE2862 /* StoreStub.swift */,
 				CC6F8AE94653B8DE4C198626 /* ViewControllerMock.swift */,
 				516DD59ECD02E9DD9136D3C9 /* MiddlewareMock.swift */,
+				516DDC1E116FB51FD15D77A2 /* RouteMock.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				CC6F829B3F8E9E31D25FE92B /* StoreStub.swift in Sources */,
 				CC6F8F60AEFA85AB2F2E19EF /* ViewControllerMock.swift in Sources */,
 				516DD1611F97A477E3C7388D /* MiddlewareMock.swift in Sources */,
+				516DD5736F175F1B82D7EBD9 /* RouteMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
