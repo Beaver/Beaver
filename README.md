@@ -37,7 +37,4 @@ A Beaver application is composed of:
 
 - The **Main Presenter** subscribes to the main state update and presents the modules based on the current main state.
 
-
-<div style="text-align: center;">
-  <img src="https://github.com/trupin/Beaver/blob/master/wiki/architecture_module_diagram.png?raw=true" alt="Module Diagram" title="Module Diagram" height="200">
-</div>
+![Module Diagram](wiki/architecture_module_diagram.png)
