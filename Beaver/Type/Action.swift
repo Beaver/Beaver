@@ -1,13 +1,6 @@
 /// A type representing a user action
 public protocol Action: Equatable {
-    /// Type of the expected state update after the action has been triggered
-    associatedtype SuccessStateType: SuccessState
-
-    /// Type of the failure state update after the action has been triggered
-    associatedtype FailureStateType: FailureState
-    
-    /// Type of the pending state update after an asynchronous action as been triggered
-    associatedtype PendingStateType: PendingState
+    associatedtype StateType: State
 
     /// Type of the route
     associatedtype RouteType: Route

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7CDA2FBE1E98BEC800C05EA8"
-               BuildableName = "Beaver.framework"
-               BlueprintName = "Beaver"
+               BlueprintIdentifier = "7C0169DA1E9A6B830019672F"
+               BuildableName = "BeaverPromiseKit.framework"
+               BlueprintName = "BeaverPromiseKit"
                ReferencedContainer = "container:Beaver.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7CDA2FD21E98BF3700C05EA8"
-               BuildableName = "BeaverTests.xctest"
-               BlueprintName = "BeaverTests"
-               ReferencedContainer = "container:Beaver.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7CDA2FBE1E98BEC800C05EA8"
-            BuildableName = "Beaver.framework"
-            BlueprintName = "Beaver"
-            ReferencedContainer = "container:Beaver.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -64,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7CDA2FBE1E98BEC800C05EA8"
-            BuildableName = "Beaver.framework"
-            BlueprintName = "Beaver"
+            BlueprintIdentifier = "7C0169DA1E9A6B830019672F"
+            BuildableName = "BeaverPromiseKit.framework"
+            BlueprintName = "BeaverPromiseKit"
             ReferencedContainer = "container:Beaver.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7CDA2FBE1E98BEC800C05EA8"
-            BuildableName = "Beaver.framework"
-            BlueprintName = "Beaver"
+            BlueprintIdentifier = "7C0169DA1E9A6B830019672F"
+            BuildableName = "BeaverPromiseKit.framework"
+            BlueprintName = "BeaverPromiseKit"
             ReferencedContainer = "container:Beaver.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

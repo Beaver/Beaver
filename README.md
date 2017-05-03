@@ -1,6 +1,6 @@
 # Welcome to `Beaver` 
 
-[![Join the chat at https://gitter.im/BeaverFramework/Lobby](https://badges.gitter.im/BeaverFramework/Lobby.svg)](https://gitter.im/BeaverFramework/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build status](https://travis-ci.org/trupin/Beaver.svg?branch=master)](https://travis-ci.org/trupin/Beaver)
+[![Join the chat at https://gitter.im/BeaverFramework/Lobby](https://badges.gitter.im/BeaverFramework/Lobby.svg)](https://gitter.im/BeaverFramework/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build status](https://travis-ci.org/Beaver/Beaver.svg?branch=master)](https://travis-ci.org/Beaver/Beaver)
 
 <p>A delightful framework to build your iOS application made with love by developers at 
 <a href="http://recrutement.lafourchette.com"> 
@@ -37,4 +37,4 @@ A Beaver application is composed of:
 
 - The **Main Presenter** subscribes to the main state update and presents the modules based on the current main state.
 
-![wiki/architecture_module_diagram.png]()
+![Beaver Module Diagram](wiki/architecture_module_diagram.png)

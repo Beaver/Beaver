@@ -30,7 +30,7 @@ public final class Store<ActionType: Action> {
     }
 
     /// State type
-    public typealias StateType = State<ActionType.SuccessStateType, ActionType.FailureStateType, ActionType.PendingStateType>
+    public typealias StateType = ActionType.StateType
 
     /// Current state
     fileprivate(set) public var state: StateType

@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_BeaverPromiseKitVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_BeaverPromiseKitVersionString[];
+FOUNDATION_EXPORT double Pods_Framework_BeaverTestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_Framework_BeaverTestsVersionString[];
 
