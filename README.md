@@ -31,6 +31,10 @@ A Beaver application is composed of:
 
 - At least one **Module** per feature.
 
-- The **Main Store** stores the global state of the entire application and maintains it up to date based on 
+- The **Main Store** stores the global state of the entire application and maintains it up to date. 
 
-TODO comment different components and their interactions
+- The **Main Router** is the unique interface to send route events between modules.
+
+- The **Main Presenter** subscribes to the main state update and presents the modules based on the current main state.
+
+![wiki/architecture_module_diagram.png]()
