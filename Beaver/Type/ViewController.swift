@@ -1,3 +1,5 @@
+#if os(iOS)
+
 import UIKit
 
 open class ViewController<AActionType: Action>: UIViewController, Subscribing {
@@ -57,3 +59,5 @@ open class ViewController<AActionType: Action>: UIViewController, Subscribing {
                 line: line))
     }
 }
+
+#endif

@@ -8,6 +8,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/trupin/Beaver.git", :tag => "#{s.version}" }
 
   s.ios.deployment_target = "8.0"
+  s.osx.deployment_target = "10.10"
 
   s.source_files = "Beaver/**/*.swift"
 end

@@ -1,3 +1,5 @@
+#if os(iOS)
+
 import UIKit
 
 public final class NavigationContext: Context {
@@ -85,3 +87,5 @@ fileprivate extension UINavigationController {
         CATransaction.commit()
     }
 }
+
+#endif

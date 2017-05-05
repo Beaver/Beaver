@@ -1,3 +1,5 @@
+#if os(iOS)
+
 public struct WindowContext: Context {
     let window: UIWindow
 
@@ -32,3 +34,5 @@ public struct WindowContext: Context {
         window.rootViewController!.dismiss(animated: self.animated, completion: completion)
     }
 }
+
+#endif
