@@ -95,8 +95,10 @@ extension Subscribing {
     }
 }
 
+#if os(iOS)
 extension Subscribing where Self: UIViewController {
     public var isSubscriptionWeak: Bool {
         return false
     }
 }
+#endif
