@@ -67,7 +67,7 @@ extension Subscribing {
         return String(describing: type(of: self))
     }
 
-    var isSubscriptionWeak: Bool {
+    public var isSubscriptionWeak: Bool {
         return true
     }
     
