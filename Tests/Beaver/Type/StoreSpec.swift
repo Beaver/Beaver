@@ -17,8 +17,8 @@ final class StoreSpec: QuickSpec {
         var middlewareMock: MiddlewareMock<ActionMock>!
 
         beforeEach {
-            initialState = .success(SuccessStateMock(name: "initial state"))
-            newState = .success(SuccessStateMock(name: "new state"))
+            initialState = StateMock(name: "initial state")
+            newState = StateMock(name: "new state")
 
             reducerMock = ReducerMock(newStateStub: newState)
 
@@ -78,7 +78,7 @@ final class StoreSpec: QuickSpec {
 
                     context("when initial and new state are the same") {
                         beforeEach {
-                            initialState = .success(SuccessStateMock(name: "initial state"))
+                            initialState = StateMock(name: "initial state")
                             newState = initialState
                             reducerMock = ReducerMock(newStateStub: newState)
                             store = Store<ActionMock>(initialState: initialState,
@@ -118,7 +118,7 @@ final class StoreSpec: QuickSpec {
                         context("when dispatching to all") {
                             context("where one is registered, one is unregistered") {
                                 beforeEach {
-                                    store.unsubscribe(subscriberTwo.base)
+                                    store.unsubscribe(subscriberTwo.base.name)
                                 }
 
                                 it("should call subscriber one when dispatching, not subscriber two") {
@@ -291,7 +291,7 @@ final class StoreSpec: QuickSpec {
                 var completedState: StateMock!
                 
                 beforeEach {
-                    completedState = .success(SuccessStateMock(name: "completed state"))
+                    completedState = StateMock(name: "completed state")
                     reducerMock.newCompletedStateStub = completedState
                 }
 

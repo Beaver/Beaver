@@ -44,11 +44,13 @@ extension Presenting where Self: Subscribing, Self: Reducing {
     }
 
     /// Creates a store if not done yet and returns it
-    public var store: Store<ActionType>? {
-        if self.weakStore == nil {
-            self.weakStore = createStore()
+    public var store: Store<ActionType> {
+        if let store = self.weakStore {
+            return store
         }
-        return self.weakStore!
+        let newStore = createStore()
+        weakStore = newStore
+        return newStore
     }
 
     /// Dispatches an action to the store and automatically sets the emitter to the scene's subscription name

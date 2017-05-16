@@ -15,8 +15,8 @@ final class ViewControllerSpec: QuickSpec {
             var controllerStub: ViewControllerStub<ActionMock>!
 
             beforeEach {
-                initialStateMock = .success(SuccessStateMock(name: "initial state"))
-                newStateMock = .success(SuccessStateMock(name: "new state"))
+                initialStateMock = StateMock(name: "initial state")
+                newStateMock = StateMock(name: "new state")
                 reducerMock = ReducerMock(newStateStub: newStateMock)
                 storeStub = StoreStub(initialStateStub: initialStateMock, reducerMock: reducerMock)
                 controllerStub = ViewControllerStub(store: storeStub.base)

@@ -66,7 +66,7 @@ final class SubscriberSpec: QuickSpec {
                     it("should create a weak bound between the subscriber and the store") {
                         self.lazyDefaultSubscribing = defaultSubscribing
 
-                        let stateMock = StateMock.success(SuccessStateMock())
+                        let stateMock = StateMock()
                         let reducerMock = ReducerMock<ActionMock>(newStateStub: stateMock)
                         let store = Store<ActionMock>(initialState: stateMock, reducer: reducerMock.base)
 
@@ -92,7 +92,7 @@ final class SubscriberSpec: QuickSpec {
                     it("should create a strong bound between the subscriber and the store") {
                         self.lazyStrongSubscribing = strongSubscribing
 
-                        let stateMock = StateMock.success(SuccessStateMock())
+                        let stateMock = StateMock()
                         let reducerMock = ReducerMock<ActionMock>(newStateStub: stateMock)
                         let store = Store<ActionMock>(initialState: stateMock, reducer: reducerMock.base)
 
