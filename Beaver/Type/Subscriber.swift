@@ -9,6 +9,9 @@ extension Store {
         ///     - completion: a completion handler called when done
         public typealias StateDidUpdate = (_ oldState: StateType?,
                                            _ newState: StateType,
+                                           _ file: String,
+                                           _ function: String,
+                                           _ line: Int,
                                            _ completion: @escaping () -> ()) -> ()
 
         public let name: String
@@ -59,6 +62,9 @@ public protocol Subscribing: class {
 
     func stateDidUpdate(oldState: Store<ActionType>.StateType?,
                         newState: Store<ActionType>.StateType,
+                        file: String,
+                        function: String,
+                        line: Int,
                         completion: @escaping () -> ())
 }
 
@@ -80,16 +86,26 @@ extension Subscribing {
             // Copy subscription name outside of self
             let subscriptionName = self.subscriptionName
 
-            store.subscribe(name: subscriptionName) { [weak self] oldState, newState, completion in
+            store.subscribe(name: subscriptionName) { [weak self] oldState, newState, file, function, line, completion in
                 if let weakSelf = self {
-                    weakSelf.stateDidUpdate(oldState: oldState, newState: newState, completion: completion)
+                    weakSelf.stateDidUpdate(oldState: oldState,
+                                            newState: newState,
+                                            file: file,
+                                            function: function,
+                                            line: line,
+                                            completion: completion)
                 } else {
                     store.unsubscribe(subscriptionName)
                 }
             }
         } else {
-            store.subscribe(name: subscriptionName) { oldState, newState, completion in
-                self.stateDidUpdate(oldState: oldState, newState: newState, completion: completion)
+            store.subscribe(name: subscriptionName) { oldState, newState, file, function, line, completion in
+                self.stateDidUpdate(oldState: oldState,
+                                    newState: newState,
+                                    file: file,
+                                    function: function,
+                                    line: line,
+                                    completion: completion)
             }
         }
     }

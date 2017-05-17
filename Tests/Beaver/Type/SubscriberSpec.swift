@@ -11,6 +11,9 @@ fileprivate final class DefaultSubscribing: Subscribing {
 
     func stateDidUpdate(oldState: Store<ActionMock>.StateType?,
                         newState: Store<ActionMock>.StateType,
+                        file: String,
+                        function: String,
+                        line: Int,
                         completion: @escaping () -> ()) {
         stateDidUpdateCallCount += 1
         completion()
@@ -22,6 +25,9 @@ fileprivate final class StrongSubscribing: Subscribing {
 
     func stateDidUpdate(oldState: Store<ActionMock>.StateType?,
                         newState: Store<ActionMock>.StateType,
+                        file: String,
+                        function: String,
+                        line: Int,
                         completion: @escaping () -> ()) {
         completion()
     }
@@ -34,6 +40,9 @@ fileprivate final class ViewControllerSubscribing: UIViewController, Subscribing
 
     func stateDidUpdate(oldState: Store<ActionMock>.StateType?,
                         newState: Store<ActionMock>.StateType,
+                        file: String,
+                        function: String,
+                        line: Int,
                         completion: @escaping () -> ()) {
         completion()
     }

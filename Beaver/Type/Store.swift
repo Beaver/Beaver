@@ -63,7 +63,7 @@ public final class Store<ActionType: Action> {
                 break
             }
 
-            subscriber.stateDidUpdate(oldState, newState) {
+            subscriber.stateDidUpdate(oldState, newState, #file, #function, #line) {
                 // do nothing
             }
         }
@@ -131,7 +131,7 @@ extension Store {
 
         // Dispatching the state update permits to avoid infinite recursions when
         // the `stateDidUpdate` method implementation refers the store
-        subscriber.stateDidUpdate(nil, self.state) {
+        subscriber.stateDidUpdate(nil, self.state, #file, #function, #line) {
             // do nothing
         }
     }
