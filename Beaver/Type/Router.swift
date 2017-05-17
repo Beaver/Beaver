@@ -41,10 +41,18 @@ public struct Router<RouteType:Route> {
                                 _ line: Int,
                                 _ completion: @escaping Completion) -> ()
 
-    public let emit: Emitter
+    private let emitter: Emitter
 
-    public init(emit: @escaping Emitter) {
-        self.emit = emit
+    public init(emitter: @escaping Emitter) {
+        self.emitter = emitter
+    }
+    
+    public func emit(_ route: RouteType,
+                     _ file: String = #file,
+                     _ function: String = #function,
+                     _ line: Int = #line,
+                     _ completion: @escaping Completion) -> () {
+        emitter(route, file, function, line, completion)
     }
 }
 
@@ -67,7 +75,7 @@ public protocol Routing {
 extension Routing {
     /// Default implementation of the router
     public var router: Router<ActionType.RouteType> {
-        return Router(emit: {
+        return Router(emitter: {
             self.handle(route: $0, file: $1, function: $2, line: $3, completion: $4)
         })
     }
