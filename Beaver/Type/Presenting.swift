@@ -23,12 +23,10 @@ extension Presenting {
 extension Presenting where Self: Subscribing, Self: Reducing {
     /// Dispatches an action to the store and automatically sets the emitter to the scene's subscription name
     public func dispatch(_ action: Action,
-                         on store: Store<StateType>? = nil,
                          file: String = #file,
                          function: String = #function,
                          line: Int = #line) {
         dispatch(action,
-                 on: store ?? self.store,
                  file: file,
                  function: function,
                  line: line)
