@@ -1,11 +1,6 @@
 /// A type representing a user action
 public protocol Action: Equatable {
     associatedtype StateType: State
-
-    /// Type of the route
-    associatedtype RouteType: Route
-
-    static func mapRouteToAction(from route: RouteType) -> Self
 }
 
 /// Type encapsulating an action and adding extra information

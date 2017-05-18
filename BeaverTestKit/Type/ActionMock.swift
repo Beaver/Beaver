@@ -1,8 +1,6 @@
 import Beaver
 
 public struct ActionMock: Action {
-    public typealias RouteType = RouteMock
-
     public typealias StateType = StateMock
 
     public var name: String
@@ -13,9 +11,5 @@ public struct ActionMock: Action {
 
     public static func ==(lhs: ActionMock, rhs: ActionMock) -> Bool {
         return lhs.name == rhs.name
-    }
-
-    public static func mapRouteToAction(from route: RouteMock) -> ActionMock {
-        return ActionMock(name: "MappedActionMock")
     }
 }

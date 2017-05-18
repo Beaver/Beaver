@@ -34,9 +34,6 @@ open class ViewController<AActionType: Action>: UIViewController, Subscribing {
     /// Method called when a state update has occurred
     open func stateDidUpdate(oldState: Store<ActionType>.StateType?,
                              newState: Store<ActionType>.StateType,
-                             file: String,
-                             function: String,
-                             line: Int,
                              completion: @escaping () -> ()) {
         fatalError("stateDidUpdate(source:oldState:newState:completion:) has not been implemented")
     }

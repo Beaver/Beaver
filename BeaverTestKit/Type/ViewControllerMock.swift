@@ -11,9 +11,6 @@ public final class ViewControllerStub<ActionType:Action>: ViewController<ActionT
 
     public override func stateDidUpdate(oldState: Store<ActionType>.StateType?,
                                         newState: Store<ActionType>.StateType,
-                                        file: String,
-                                        function: String,
-                                        line: Int,
                                         completion: @escaping () -> ()) {
         self.oldState = oldState
         self.newState = newState
