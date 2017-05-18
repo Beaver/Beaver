@@ -1,16 +1,16 @@
 import Beaver
 
-public final class ViewControllerStub<ActionType:Action>: ViewController<ActionType> {
+public final class ViewControllerStub<StateType: State>: ViewController<StateType> {
     public private(set) var stateDidUpdateCallCount = 0
 
-    public private(set) var source: ActionEnvelop<ActionType>?
+    public private(set) var source: ActionEnvelop?
 
-    public private(set) var oldState: Store<ActionType>.StateType?
+    public private(set) var oldState: StateType?
 
-    public private(set) var newState: Store<ActionType>.StateType?
+    public private(set) var newState: StateType?
 
-    public override func stateDidUpdate(oldState: Store<ActionType>.StateType?,
-                                        newState: Store<ActionType>.StateType,
+    public override func stateDidUpdate(oldState: StateType?,
+                                        newState: StateType,
                                         completion: @escaping () -> ()) {
         self.oldState = oldState
         self.newState = newState

@@ -12,11 +12,11 @@
 ///    needs to declare a `strong self`.
 /// 3. Subscribers registration is based on their name. Meaning that two subscribers with
 ///    the same name would override each others
-public final class Store<ActionType: Action> {
+public final class Store<StateType: State> {
 
     /// Responsible of applying side effects for a given action or a state update
     public struct Middleware {
-        public typealias Run = (_ action: ActionEnvelop<ActionType>?,
+        public typealias Run = (_ action: ActionEnvelop?,
             _ stateUpdate: (oldState: StateType?, newState: StateType)?) -> Void
 
         public let name: String
@@ -29,13 +29,10 @@ public final class Store<ActionType: Action> {
         }
     }
 
-    /// State type
-    public typealias StateType = ActionType.StateType
-
     /// Current state
     fileprivate(set) public var state: StateType
 
-    fileprivate func setState(_ newState: StateType, for envelop: ActionEnvelop<ActionType>) {
+    fileprivate func setState(_ newState: StateType, for envelop: ActionEnvelop) {
         if state == newState {
             return
         }
@@ -106,7 +103,7 @@ extension Store {
     /// Dispatching interface
     ///
     /// It is retaining a reference on the store
-    public func dispatch(_ envelop: ActionEnvelop<ActionType>) {
+    public func dispatch(_ envelop: ActionEnvelop) {
         // Lifecycle actions are not cancellable
         let cancellable = self.newCancellable()
 

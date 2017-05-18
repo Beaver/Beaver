@@ -1,10 +1,9 @@
 /// A type representing a user action
-public protocol Action: Equatable {
-    associatedtype StateType: State
+public protocol Action {
 }
 
 /// Type encapsulating an action and adding extra information
-public struct ActionEnvelop<ActionType:Action> {
+public struct ActionEnvelop {
     public enum Recipients {
         case emitter
         case all
@@ -12,7 +11,7 @@ public struct ActionEnvelop<ActionType:Action> {
         case authorized(to: Set<String>)
     }
 
-    public let action: ActionType
+    public let action: Action
 
     /// Emitter name
     public let emitter: String
@@ -27,7 +26,7 @@ public struct ActionEnvelop<ActionType:Action> {
     public let recipients: Recipients
 
     public init(emitter: String,
-                action: ActionType,
+                action: Action,
                 recipients: Recipients = .all,
                 file: String = #file,
                 function: String = #function,

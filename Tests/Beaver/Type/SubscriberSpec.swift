@@ -5,12 +5,12 @@ import BeaverTestKit
 @testable import Beaver
 
 fileprivate final class DefaultSubscribing: Subscribing {
-    typealias ActionType = ActionMock
+    typealias StateType = StateMock
 
     private(set) var stateDidUpdateCallCount = 0
 
-    func stateDidUpdate(oldState: Store<ActionMock>.StateType?,
-                        newState: Store<ActionMock>.StateType,
+    func stateDidUpdate(oldState: StateMock?,
+                        newState: StateMock,
                         completion: @escaping () -> ()) {
         stateDidUpdateCallCount += 1
         completion()
@@ -18,10 +18,10 @@ fileprivate final class DefaultSubscribing: Subscribing {
 }
 
 fileprivate final class StrongSubscribing: Subscribing {
-    typealias ActionType = ActionMock
+    typealias StateType = StateMock
 
-    func stateDidUpdate(oldState: Store<ActionMock>.StateType?,
-                        newState: Store<ActionMock>.StateType,
+    func stateDidUpdate(oldState: StateMock?,
+                        newState: StateMock,
                         completion: @escaping () -> ()) {
         completion()
     }
@@ -30,10 +30,10 @@ fileprivate final class StrongSubscribing: Subscribing {
 }
 
 fileprivate final class ViewControllerSubscribing: UIViewController, Subscribing {
-    typealias ActionType = ActionMock
+    typealias StateType = StateMock
 
-    func stateDidUpdate(oldState: Store<ActionMock>.StateType?,
-                        newState: Store<ActionMock>.StateType,
+    func stateDidUpdate(oldState: StateMock?,
+                        newState: StateMock,
                         completion: @escaping () -> ()) {
         completion()
     }
@@ -67,8 +67,8 @@ final class SubscriberSpec: QuickSpec {
                         self.lazyDefaultSubscribing = defaultSubscribing
 
                         let stateMock = StateMock()
-                        let reducerMock = ReducerMock<ActionMock>(newStateStub: stateMock)
-                        let store = Store<ActionMock>(initialState: stateMock, reducer: reducerMock.base)
+                        let reducerMock = ReducerMock<StateMock>(newStateStub: stateMock)
+                        let store = Store<StateMock>(initialState: stateMock, reducer: reducerMock.base)
 
                         defaultSubscribing.subscribe(to: store)
 
@@ -93,8 +93,8 @@ final class SubscriberSpec: QuickSpec {
                         self.lazyStrongSubscribing = strongSubscribing
 
                         let stateMock = StateMock()
-                        let reducerMock = ReducerMock<ActionMock>(newStateStub: stateMock)
-                        let store = Store<ActionMock>(initialState: stateMock, reducer: reducerMock.base)
+                        let reducerMock = ReducerMock<StateMock>(newStateStub: stateMock)
+                        let store = Store<StateMock>(initialState: stateMock, reducer: reducerMock.base)
 
                         strongSubscribing.subscribe(to: store)
 

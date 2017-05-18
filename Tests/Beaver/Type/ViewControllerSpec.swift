@@ -9,10 +9,10 @@ final class ViewControllerSpec: QuickSpec {
         describe("ViewController") {
             var initialStateMock: StateMock!
             var newStateMock: StateMock!
-            var reducerMock: ReducerMock<ActionMock>!
-            var storeStub:  StoreStub<ActionMock>!
+            var reducerMock: ReducerMock<StateMock>!
+            var storeStub:  StoreStub<StateMock>!
 
-            var controllerStub: ViewControllerStub<ActionMock>!
+            var controllerStub: ViewControllerStub<StateMock>!
 
             beforeEach {
                 initialStateMock = StateMock(name: "initial state")
@@ -33,7 +33,7 @@ final class ViewControllerSpec: QuickSpec {
                     expect(reducerMock.envelop?.debugInfo.file).notTo(beEmpty())
                     expect(reducerMock.envelop?.debugInfo.line).notTo(equal(0))
                     expect(reducerMock.callCount) == 1
-                    expect(reducerMock.envelop?.action) == ActionMock()
+                    expect(reducerMock.envelop?.action as? ActionMock) == ActionMock()
                 }
             }
         }

@@ -1,28 +1,28 @@
 import Beaver
 
-public final class ReducerMock<ActionType: Action> {
+public final class ReducerMock<StateType: State> {
     public private(set) var callCount = 0
 
-    public private(set) var envelop: ActionEnvelop<ActionType>?
+    public private(set) var envelop: ActionEnvelop?
 
-    public private(set) var state: Store<ActionType>.StateType?
+    public private(set) var state: StateType?
 
-    public var newStateStub: Store<ActionType>.StateType
+    public var newStateStub: StateType
     
-    public var newCompletedStateStub: Store<ActionType>.StateType
+    public var newCompletedStateStub: StateType
 
-    public init(newStateStub: Store<ActionType>.StateType,
-                newCompletedStateStub: Store<ActionType>.StateType) {
+    public init(newStateStub: StateType,
+                newCompletedStateStub: StateType) {
         self.newStateStub = newStateStub
         self.newCompletedStateStub = newCompletedStateStub
     }
     
-    public init(newStateStub: Store<ActionType>.StateType) {
+    public init(newStateStub: StateType) {
         self.newStateStub = newStateStub
         self.newCompletedStateStub = newStateStub
     }
 
-    public var base: Store<ActionType>.Reducer {
+    public var base: Store<StateType>.Reducer {
         return { envelop, state, completion in
             self.envelop = envelop
             self.state = state

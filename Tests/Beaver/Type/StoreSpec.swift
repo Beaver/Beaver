@@ -10,11 +10,11 @@ final class StoreSpec: QuickSpec {
 
         var newState: StateMock!
 
-        var reducerMock: ReducerMock<ActionMock>!
+        var reducerMock: ReducerMock<StateMock>!
 
-        var store: Store<ActionMock>!
+        var store: Store<StateMock>!
 
-        var middlewareMock: MiddlewareMock<ActionMock>!
+        var middlewareMock: MiddlewareMock<StateMock>!
 
         beforeEach {
             initialState = StateMock(name: "initial state")
@@ -22,15 +22,15 @@ final class StoreSpec: QuickSpec {
 
             reducerMock = ReducerMock(newStateStub: newState)
 
-            middlewareMock = MiddlewareMock<ActionMock>()
+            middlewareMock = MiddlewareMock<StateMock>()
 
-            store = Store<ActionMock>(initialState: initialState,
+            store = Store<StateMock>(initialState: initialState,
                                       middlewares: [middlewareMock.base, middlewareMock.base],
                                       reducer: reducerMock.base)
         }
 
         describe("Store<ActionMock>") {
-            var subscriberOne: SubscriberMock<ActionMock>!
+            var subscriberOne: SubscriberMock<StateMock>!
 
             context("with a synchronous action") {
                 context("with one registered subscriber") {
@@ -65,7 +65,7 @@ final class StoreSpec: QuickSpec {
                         expect(subscriberOne.newState).toEventually(equal(newState))
 
                         expect(middlewareMock.actions.filter {
-                            $0?.action == action
+                            ($0?.action as? ActionMock).flatMap { a in a == action } == true
                         }.count).toEventually(equal(4))
                         expect(middlewareMock.stateUpdates.filter {
                             $0?.oldState == initialState
@@ -81,9 +81,9 @@ final class StoreSpec: QuickSpec {
                             initialState = StateMock(name: "initial state")
                             newState = initialState
                             reducerMock = ReducerMock(newStateStub: newState)
-                            store = Store<ActionMock>(initialState: initialState,
-                                                      middlewares: [middlewareMock.base, middlewareMock.base],
-                                                      reducer: reducerMock.base)
+                            store = Store<StateMock>(initialState: initialState,
+                                                     middlewares: [middlewareMock.base, middlewareMock.base],
+                                                     reducer: reducerMock.base)
                         }
 
                         it("should not call subscriber one when dispatching an action") {
@@ -97,7 +97,7 @@ final class StoreSpec: QuickSpec {
                             expect(subscriberOne.newState).toEventually(equal(newState))
 
                             expect(middlewareMock.actions.filter {
-                                $0?.action == action
+                                ($0?.action as? ActionMock).flatMap { a in a == action } == true
                             }.count).toEventually(equal(2))
                             expect(middlewareMock.stateUpdates[1]?.oldState).toEventually(beNil())
                             expect(middlewareMock.stateUpdates[1]?.newState).toEventually(equal(initialState))
@@ -106,8 +106,8 @@ final class StoreSpec: QuickSpec {
                     }
 
                     context("with two subscribers") {
-                        var subscriberTwo: SubscriberMock<ActionMock>!
-                        var destScope: ActionEnvelop<ActionMock>.Recipients!
+                        var subscriberTwo: SubscriberMock<StateMock>!
+                        var destScope: ActionEnvelop.Recipients!
 
                         beforeEach {
                             subscriberTwo = SubscriberMock(name: "SubscriberTwo")
@@ -137,7 +137,7 @@ final class StoreSpec: QuickSpec {
                                     expect(subscriberTwo.newState).toEventually(equal(initialState))
 
                                     expect(middlewareMock.actions.filter {
-                                        $0?.action == action
+                                        ($0?.action as? ActionMock).flatMap { a in a == action } == true
                                     }.count).toEventually(equal(4))
                                     expect(middlewareMock.stateUpdates.filter {
                                         $0?.oldState == initialState
@@ -166,7 +166,7 @@ final class StoreSpec: QuickSpec {
                                     expect(subscriberTwo.newState).toEventually(equal(newState))
 
                                     expect(middlewareMock.actions.filter {
-                                        $0?.action == action
+                                        ($0?.action as? ActionMock).flatMap { a in a == action } == true
                                     }.count).toEventually(equal(4))
                                     expect(middlewareMock.stateUpdates.filter {
                                         $0?.oldState == initialState
@@ -201,7 +201,7 @@ final class StoreSpec: QuickSpec {
                                     expect(subscriberTwo.newState).toEventually(equal(newState))
 
                                     expect(middlewareMock.actions.filter {
-                                        $0?.action == action
+                                        ($0?.action as? ActionMock).flatMap { a in a == action } == true
                                     }.count).toEventually(equal(4))
                                     expect(middlewareMock.stateUpdates.filter {
                                         $0?.oldState == initialState
@@ -236,7 +236,7 @@ final class StoreSpec: QuickSpec {
                                     expect(subscriberTwo.newState).toEventually(equal(newState))
 
                                     expect(middlewareMock.actions.filter {
-                                        $0?.action == action
+                                        ($0?.action as? ActionMock).flatMap { a in a == action } == true
                                     }.count).toEventually(equal(4))
                                     expect(middlewareMock.stateUpdates.filter {
                                         $0?.oldState == initialState
@@ -271,7 +271,7 @@ final class StoreSpec: QuickSpec {
                                     expect(subscriberTwo.newState).toEventually(equal(newState))
                                     
                                     expect(middlewareMock.actions.filter {
-                                        $0?.action == action
+                                        ($0?.action as? ActionMock).flatMap { a in a == action } == true
                                     }.count).toEventually(equal(4))
                                     expect(middlewareMock.stateUpdates.filter {
                                         $0?.oldState == initialState
@@ -312,7 +312,7 @@ final class StoreSpec: QuickSpec {
                         expect(subscriberOne.newState).toEventually(equal(completedState))
 
                         expect(middlewareMock.actions.filter {
-                            $0?.action == action
+                            ($0?.action as? ActionMock).flatMap { a in a == action } == true
                         }.count).toEventually(equal(6))
                         expect(middlewareMock.stateUpdates.filter {
                             $0?.oldState == initialState

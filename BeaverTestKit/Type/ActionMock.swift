@@ -1,6 +1,6 @@
 import Beaver
 
-public struct ActionMock: Action {
+public struct ActionMock: Action, Equatable {
     public typealias StateType = StateMock
 
     public var name: String

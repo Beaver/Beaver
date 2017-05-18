@@ -26,7 +26,7 @@ extension Store {
 // MARK: - Equatable
 
 extension Store.Subscriber: Equatable {
-    public static func ==(lhs: Store<ActionType>.Subscriber, rhs: Store<ActionType>.Subscriber) -> Bool {
+    public static func ==(lhs: Store<StateType>.Subscriber, rhs: Store<StateType>.Subscriber) -> Bool {
         return lhs.name == rhs.name
     }
 }
@@ -49,7 +49,7 @@ extension Store.Subscriber: CustomDebugStringConvertible {
 
 /// A type responsible for handling state updates
 public protocol Subscribing: class {
-    associatedtype ActionType: Action
+    associatedtype StateType: State
 
     /// Name automatically given to the store when subscribing
     var subscriptionName: String { get }
@@ -57,8 +57,8 @@ public protocol Subscribing: class {
     /// Should store be able to retain an instance of the subscribing class or not
     var isSubscriptionWeak: Bool { get }
 
-    func stateDidUpdate(oldState: Store<ActionType>.StateType?,
-                        newState: Store<ActionType>.StateType,
+    func stateDidUpdate(oldState: StateType?,
+                        newState: StateType,
                         completion: @escaping () -> ())
 }
 
@@ -71,11 +71,11 @@ extension Subscribing {
         return true
     }
     
-    public typealias StateUpdateEvent = (_ oldState: Store<ActionType>.StateType?,
-                                         _ newState: Store<ActionType>.StateType) -> ()
+    public typealias StateUpdateEvent = (_ oldState: StateType?,
+                                         _ newState: StateType) -> ()
 
     /// Subscribes to a store.
-    public func subscribe(to store: Store<ActionType>) {
+    public func subscribe(to store: Store<StateType>) {
         if isSubscriptionWeak {
             // Copy subscription name outside of self
             let subscriptionName = self.subscriptionName

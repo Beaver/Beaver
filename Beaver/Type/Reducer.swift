@@ -6,14 +6,14 @@ extension Store {
     ///     - state: the current state
     ///     - completion: completion handler called if asynchronous work has began and need to be completed
     /// - Returns: the new state
-    public typealias Reducer = (_ envelop: ActionEnvelop<ActionType>,
+    public typealias Reducer = (_ envelop: ActionEnvelop,
                                 _ state: StateType,
                                 _ completion: @escaping (StateType) -> ()) -> StateType
 }
 
 /// Responsible of generating a state for a given action and the current state
 public protocol Reducing {
-    associatedtype ActionType: Action
+    associatedtype StateType: State
 
     /// Generates a state for a given action and the current state
     ///
@@ -22,35 +22,35 @@ public protocol Reducing {
     ///     - state: the current state
     ///     - completion: completion handler called if asynchronous work has began and need to be completed
     /// - Returns: the new state
-    func handle(envelop: ActionEnvelop<ActionType>,
-                state: Store<ActionType>.StateType,
-                completion: @escaping (Store<ActionType>.StateType) -> ()) -> Store<ActionType>.StateType
+    func handle(envelop: ActionEnvelop,
+                state: StateType,
+                completion: @escaping (StateType) -> ()) -> StateType
 }
 
 extension Reducing {
     /// Default implementation of the reducer
-    public var reducer: Store<ActionType>.Reducer {
+    public var reducer: Store<StateType>.Reducer {
         return { envelop, state, completion in
             return self.handle(envelop: envelop, state: state, completion: completion)
         }
     }
 
     /// Creates a new store
-    public func createStore(initialState: Store<ActionType>.StateType,
-                            middleWares: [Store<ActionType>.Middleware]) -> Store<ActionType> {
-        return Store<ActionType>(initialState: initialState,
-                                 middlewares: middleWares,
-                                 reducer: reducer)
+    public func createStore(initialState: StateType,
+                            middleWares: [Store<StateType>.Middleware]) -> Store<StateType> {
+        return Store<StateType>(initialState: initialState,
+                                middlewares: middleWares,
+                                reducer: reducer)
     }
 }
 
 extension Reducing where Self: Subscribing {
     /// Creates a new store and subscribes before returning
-    public func createStore(initialState: Store<ActionType>.StateType,
-                            middleWares: [Store<ActionType>.Middleware]) -> Store<ActionType> {
-        let store = Store<ActionType>(initialState: initialState,
+    public func createStore(initialState: StateType,
+                            middleWares: [Store<StateType>.Middleware]) -> Store<StateType> {
+        let store = Store<StateType>(initialState: initialState,
                                       middlewares: middleWares,
-                                      reducer: reducer)
+                                     reducer: reducer)
         store.subscribe(name: subscriptionName,
                         stateDidUpdate: stateDidUpdate)
         return store

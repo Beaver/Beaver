@@ -1,12 +1,11 @@
 import Beaver
 
-public final class MiddlewareMock<ActionType: Action> {
+public final class MiddlewareMock<StateType: State> {
     public private(set) var callCount = 0
 
-    public private(set) var actions: [ActionEnvelop<ActionType>?] = []
+    public private(set) var actions: [ActionEnvelop?] = []
 
-    public private(set) var stateUpdates: [(oldState: Store<ActionType>.StateType?,
-                                     newState: Store<ActionType>.StateType)?] = []
+    public private(set) var stateUpdates: [(oldState: StateType?, newState: StateType)?] = []
 
     public var name: String = "MiddlewareMock"
     
@@ -14,8 +13,8 @@ public final class MiddlewareMock<ActionType: Action> {
         // Do nothing
     }
 
-    public var base: Store<ActionType>.Middleware {
-        return Store<ActionType>.Middleware(name: name) { action, stateUpdate in
+    public var base: Store<StateType>.Middleware {
+        return Store<StateType>.Middleware(name: name) { action, stateUpdate in
             self.actions.append(action)
             self.stateUpdates.append(stateUpdate)
             self.callCount += 1

@@ -1,17 +1,17 @@
 import Beaver
 
-public final class StoreStub<ActionType:Action> {
-    public var initialStateStub: Store<ActionType>.StateType
+public final class StoreStub<StateType: State> {
+    public var initialStateStub: StateType
 
-    public var reducerMock: ReducerMock<ActionType>
+    public var reducerMock: ReducerMock<StateType>
 
-    public init(initialStateStub: Store<ActionType>.StateType,
-                reducerMock: ReducerMock<ActionType>) {
+    public init(initialStateStub: StateType,
+                reducerMock: ReducerMock<StateType>) {
         self.initialStateStub = initialStateStub
         self.reducerMock = reducerMock
     }
 
-    public var base: Store<ActionType> {
-        return Store<ActionType>(initialState: initialStateStub, reducer: reducerMock.base)
+    public var base: Store<StateType> {
+        return Store<StateType>(initialState: initialStateStub, reducer: reducerMock.base)
     }
 }

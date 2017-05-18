@@ -1,11 +1,11 @@
 import Beaver
 
-public final class SubscriberMock<ActionType:Action> {
+public final class SubscriberMock<StateType:State> {
     public var name: String
 
-    public private(set) var oldState: Store<ActionType>.StateType?
+    public private(set) var oldState: StateType?
 
-    public private(set) var newState: Store<ActionType>.StateType?
+    public private(set) var newState: StateType?
 
     public private(set) var callCount = 0
 
@@ -13,8 +13,8 @@ public final class SubscriberMock<ActionType:Action> {
         self.name = name
     }
 
-    public var base: Store<ActionType>.Subscriber {
-        return Store<ActionType>.Subscriber(name: self.name) { oldState, newState, completion in
+    public var base: Store<StateType>.Subscriber {
+        return Store<StateType>.Subscriber(name: self.name) { oldState, newState, completion in
             self.oldState = oldState
             self.newState = newState
             self.callCount += 1

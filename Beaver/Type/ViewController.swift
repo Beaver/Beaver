@@ -2,10 +2,10 @@
 
 import UIKit
 
-open class ViewController<AActionType: Action>: UIViewController, Subscribing {
-    public typealias ActionType = AActionType
-    
-    public let store: Store<ActionType>
+open class ViewController<AStateType: State>: UIViewController, Subscribing {
+    public typealias StateType = AStateType
+
+    public let store: Store<StateType>
 
     // MARK: - Init
     
@@ -13,7 +13,7 @@ open class ViewController<AActionType: Action>: UIViewController, Subscribing {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public init(store: Store<ActionType>) {
+    public init(store: Store<StateType>) {
         self.store = store
 
         super.init(nibName: nil, bundle: nil)
@@ -32,8 +32,8 @@ open class ViewController<AActionType: Action>: UIViewController, Subscribing {
     }
 
     /// Method called when a state update has occurred
-    open func stateDidUpdate(oldState: Store<ActionType>.StateType?,
-                             newState: Store<ActionType>.StateType,
+    open func stateDidUpdate(oldState: StateType?,
+                             newState: StateType,
                              completion: @escaping () -> ()) {
         fatalError("stateDidUpdate(source:oldState:newState:completion:) has not been implemented")
     }
@@ -47,7 +47,7 @@ open class ViewController<AActionType: Action>: UIViewController, Subscribing {
     ///    - silent: if true, the `didStartLoading(silent:)` and `didFinishLoading(state:silent:)` will be called with
     ///              the parameter `silent` set to `true`
     ///    - debugInfo: a tuple containing the file, function and line from where the action has been dispatched
-    open func dispatch(action: ActionType,
+    open func dispatch(action: Action,
                        file: String = #file,
                        function: String = #function,
                        line: Int = #line) {
