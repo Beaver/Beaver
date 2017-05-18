@@ -40,6 +40,7 @@
 		CC6F8D733A13AE81445D2C54 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8F31CF3AB3564C31421E /* Subscriber.swift */; };
 		CC6F8D980E59F555D1365965 /* StateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88F6AC2C63398FFE1396 /* StateMock.swift */; };
 		CC6F8EEC6B83EA5041715096 /* Presenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */; };
+		CC6F8F15E70B344DD4DA8CB6 /* ChildStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88BDF6FF331D16159191 /* ChildStore.swift */; };
 		CC6F8F60AEFA85AB2F2E19EF /* ViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8AE94653B8DE4C198626 /* ViewControllerMock.swift */; };
 		FF2F2733DDE3DAD472621E61 /* Pods_Framework_BeaverPromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9368D32BA5AFF97B8D74D045 /* Pods_Framework_BeaverPromiseKit.framework */; };
 /* End PBXBuildFile section */
@@ -111,6 +112,7 @@
 		CC6F8423A89A47D4D5A061EE /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
 		CC6F850D02762A3684C32DB9 /* BeaverPromiseKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaverPromiseKit.h; sourceTree = "<group>"; };
 		CC6F86ABDB10F6EFE498D21D /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
+		CC6F88BDF6FF331D16159191 /* ChildStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildStore.swift; sourceTree = "<group>"; };
 		CC6F88F6AC2C63398FFE1396 /* StateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMock.swift; sourceTree = "<group>"; };
 		CC6F8959622A1845E852A085 /* SubscriberMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriberMock.swift; sourceTree = "<group>"; };
 		CC6F8A22D09F106012EE2862 /* StoreStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreStub.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				CC6F8335EE9D35A16B798E39 /* Subscriber.swift */,
 				CC6F833E4D7768C01ACB9661 /* ViewController.swift */,
 				CC6F801FF3EEE75B7FDE8CEB /* Presenting.swift */,
+				CC6F88BDF6FF331D16159191 /* ChildStore.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				CC6F89D4EC6A69CF767C00F2 /* WindowContext.swift in Sources */,
 				CC6F80E1E22234D50464FC6C /* NavigationContext.swift in Sources */,
 				CC6F808061AD6E3E8B154A70 /* LoggingMiddleware.swift in Sources */,
+				CC6F8F15E70B344DD4DA8CB6 /* ChildStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

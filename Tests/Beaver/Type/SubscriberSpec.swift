@@ -6,6 +6,8 @@ import BeaverTestKit
 
 fileprivate final class DefaultSubscribing: Subscribing {
     typealias StateType = StateMock
+    typealias ActionType = ActionMock
+    typealias ParentStateType = AppStateMock
 
     private(set) var stateDidUpdateCallCount = 0
 
@@ -17,20 +19,10 @@ fileprivate final class DefaultSubscribing: Subscribing {
     }
 }
 
-fileprivate final class StrongSubscribing: Subscribing {
-    typealias StateType = StateMock
-
-    func stateDidUpdate(oldState: StateMock?,
-                        newState: StateMock,
-                        completion: @escaping () -> ()) {
-        completion()
-    }
-
-    let isSubscriptionWeak: Bool = false
-}
-
 fileprivate final class ViewControllerSubscribing: UIViewController, Subscribing {
     typealias StateType = StateMock
+    typealias ActionType = ActionMock
+    typealias ParentStateType = AppStateMock
 
     func stateDidUpdate(oldState: StateMock?,
                         newState: StateMock,
@@ -41,8 +33,6 @@ fileprivate final class ViewControllerSubscribing: UIViewController, Subscribing
 
 final class SubscriberSpec: QuickSpec {
     private weak var lazyDefaultSubscribing: DefaultSubscribing?
-
-    private weak var lazyStrongSubscribing: StrongSubscribing?
 
     override func spec() {
 
@@ -58,19 +48,18 @@ final class SubscriberSpec: QuickSpec {
                     expect(defaultSubscribing.subscriptionName).to(contain("DefaultSubscribing"))
                 }
 
-                it("should be weak") {
-                    expect(defaultSubscribing.isSubscriptionWeak) == true
-                }
-
                 describe("subscribe(to:)") {
                     it("should create a weak bound between the subscriber and the store") {
                         self.lazyDefaultSubscribing = defaultSubscribing
 
-                        let stateMock = StateMock()
-                        let reducerMock = ReducerMock<StateMock>(newStateStub: stateMock)
-                        let store = Store<StateMock>(initialState: stateMock, reducer: reducerMock.base)
-
-                        defaultSubscribing.subscribe(to: store)
+                        let stateMock = AppStateMock()
+                        let reducerMock = ReducerMock<AppStateMock>(newStateStub: stateMock)
+                        let store = Store<AppStateMock>(initialState: stateMock, reducer: reducerMock.base)
+                        let childStore = ChildStore<StateMock, AppStateMock>(store: store) { (appState: AppStateMock) -> StateMock? in
+                            return appState.childState
+                        }
+                        
+                        defaultSubscribing.subscribe(to: childStore)
 
                         expect(self.lazyDefaultSubscribing).notTo(beNil())
 
@@ -78,38 +67,6 @@ final class SubscriberSpec: QuickSpec {
 
                         expect(self.lazyDefaultSubscribing).to(beNil())
                     }
-                }
-            }
-
-            describe("Overridden implementation") {
-                var strongSubscribing: StrongSubscribing!
-
-                beforeEach {
-                    strongSubscribing = StrongSubscribing()
-                }
-
-                describe("subscribe(to:)") {
-                    it("should create a strong bound between the subscriber and the store") {
-                        self.lazyStrongSubscribing = strongSubscribing
-
-                        let stateMock = StateMock()
-                        let reducerMock = ReducerMock<StateMock>(newStateStub: stateMock)
-                        let store = Store<StateMock>(initialState: stateMock, reducer: reducerMock.base)
-
-                        strongSubscribing.subscribe(to: store)
-
-                        expect(self.lazyStrongSubscribing).notTo(beNil())
-
-                        strongSubscribing = nil
-
-                        expect(self.lazyStrongSubscribing).toNot(beNil())
-                    }
-                }
-            }
-
-            describe("Subscribing which is also a UIViewController") {
-                it("should be a strong subscriber") {
-                    expect(ViewControllerSubscribing().isSubscriptionWeak) == false
                 }
             }
         }

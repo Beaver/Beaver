@@ -7,19 +7,21 @@ import BeaverTestKit
 final class ViewControllerSpec: QuickSpec {
     override func spec() {
         describe("ViewController") {
-            var initialStateMock: StateMock!
-            var newStateMock: StateMock!
-            var reducerMock: ReducerMock<StateMock>!
-            var storeStub:  StoreStub<StateMock>!
+            var initialStateMock: AppStateMock!
+            var newStateMock: AppStateMock!
+            var reducerMock: ReducerMock<AppStateMock>!
+            var storeStub: StoreStub<AppStateMock>!
 
-            var controllerStub: ViewControllerStub<StateMock>!
+            var controllerStub: ViewControllerStub<StateMock, AppStateMock>!
 
             beforeEach {
-                initialStateMock = StateMock(name: "initial state")
-                newStateMock = StateMock(name: "new state")
+                initialStateMock = AppStateMock(childState: StateMock(name: "initial state"))
+                newStateMock = AppStateMock(childState: StateMock(name: "new state"))
                 reducerMock = ReducerMock(newStateStub: newStateMock)
                 storeStub = StoreStub(initialStateStub: initialStateMock, reducerMock: reducerMock)
-                controllerStub = ViewControllerStub(store: storeStub.base)
+                controllerStub = ViewControllerStub(store: ChildStore<StateMock, AppStateMock>(store: storeStub.base) { (appState: AppStateMock) -> StateMock? in
+                    return appState.childState
+                })
 
                 reducerMock.clear()
                 controllerStub.clear()

@@ -2,10 +2,11 @@
 
 import UIKit
 
-open class ViewController<AStateType: State>: UIViewController, Subscribing {
+open class ViewController<AStateType: State, AParentStateType: State>: UIViewController, Subscribing {
     public typealias StateType = AStateType
+    public typealias ParentStateType = AParentStateType
 
-    public let store: Store<StateType>
+    public let store: ChildStore<StateType, ParentStateType>
 
     // MARK: - Init
     
@@ -13,7 +14,7 @@ open class ViewController<AStateType: State>: UIViewController, Subscribing {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public init(store: Store<StateType>) {
+    public init(store: ChildStore<StateType, ParentStateType>) {
         self.store = store
 
         super.init(nibName: nil, bundle: nil)

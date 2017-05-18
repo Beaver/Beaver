@@ -2,7 +2,7 @@
 public protocol Presenting: Subscribing {
     var context: Context { get }
 
-    var store: Store<StateType> { get }
+    var store: ChildStore<StateType, ParentStateType> { get }
 }
 
 extension Presenting {

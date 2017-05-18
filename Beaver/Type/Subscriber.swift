@@ -51,11 +51,10 @@ extension Store.Subscriber: CustomDebugStringConvertible {
 public protocol Subscribing: class {
     associatedtype StateType: State
 
+    associatedtype ParentStateType: State
+
     /// Name automatically given to the store when subscribing
     var subscriptionName: String { get }
-
-    /// Should store be able to retain an instance of the subscribing class or not
-    var isSubscriptionWeak: Bool { get }
 
     func stateDidUpdate(oldState: StateType?,
                         newState: StateType,
@@ -67,42 +66,23 @@ extension Subscribing {
         return String(describing: type(of: self))
     }
 
-    public var isSubscriptionWeak: Bool {
-        return true
-    }
-    
     public typealias StateUpdateEvent = (_ oldState: StateType?,
                                          _ newState: StateType) -> ()
 
     /// Subscribes to a store.
-    public func subscribe(to store: Store<StateType>) {
-        if isSubscriptionWeak {
-            // Copy subscription name outside of self
-            let subscriptionName = self.subscriptionName
+    public func subscribe(to store: ChildStore<StateType, ParentStateType>) {
+        // Copy subscription name outside of self
+        let subscriptionName = self.subscriptionName
 
-            store.subscribe(name: subscriptionName) { [weak self] oldState, newState, completion in
-                if let weakSelf = self {
-                    weakSelf.stateDidUpdate(oldState: oldState,
-                                            newState: newState,
-                                            completion: completion)
-                } else {
-                    store.unsubscribe(subscriptionName)
-                }
-            }
-        } else {
-            store.subscribe(name: subscriptionName) { oldState, newState, completion in
-                self.stateDidUpdate(oldState: oldState,
-                                    newState: newState,
-                                    completion: completion)
+        store.subscribe(name: subscriptionName) { [weak self] oldState, newState, completion in
+            if let weakSelf = self {
+                weakSelf.stateDidUpdate(oldState: oldState,
+                                        newState: newState,
+                                        completion: completion)
+            } else {
+                store.unsubscribe(subscriptionName)
+                completion()
             }
         }
     }
 }
-
-#if os(iOS)
-extension Subscribing where Self: UIViewController {
-    public var isSubscriptionWeak: Bool {
-        return false
-    }
-}
-#endif

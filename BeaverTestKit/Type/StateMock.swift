@@ -11,3 +11,15 @@ public struct StateMock: State {
         return lhs.name == rhs.name
     }
 }
+
+public struct AppStateMock: State {
+    public var childState: StateMock?
+    
+    public init(childState: StateMock? = StateMock()) {
+        self.childState = childState
+    }
+    
+    public static func ==(lhs: AppStateMock, rhs: AppStateMock) -> Bool {
+        return lhs.childState == rhs.childState
+    }
+}

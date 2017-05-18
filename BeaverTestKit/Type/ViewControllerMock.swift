@@ -1,6 +1,6 @@
 import Beaver
 
-public final class ViewControllerStub<StateType: State>: ViewController<StateType> {
+public final class ViewControllerStub<StateType: State, ParentStateType: State>: ViewController<StateType, ParentStateType> {
     public private(set) var stateDidUpdateCallCount = 0
 
     public private(set) var source: ActionEnvelop?

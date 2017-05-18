@@ -103,7 +103,7 @@ extension Store {
     /// Dispatching interface
     ///
     /// It is retaining a reference on the store
-    public func dispatch(_ envelop: ActionEnvelop) {
+    func dispatch(_ envelop: ActionEnvelop) {
         // Lifecycle actions are not cancellable
         let cancellable = self.newCancellable()
 
@@ -123,7 +123,7 @@ extension Store {
 
 extension Store {
     /// Adds a new subscriber
-    public final func subscribe(_ subscriber: Subscriber) {
+    public func subscribe(_ subscriber: Subscriber) {
         subscribers[subscriber.name] = subscriber
 
         // Dispatching the state update permits to avoid infinite recursions when
@@ -138,12 +138,12 @@ extension Store {
     /// - Parameters:
     ///     - name: the subscriber's name
     ///     - stateDidUpdate: the subscriber state update handler
-    public final func subscribe(name: String, stateDidUpdate: @escaping Subscriber.StateDidUpdate) {
+    public func subscribe(name: String, stateDidUpdate: @escaping Subscriber.StateDidUpdate) {
         subscribe(Subscriber(name: name, stateDidUpdate: stateDidUpdate))
     }
 
     /// Removes a subscriber
-    public final func unsubscribe(_ name: String) {
+    public func unsubscribe(_ name: String) {
         subscribers.removeValue(forKey: name)
     }
 }
