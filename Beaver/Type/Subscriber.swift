@@ -1,5 +1,6 @@
 extension Store {
     /// An object observing state updates
+
     public struct Subscriber {
         /// Called when the store's state changed
         ///
@@ -21,6 +22,7 @@ extension Store {
             self.stateDidUpdate = stateDidUpdate
         }
     }
+
 }
 
 // MARK: - Equatable
@@ -56,6 +58,9 @@ public protocol Subscribing: class {
     /// Name automatically given to the store when subscribing
     var subscriptionName: String { get }
 
+    /// Should store be able to retain an instance of the subscribing class or not
+    var isSubscriptionWeak: Bool { get }
+
     func stateDidUpdate(oldState: StateType?,
                         newState: StateType,
                         completion: @escaping () -> ())
@@ -71,18 +76,43 @@ extension Subscribing {
 
     /// Subscribes to a store.
     public func subscribe(to store: ChildStore<StateType, ParentStateType>) {
-        // Copy subscription name outside of self
-        let subscriptionName = self.subscriptionName
+        if isSubscriptionWeak {
+            // Copy subscription name outside of self
+            let subscriptionName = self.subscriptionName
 
-        store.subscribe(name: subscriptionName) { [weak self] oldState, newState, completion in
-            if let weakSelf = self {
-                weakSelf.stateDidUpdate(oldState: oldState,
-                                        newState: newState,
-                                        completion: completion)
-            } else {
-                store.unsubscribe(subscriptionName)
-                completion()
+            store.subscribe(name: subscriptionName) { [weak self] oldState, newState, completion in
+                if let weakSelf = self {
+                    weakSelf.stateDidUpdate(oldState: oldState,
+                                            newState: newState,
+                                            completion: completion)
+                } else {
+                    store.unsubscribe(subscriptionName)
+                    completion()
+                }
+            }
+        } else {
+            store.subscribe(name: subscriptionName) { oldState, newState, completion in
+                self.stateDidUpdate(oldState: oldState,
+                                    newState: newState,
+                                    completion: completion)
             }
         }
+    }
+
+    // Unsubscribe from a store
+    public func unsubscribe(from store: ChildStore<StateType, ParentStateType>) {
+        store.unsubscribe(subscriptionName)
+    }
+}
+
+extension Subscribing where Self: Presenting {
+    public var isSubscriptionWeak: Bool {
+        return false
+    }
+}
+
+extension Subscribing where Self: UIViewController {
+    public var isSubscriptionWeak: Bool {
+        return true
     }
 }

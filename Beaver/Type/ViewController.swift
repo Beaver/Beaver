@@ -18,15 +18,23 @@ open class ViewController<AStateType: State, AParentStateType: State>: UIViewCon
         self.store = store
 
         super.init(nibName: nil, bundle: nil)
-
-        subscribe(to: self.store)
     }
 
     // MARK: - Lifecycle
-    
-    deinit {
-        store.unsubscribe(subscriptionName)
 
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        subscribe(to: store)
+    }
+
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        unsubscribe(from: store)
+    }
+
+    deinit {
 #if DEBUG
         print("[\(self)] --- DEINIT ---")
 #endif

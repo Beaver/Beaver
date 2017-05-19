@@ -19,4 +19,7 @@ public final class ContextMock: Context {
         presentedViews = []
         dismissedUntilViews = []
     }
+    
+    public init() {
+    }
 }
