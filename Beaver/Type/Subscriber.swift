@@ -59,8 +59,6 @@ extension Store.Subscriber: CustomDebugStringConvertible {
 public protocol Subscribing: class {
     associatedtype StateType: State
 
-    associatedtype ParentStateType: State
-
     /// Name automatically given to the store when subscribing
     var subscriptionName: String { get }
 
@@ -79,12 +77,15 @@ extension Subscribing {
 
     public typealias StateUpdateEvent = (_ oldState: StateType?,
                                          _ newState: StateType) -> ()
+}
 
+extension Subscribing where Self: Storing {
     /// Subscribes to a store.
-    public func subscribe(to store: ChildStore<StateType, ParentStateType>) {
+    public func subscribe() {
         if isSubscriptionWeak {
-            // Copy subscription name outside of self
+            // Copy subscription and store name outside of self
             let subscriptionName = self.subscriptionName
+            let store = self.store
 
             store.subscribe(name: subscriptionName) { [weak self] oldState, newState, completion in
                 if let weakSelf = self {
@@ -106,7 +107,40 @@ extension Subscribing {
     }
 
     // Unsubscribe from a store
-    public func unsubscribe(from store: ChildStore<StateType, ParentStateType>) {
+    public func unsubscribe() {
+        store.unsubscribe(subscriptionName)
+    }
+}
+
+extension Subscribing where Self: ChildStoring {
+    /// Subscribes to a store.
+    public func subscribe() {
+        if isSubscriptionWeak {
+            // Copy subscription name and store outside of self
+            let subscriptionName = self.subscriptionName
+            let store = self.store
+
+            store.subscribe(name: subscriptionName) { [weak self] oldState, newState, completion in
+                if let weakSelf = self {
+                    weakSelf.stateDidUpdate(oldState: oldState,
+                                            newState: newState,
+                                            completion: completion)
+                } else {
+                    store.unsubscribe(subscriptionName)
+                    completion()
+                }
+            }
+        } else {
+            store.subscribe(name: subscriptionName) { oldState, newState, completion in
+                self.stateDidUpdate(oldState: oldState,
+                                    newState: newState,
+                                    completion: completion)
+            }
+        }
+    }
+
+    // Unsubscribe from a store
+    public func unsubscribe() {
         store.unsubscribe(subscriptionName)
     }
 }

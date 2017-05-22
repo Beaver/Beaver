@@ -2,7 +2,7 @@
 
 import UIKit
 
-open class ViewController<AStateType: State, AParentStateType: State>: UIViewController, Subscribing {
+open class ViewController<AStateType: State, AParentStateType: State>: UIViewController, Subscribing, ChildStoring {
     public typealias StateType = AStateType
     public typealias ParentStateType = AParentStateType
 
@@ -25,13 +25,13 @@ open class ViewController<AStateType: State, AParentStateType: State>: UIViewCon
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        subscribe(to: store)
+        subscribe()
     }
 
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        unsubscribe(from: store)
+        unsubscribe()
     }
 
     deinit {

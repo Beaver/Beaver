@@ -4,11 +4,26 @@ import BeaverTestKit
 
 @testable import Beaver
 
-fileprivate final class WeakSubscribing: Subscribing {
+fileprivate func childStore() -> ChildStore<StateMock, AppStateMock> {
+    let stateMock = AppStateMock()
+    let reducerMock = ReducerMock<AppStateMock>(newStateStub: stateMock)
+    let store = Store<AppStateMock>(initialState: stateMock, reducer: reducerMock.base)
+    return ChildStore<StateMock, AppStateMock>(store: store) { (appState: AppStateMock) -> StateMock? in
+        return appState.childState
+    }
+}
+
+fileprivate final class WeakSubscribing: Subscribing, ChildStoring {
     typealias StateType = StateMock
     typealias ParentStateType = AppStateMock
+    
+    let store: ChildStore<StateMock, AppStateMock>
 
     private(set) var stateDidUpdateCallCount = 0
+    
+    init(store: ChildStore<StateMock, AppStateMock> = childStore()) {
+        self.store = store
+    }
 
     func stateDidUpdate(oldState: StateMock?,
                         newState: StateMock,
@@ -20,9 +35,15 @@ fileprivate final class WeakSubscribing: Subscribing {
     let isSubscriptionWeak: Bool = true
 }
 
-fileprivate final class StrongSubscribing: Subscribing {
+fileprivate final class StrongSubscribing: Subscribing, ChildStoring {
     typealias StateType = StateMock
     typealias ParentStateType = AppStateMock
+
+    let store: ChildStore<StateMock, AppStateMock>
+
+    init(store: ChildStore<StateMock, AppStateMock> = childStore()) {
+        self.store = store
+    }
 
     func stateDidUpdate(oldState: StateMock?,
                         newState: StateMock,
@@ -33,9 +54,21 @@ fileprivate final class StrongSubscribing: Subscribing {
     let isSubscriptionWeak: Bool = false
 }
 
-fileprivate final class ViewControllerSubscribing: UIViewController, Subscribing {
+fileprivate final class ViewControllerSubscribing: UIViewController, Subscribing, ChildStoring {
     typealias StateType = StateMock
     typealias ParentStateType = AppStateMock
+
+    let store: ChildStore<StateMock, AppStateMock>
+
+    init(store: ChildStore<StateMock, AppStateMock> = childStore()) {
+        self.store = store
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     func stateDidUpdate(oldState: StateMock?,
                         newState: StateMock,
@@ -44,7 +77,7 @@ fileprivate final class ViewControllerSubscribing: UIViewController, Subscribing
     }
 }
 
-fileprivate final class PresenterSubscribing: Presenting, Subscribing {
+fileprivate final class PresenterSubscribing: Presenting, Subscribing, ChildStoring {
     typealias StateType = StateMock
     typealias ParentStateType = AppStateMock
 
@@ -74,14 +107,6 @@ final class SubscriberSpec: QuickSpec {
 
     override func spec() {
         describe("Subscribing") {
-            func childStore() -> ChildStore<StateMock, AppStateMock> {
-                let stateMock = AppStateMock()
-                let reducerMock = ReducerMock<AppStateMock>(newStateStub: stateMock)
-                let store = Store<AppStateMock>(initialState: stateMock, reducer: reducerMock.base)
-                return ChildStore<StateMock, AppStateMock>(store: store) { (appState: AppStateMock) -> StateMock? in
-                    return appState.childState
-                }
-            }
             
             describe("Weak implementation") {
                 var defaultSubscribing: WeakSubscribing!
@@ -99,7 +124,7 @@ final class SubscriberSpec: QuickSpec {
                         self.lazyWeakSubscribing = defaultSubscribing
 
    
-                        defaultSubscribing.subscribe(to: childStore())
+                        defaultSubscribing.subscribe()
 
                         expect(self.lazyWeakSubscribing).notTo(beNil())
 
@@ -121,7 +146,7 @@ final class SubscriberSpec: QuickSpec {
                     it("should create a strong bound between the subscriber and the store") {
                         self.lazyStrongSubscribing = strongSubscribing
 
-                        strongSubscribing.subscribe(to: childStore())
+                        strongSubscribing.subscribe()
 
                         expect(self.lazyStrongSubscribing).notTo(beNil())
 
