@@ -1,3 +1,9 @@
+#if os(iOS)
+
+import UIKit
+
+#endif
+
 extension Store {
     /// An object observing state updates
 
@@ -111,8 +117,12 @@ extension Subscribing where Self: Presenting {
     }
 }
 
+#if os(iOS)
+
 extension Subscribing where Self: UIViewController {
     public var isSubscriptionWeak: Bool {
         return true
     }
 }
+
+#endif
