@@ -3,7 +3,11 @@ import Beaver
 public struct StateMock: State {
     public var name: String
 
-    public init(name: String = "SuccessStateMock") {
+    public init() {
+        self.name = "SuccessStateMock"
+    }
+
+    public init(name: String) {
         self.name = name
     }
 
@@ -15,7 +19,11 @@ public struct StateMock: State {
 public struct AppStateMock: State {
     public var childState: StateMock?
     
-    public init(childState: StateMock? = StateMock()) {
+    public init() {
+        self.childState = StateMock()
+    }
+
+    public init(childState: StateMock?) {
         self.childState = childState
     }
     
