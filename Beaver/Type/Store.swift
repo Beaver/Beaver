@@ -174,3 +174,9 @@ fileprivate extension Store {
         return actionCancellable
     }
 }
+
+public protocol Storing {
+    associatedtype StateType: State
+
+    var store: Store<StateType> { get }
+}

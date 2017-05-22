@@ -58,3 +58,10 @@ extension ChildStore {
     }
 }
 
+public protocol ChildStoring {
+    associatedtype StateType: State
+
+    associatedtype ParentStateType: State
+
+    var store: ChildStore<StateType, ParentStateType> { get }
+}
