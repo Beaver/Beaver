@@ -34,25 +34,4 @@ extension Reducing {
             return self.handle(envelop: envelop, state: state, completion: completion)
         }
     }
-
-    /// Creates a new store
-    public func createStore(initialState: StateType,
-                            middleWares: [Store<StateType>.Middleware]) -> Store<StateType> {
-        return Store<StateType>(initialState: initialState,
-                                middlewares: middleWares,
-                                reducer: reducer)
-    }
-}
-
-extension Reducing where Self: Subscribing {
-    /// Creates a new store and subscribes before returning
-    public func createStore(initialState: StateType,
-                            middleWares: [Store<StateType>.Middleware]) -> Store<StateType> {
-        let store = Store<StateType>(initialState: initialState,
-                                      middlewares: middleWares,
-                                     reducer: reducer)
-        store.subscribe(name: subscriptionName,
-                        stateDidUpdate: stateDidUpdate)
-        return store
-    }
 }
