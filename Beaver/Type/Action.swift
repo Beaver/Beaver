@@ -11,7 +11,7 @@ public struct ActionEnvelop {
         case authorized(to: Set<String>)
     }
 
-    public let action: Action
+    public var action: Action
 
     /// Emitter name
     public let emitter: String
@@ -35,6 +35,12 @@ public struct ActionEnvelop {
         self.action = action
         self.recipients = recipients
         self.debugInfo = (file: file, function: function, line: line)
+    }
+
+    public func update(action: Action) -> ActionEnvelop {
+        var envelop = self
+        envelop.action = action
+        return envelop
     }
 }
 
