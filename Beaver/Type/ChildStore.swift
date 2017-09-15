@@ -12,6 +12,18 @@ public final class ChildStore<StateType: State, ParentStateType: State> {
     }
 }
 
+// MARK: - State
+
+extension ChildStore {
+    public var state: StateType {
+        guard let extractedState = extract(store.state) else {
+            fatalError("Could not extract state from parentState")
+        }
+        
+        return extractedState
+    }
+}
+
 // MARK: - Dispatching
 
 extension ChildStore {
