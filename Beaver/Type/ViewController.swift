@@ -63,7 +63,7 @@ open class ViewController<AStateType: State, AParentStateType: State>: UIViewCon
         store.dispatch(ActionEnvelop(
                 emitter: subscriptionName,
                 action: action,
-                recipients: .allExcludingEmitter,
+                recipients: .all,
                 file: file,
                 function: function,
                 line: line))
