@@ -63,9 +63,17 @@ open class ViewController<AStateType: State, AParentStateType: State>: UIViewCon
         store.dispatch(ActionEnvelop(
                 emitter: subscriptionName,
                 action: action,
+                recipients: .allExcludingEmitter,
                 file: file,
                 function: function,
                 line: line))
+    }
+    
+    // MARK: - State
+    
+    /// Retrive the state from the store
+    public var state: StateType {
+        return store.state
     }
 }
 
