@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.authors      = { "Theophane Rupin" => "theophane.rupin@gmail.com" }
   s.source       = { :git => "https://github.com/trupin/Beaver.git", :tag => "#{s.version}" }
 
-  s.ios.deployment_target = "8.0"
+  s.ios.deployment_target = "9.0"
 
   s.source_files = "BeaverTestKit/**/*.swift"
 

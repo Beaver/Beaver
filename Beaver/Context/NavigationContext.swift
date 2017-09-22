@@ -13,7 +13,7 @@ public final class NavigationContext: Context {
 
     private var navigationControllerFactory: NavigationControllerFactory!
 
-    fileprivate static func navigationControllerFactory(_ rootViewController: UIViewController) -> UINavigationController {
+    public static func navigationControllerFactory(_ rootViewController: UIViewController) -> UINavigationController {
         return UINavigationController(rootViewController: rootViewController)
     }
 
