@@ -15,7 +15,7 @@ PODS:
 
 DEPENDENCIES:
   - Nimble
-  - PromiseKit
+  - PromiseKit (~> 4.4)
   - Quick
 
 SPEC CHECKSUMS:
@@ -23,6 +23,6 @@ SPEC CHECKSUMS:
   PromiseKit: ecf5fe92275d57ee77c9ede858af47a162e9b97e
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
 
-PODFILE CHECKSUM: 587ecfdc817f0ea2c964f4dac9c7dc9edf16a21e
+PODFILE CHECKSUM: a0e2e7cd83f1f8da5ca4d0a8aab03a1de5db3e4f
 
 COCOAPODS: 1.3.1
