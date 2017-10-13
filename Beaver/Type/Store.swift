@@ -42,6 +42,8 @@ public final class Store<StateType: State> {
 
         middleware.run(envelop, (oldState: oldState, newState: newState))
 
+        // TODO: Use an ordered set to iterate through the subscribers.
+        //       We want this to be deterministic!!!
         for subscriber in subscribers.values {
             switch envelop.recipients {
             case .emitter:
