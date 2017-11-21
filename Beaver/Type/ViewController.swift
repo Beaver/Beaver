@@ -2,9 +2,10 @@
 
 import UIKit
 
-open class ViewController<AStateType: State, AParentStateType: State>: UIViewController, Subscribing, ChildStoring {
+open class ViewController<AStateType: State, AParentStateType: State, AUIActionType: Action>: UIViewController, Subscribing, ChildStoring {
     public typealias StateType = AStateType
     public typealias ParentStateType = AParentStateType
+    public typealias UIActionType = AUIActionType
 
     public let store: ChildStore<StateType, ParentStateType>
 
@@ -56,19 +57,21 @@ open class ViewController<AStateType: State, AParentStateType: State>: UIViewCon
     ///    - silent: if true, the `didStartLoading(silent:)` and `didFinishLoading(state:silent:)` will be called with
     ///              the parameter `silent` set to `true`
     ///    - debugInfo: a tuple containing the file, function and line from where the action has been dispatched
-    open func dispatch(action: Action,
+    open func dispatch(action: UIActionType,
                        file: String = #file,
                        function: String = #function,
                        line: Int = #line) {
-        store.dispatch(ActionEnvelop(
-                emitter: subscriptionName,
-                action: action,
-                recipients: .all,
-                file: file,
-                function: function,
-                line: line))
+        let envelop = ActionEnvelop(
+            emitter: subscriptionName,
+            action: action,
+            recipients: .all,
+            file: file,
+            function: function,
+            line: line
+        )
+        store.dispatch(envelop)
     }
-    
+
     // MARK: - State
     
     /// Retrive the state from the store

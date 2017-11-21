@@ -12,7 +12,7 @@ final class ViewControllerSpec: QuickSpec {
             var reducerMock: ReducerMock<AppStateMock>!
             var storeStub: StoreStub<AppStateMock>!
 
-            var controllerStub: ViewControllerStub<StateMock, AppStateMock>!
+            var controllerStub: ViewControllerStub<StateMock, AppStateMock, ActionMock>!
 
             beforeEach {
                 initialStateMock = AppStateMock(childState: StateMock(name: "initial state"))
