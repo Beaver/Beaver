@@ -56,3 +56,19 @@ extension ActionEnvelop: CustomDebugStringConvertible {
                 "        Line:     \(debugInfo.line)"
     }
 }
+
+public enum ExhaustiveAction<RoutingAction: Beaver.Action, UIAction: Beaver.Action> {
+    case routing(RoutingAction)
+    case ui(UIAction)
+    
+    init(_ action: Beaver.Action) {
+        if let action = action as? RoutingAction {
+            self = .routing(action)
+        } else if let action = action as? UIAction {
+            self = .ui(action)
+        } else {
+            fatalError("'action' expected to be either of type \(RoutingAction.self) or \(UIAction.self), but was \(action.self).")
+        }
+    }
+}
+

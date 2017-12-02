@@ -37,15 +37,17 @@ extension Reducing {
 }
 
 public protocol ChildReducing: Reducing {
-    associatedtype ActionType
+    associatedtype ActionType: Action
     
-    func handle(action: ActionType, state: StateType, completion: @escaping (StateType) -> ()) -> StateType
+    func handle(action: ActionType,
+                state: StateType,
+                completion: @escaping (StateType) -> ()) -> StateType
 }
 
 extension ChildReducing {
     public func handle(envelop: ActionEnvelop, state: StateType, completion: @escaping (StateType) -> ()) -> StateType {
         guard let action = envelop.action as? ActionType else {
-            fatalError("Inconsistant action type")
+            fatalError("action in envelop was expected to be of type: \(ActionType.self) but was: \(envelop.action.self)")
         }
         return handle(action: action, state: state, completion: completion)
     }
