@@ -35,7 +35,7 @@ Let's see what an App built with Beaver is made of:
 
 - The **App Presenter** subscribes to the app store and presents the modules based on the current app state.
 
-And what is a module is made of:
+What is a module made of?
 
 - The **State** is a subset of the app state. It is the data structure of the module. 
 
@@ -49,7 +49,8 @@ And what is a module is made of:
 
 - The **ViewController** subscribes to the child store state and builds the views based on the current state. It dispatches ui actions and lifecycle events.
 
-Beaver's architecture implements the *unidirectional data flow*. The flow begins with a ui event, which is dispatched to the store. The store asks a state update to the reducer. The reducer applies the application's business logic based on the current state and the received event. The store updates the state, and propagates it thoughout the application, implying ui presentations and ui updates.
+Beaver's architecture implements a strict **unidirectional data flow**. The flow begins with a ui event, which is dispatched to the store. The store asks a state update to the reducer. The reducer applies the application's business logic based on the current state and the received event. The store updates the state, and propagates it throughout the application, implying ui presentations and ui updates.
+
 
 # Project structure
 
