@@ -61,7 +61,7 @@ public enum ExhaustiveAction<RoutingAction: Beaver.Action, UIAction: Beaver.Acti
     case routing(RoutingAction)
     case ui(UIAction)
     
-    init(_ action: Beaver.Action) {
+    public init(_ action: Beaver.Action) {
         if let action = action as? RoutingAction {
             self = .routing(action)
         } else if let action = action as? UIAction {

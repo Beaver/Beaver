@@ -37,7 +37,7 @@ extension Reducing {
 }
 
 public protocol ChildReducing: Reducing {
-    associatedtype ActionType: Action
+    associatedtype ActionType
     
     func handle(action: ActionType,
                 state: StateType,
