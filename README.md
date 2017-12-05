@@ -128,19 +128,18 @@ The next step is to write our reducer. It will build the state with the data we 
 
 ```swift
 public struct HomeReducer: Beaver.ChildReducing {
-    public typealias RoutingActionType = HomeRoutingAction
-    public typealias UIActionType = HomeUIAction
+    public typealias ActionType = HomeAction
     public typealias StateType = HomeState
 
     public init() {
     }
 
-    public func handle(action: ExhaustiveAction<HomeRoutingAction, HomeUIAction>,
+    public func handle(action: HomeAction,
                        state: HomeState,
                        completion: @escaping (HomeState) -> ()) -> HomeState {
         var newState = state
 
-        switch action {
+        switch ExhaustiveAction<HomeRoutingAction, HomeUIAction>(action) {
         case .routing(.start):
             newState.movies = (0...10).map { "Movie \($0)" }
             
@@ -298,12 +297,12 @@ public struct HomeState: Beaver.State {
 Now, let's make our reducer build this new state when receiving the `.didTapOnMovieCell(title:)` action.
 
 ```swift
-public func handle(action: ExhaustiveAction<HomeRoutingAction, HomeUIAction>,
+public func handle(action: HomeAction,
                    state: HomeState,
                    completion: @escaping (HomeState) -> ()) -> HomeState {
     var newState = state
 
-    switch action {
+    switch ExhaustiveAction<HomeRoutingAction, HomeUIAction>(action) {
     case .routing(.start):
         newState.movies = (0...10).map { "Movie \($0)" }
         
