@@ -432,3 +432,9 @@ You can install Beaver via Carthage by adding the following line to your `Cartfi
 ```
 github "Beaver/Beaver"
 ```
+
+### TODO
+
+- [ ] Auto generate the tests.
+- [ ] Pass down a callback when dispatching in order to be aware of when the action has been entirely processed.
+- [ ] Find out how to share a state between modules without breaking modules' encapsulation.
