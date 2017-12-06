@@ -51,7 +51,7 @@ What is a module made of?
 
 ## Unidirectional data flow 
 
-Beaver's architecture implements a strict **unidirectional data flow**. The flow begins with a ui action, which is dispatched to the store by the view controller. The store asks a state update to the reducer. The reducer applies the application's business logic based on the current state and the received action. The store updates the state, and propagates it throughout the application to refresh the views, or to give the presenters the opportunity to dispatch a routing action. If that's the case, the store asks a state update for this routing action to the reducer, and propagates the new state throughout the application, causing the concerned presenters to present a view.
+Beaver's architecture implements a strict [unidirectional data flow](https://redux.js.org/docs/basics/DataFlow.html). The flow begins with a ui action, which is dispatched to the store by the view controller. The store asks a state update to the reducer. The reducer applies the application's business logic based on the current state and the received action. The store updates the state, and propagates it throughout the application to refresh the views, or to give the presenters the opportunity to dispatch a routing action. If that's the case, the store asks a state update for this routing action to the reducer, and propagates the new state throughout the application, causing the concerned presenters to present a view.
 
 ![Unidirection Data Flow](./Documentation/UnidirectionalDataFlow.png)
 
