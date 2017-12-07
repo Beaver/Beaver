@@ -9,13 +9,15 @@ extension Presenting where Self: ChildStoring {
                          recipients: ActionEnvelop.Recipients = .allExcludingEmitter,
                          file: String = #file,
                          function: String = #function,
-                         line: Int = #line) {
+                         line: Int = #line,
+                         completion: @escaping () -> Void) {
         store.dispatch(ActionEnvelop(emitter: subscriptionName,
                                      action: action,
                                      recipients: recipients,
                                      file: file,
                                      function: function,
-                                     line: line))
+                                     line: line),
+                       completion: completion)
     }
 }
 
@@ -25,12 +27,14 @@ extension Presenting where Self: Reducing, Self: ChildStoring {
                          recipients: ActionEnvelop.Recipients = .allExcludingEmitter,
                          file: String = #file,
                          function: String = #function,
-                         line: Int = #line) {
+                         line: Int = #line,
+                         completion: @escaping () -> Void) {
         dispatch(action,
                  recipients: recipients,
                  file: file,
                  function: function,
-                 line: line)
+                 line: line,
+                 completion: completion)
     }
 }
 
@@ -40,13 +44,15 @@ extension Presenting where Self: Storing {
                          recipients: ActionEnvelop.Recipients = .allExcludingEmitter,
                          file: String = #file,
                          function: String = #function,
-                         line: Int = #line) {
+                         line: Int = #line,
+                         completion: @escaping () -> Void) {
         store.dispatch(ActionEnvelop(emitter: subscriptionName,
                                      action: action,
                                      recipients: recipients,
                                      file: file,
                                      function: function,
-                                     line: line))
+                                     line: line),
+                       completion: completion)
     }
 }
 
@@ -56,11 +62,13 @@ extension Presenting where Self: Reducing, Self: Storing {
                          recipients: ActionEnvelop.Recipients = .allExcludingEmitter,
                          file: String = #file,
                          function: String = #function,
-                         line: Int = #line) {
+                         line: Int = #line,
+                         completion: @escaping () -> Void) {
         dispatch(action,
                  recipients: recipients,
                  file: file,
                  function: function,
-                 line: line)
+                 line: line,
+                 completion: completion)
     }
 }

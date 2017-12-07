@@ -15,6 +15,8 @@ final class StoreSpec: QuickSpec {
         var store: Store<StateMock>!
 
         var middlewareMock: MiddlewareMock<StateMock>!
+        
+        var completionCallCount = 0
 
         beforeEach {
             initialState = StateMock(name: "initial state")
@@ -27,6 +29,8 @@ final class StoreSpec: QuickSpec {
             store = Store<StateMock>(initialState: initialState,
                                       middlewares: [middlewareMock.base, middlewareMock.base],
                                       reducer: reducerMock.base)
+            
+            completionCallCount = 0
         }
 
         describe("Store<ActionMock>") {
@@ -46,9 +50,7 @@ final class StoreSpec: QuickSpec {
                         expect(subscriberOne.oldState).toEventually(beNil())
                         expect(subscriberOne.newState).toEventually(equal(initialState))
 
-                        expect(middlewareMock.actions.flatMap {
-                            $0
-                        }).toEventually(beEmpty())
+                        expect(middlewareMock.actions.flatMap { $0 }).toEventually(beEmpty())
                         expect(middlewareMock.stateUpdates[1]?.oldState).toEventually(beNil())
                         expect(middlewareMock.stateUpdates[1]?.newState).toEventually(equal(initialState))
                         expect(middlewareMock.callCount).toEventually(equal(2))
@@ -57,7 +59,9 @@ final class StoreSpec: QuickSpec {
                     it("should call subscriber one when dispatching an action") {
                         let action = ActionMock()
 
-                        store.dispatch(ActionEnvelop(emitter: "emitter", action: action))
+                        store.dispatch(ActionEnvelop(emitter: "emitter", action: action)) { completionCallCount += 1 }
+
+                        expect(completionCallCount).toEventually(equal(1))
 
                         expect(reducerMock.callCount).toEventually(equal(1))
                         expect(subscriberOne.callCount).toEventually(equal(2))
@@ -89,8 +93,10 @@ final class StoreSpec: QuickSpec {
                         it("should not call subscriber one when dispatching an action") {
                             let action = ActionMock()
 
-                            store.dispatch(ActionEnvelop(emitter: "emitter", action: action))
-
+                            store.dispatch(ActionEnvelop(emitter: "emitter", action: action)) { completionCallCount += 1 }
+                            
+                            expect(completionCallCount).toEventually(equal(1))
+                            
                             expect(reducerMock.callCount).toEventually(equal(1))
                             expect(subscriberOne.callCount).toEventually(equal(1))
                             expect(subscriberOne.oldState).toEventually(beNil())
@@ -124,7 +130,9 @@ final class StoreSpec: QuickSpec {
                                 it("should call subscriber one when dispatching, not subscriber two") {
                                     let action = ActionMock()
 
-                                    store.dispatch(ActionEnvelop(emitter: "emitter", action: action, recipients: destScope))
+                                    store.dispatch(ActionEnvelop(emitter: "emitter", action: action, recipients: destScope)) { completionCallCount += 1 }
+
+                                    expect(completionCallCount).toEventually(equal(1))
 
                                     expect(reducerMock.callCount).toEventually(equal(1))
 
@@ -153,7 +161,9 @@ final class StoreSpec: QuickSpec {
                                 it("should call both subscribers") {
                                     let action = ActionMock()
 
-                                    store.dispatch(ActionEnvelop(emitter: "emitter", action: action, recipients: destScope))
+                                    store.dispatch(ActionEnvelop(emitter: "emitter", action: action, recipients: destScope)) { completionCallCount += 1 }
+
+                                    expect(completionCallCount).toEventually(equal(1))
 
                                     expect(reducerMock.callCount).toEventually(equal(1))
 
@@ -188,7 +198,7 @@ final class StoreSpec: QuickSpec {
                                 it("should call both subscribers") {
                                     let action = ActionMock()
 
-                                    store.dispatch(ActionEnvelop(emitter: subscriberTwo.name, action: action, recipients: destScope))
+                                    store.dispatch(ActionEnvelop(emitter: subscriberTwo.name, action: action, recipients: destScope)) { completionCallCount += 1 }
 
                                     expect(reducerMock.callCount).toEventually(equal(1))
 
@@ -223,7 +233,9 @@ final class StoreSpec: QuickSpec {
                                 it("should call both subscribers") {
                                     let action = ActionMock()
 
-                                    store.dispatch(ActionEnvelop(emitter: subscriberOne.name, action: action, recipients: destScope))
+                                    store.dispatch(ActionEnvelop(emitter: subscriberOne.name, action: action, recipients: destScope)) { completionCallCount += 1 }
+
+                                    expect(reducerMock.callCount).toEventually(equal(1))
 
                                     expect(reducerMock.callCount).toEventually(equal(1))
 
@@ -258,7 +270,9 @@ final class StoreSpec: QuickSpec {
                                 it("should call both subscribers") {
                                     let action = ActionMock()
                                     
-                                    store.dispatch(ActionEnvelop(emitter: "emitter", action: action, recipients: destScope))
+                                    store.dispatch(ActionEnvelop(emitter: "emitter", action: action, recipients: destScope)) { completionCallCount += 1 }
+                                    
+                                    expect(reducerMock.callCount).toEventually(equal(1))
                                     
                                     expect(reducerMock.callCount).toEventually(equal(1))
                                     
@@ -304,8 +318,10 @@ final class StoreSpec: QuickSpec {
                     it("should call subscriber one synchronously and asynchronously when dispatching an action") {
                         let action = ActionMock()
 
-                        store.dispatch(ActionEnvelop(emitter: "emitter", action: action))
+                        store.dispatch(ActionEnvelop(emitter: "emitter", action: action)) { completionCallCount += 1 }
 
+                        expect(reducerMock.callCount).toEventually(equal(1))
+                        
                         expect(reducerMock.callCount).toEventually(equal(1))
                         expect(subscriberOne.callCount).toEventually(equal(3))
                         expect(subscriberOne.oldState).toEventually(equal(newState))

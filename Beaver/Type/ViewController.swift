@@ -60,7 +60,8 @@ open class ViewController<AStateType: State, AParentStateType: State, AUIActionT
     open func dispatch(action: UIActionType,
                        file: String = #file,
                        function: String = #function,
-                       line: Int = #line) {
+                       line: Int = #line,
+                       completion: @escaping () -> Void) {
         let envelop = ActionEnvelop(
             emitter: subscriptionName,
             action: action,
@@ -69,7 +70,7 @@ open class ViewController<AStateType: State, AParentStateType: State, AUIActionT
             function: function,
             line: line
         )
-        store.dispatch(envelop)
+        store.dispatch(envelop, completion: completion)
     }
 
     // MARK: - State

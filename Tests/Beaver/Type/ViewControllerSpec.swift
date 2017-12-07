@@ -29,13 +29,15 @@ final class ViewControllerSpec: QuickSpec {
 
             describe("dispatch(action:debugInfo:") {
                 it("should dispatch an action envelop with debug info") {
-                    controllerStub.dispatch(action: ActionMock())
+                    var didCallCompletion = false
+                    controllerStub.dispatch(action: ActionMock()) { didCallCompletion = true }
 
                     expect(reducerMock.envelop?.debugInfo.function).notTo(beEmpty())
                     expect(reducerMock.envelop?.debugInfo.file).notTo(beEmpty())
                     expect(reducerMock.envelop?.debugInfo.line).notTo(equal(0))
                     expect(reducerMock.callCount) == 1
                     expect(reducerMock.envelop?.action as? ActionMock) == ActionMock()
+                    expect(didCallCompletion).toEventually(beTrue())
                 }
             }
         }

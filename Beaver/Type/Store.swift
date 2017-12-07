@@ -32,8 +32,9 @@ public final class Store<StateType: State> {
     /// Current state
     fileprivate(set) public var state: StateType
 
-    fileprivate func setState(_ newState: StateType, for envelop: ActionEnvelop) {
+    fileprivate func setState(_ newState: StateType, for envelop: ActionEnvelop, completion: @escaping () -> Void) {
         if state == newState {
+            completion()
             return
         }
 
@@ -42,27 +43,36 @@ public final class Store<StateType: State> {
 
         middleware.run(envelop, (oldState: oldState, newState: newState))
 
+        var pendingStateUpdateCompletions = subscribers.count
+        let stateDidUpdateCompletion = {
+            pendingStateUpdateCompletions -= 1
+            if pendingStateUpdateCompletions == 0 {
+                completion()
+            }
+        }
+        
         for subscriber in subscribers {
             switch envelop.recipients {
             case .emitter:
                 if subscriber.name != envelop.emitter {
+                    stateDidUpdateCompletion()
                     continue
                 }
             case .allExcludingEmitter:
                 if subscriber.name == envelop.emitter {
+                    stateDidUpdateCompletion()
                     continue
                 }
             case .authorized(to: let names):
                 if !names.contains(subscriber.name) {
+                    stateDidUpdateCompletion()
                     continue
                 }
             default:
                 break
             }
 
-            subscriber.stateDidUpdate(oldState, newState) {
-                // do nothing
-            }
+            subscriber.stateDidUpdate(oldState, newState, stateDidUpdateCompletion)
         }
     }
 
@@ -103,19 +113,29 @@ extension Store {
     /// Dispatching interface
     ///
     /// It is retaining a reference on the store
-    func dispatch(_ envelop: ActionEnvelop) {
+    func dispatch(_ envelop: ActionEnvelop, completion: @escaping () -> Void) {
         // Lifecycle actions are not cancellable
         let cancellable = self.newCancellable()
 
         self.middleware.run(envelop, nil)
 
+        var pendingStateUpdateCompletions = 2
+        let stateUpdateCompletion = {
+            pendingStateUpdateCompletions -= 1
+            if pendingStateUpdateCompletions == 0 {
+                completion()
+            }
+        }
+        
         let newState = self.reducer(envelop, self.state) { newState in
             if !cancellable.isCancelled {
-                self.setState(newState, for: envelop)
+                self.setState(newState, for: envelop, completion: stateUpdateCompletion)
+            } else {
+                stateUpdateCompletion()
             }
         }
 
-        self.setState(newState, for: envelop)
+        self.setState(newState, for: envelop, completion: stateUpdateCompletion)
     }
 }
 

@@ -27,8 +27,8 @@ extension ChildStore {
 // MARK: - Dispatching
 
 extension ChildStore {
-    public func dispatch(_ envelop: ActionEnvelop) {
-        store.dispatch(envelop)
+    public func dispatch(_ envelop: ActionEnvelop, completion: @escaping () -> Void) {
+        store.dispatch(envelop, completion: completion)
     }
 }
 
