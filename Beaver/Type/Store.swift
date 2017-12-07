@@ -113,7 +113,7 @@ extension Store {
     /// Dispatching interface
     ///
     /// It is retaining a reference on the store
-    func dispatch(_ envelop: ActionEnvelop, completion: @escaping () -> Void) {
+    func dispatch(_ envelop: ActionEnvelop, completion: (() -> Void)? = nil) {
         // Lifecycle actions are not cancellable
         let cancellable = self.newCancellable()
 
@@ -123,7 +123,7 @@ extension Store {
         let stateUpdateCompletion = {
             pendingStateUpdateCompletions -= 1
             if pendingStateUpdateCompletions == 0 {
-                completion()
+                completion?()
             }
         }
         

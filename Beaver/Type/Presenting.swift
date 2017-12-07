@@ -10,7 +10,7 @@ extension Presenting where Self: ChildStoring {
                          file: String = #file,
                          function: String = #function,
                          line: Int = #line,
-                         completion: @escaping () -> Void) {
+                         completion: (() -> Void)? = nil) {
         store.dispatch(ActionEnvelop(emitter: subscriptionName,
                                      action: action,
                                      recipients: recipients,
@@ -28,7 +28,7 @@ extension Presenting where Self: Reducing, Self: ChildStoring {
                          file: String = #file,
                          function: String = #function,
                          line: Int = #line,
-                         completion: @escaping () -> Void) {
+                         completion: (() -> Void)? = nil) {
         dispatch(action,
                  recipients: recipients,
                  file: file,
@@ -45,7 +45,7 @@ extension Presenting where Self: Storing {
                          file: String = #file,
                          function: String = #function,
                          line: Int = #line,
-                         completion: @escaping () -> Void) {
+                         completion: (() -> Void)? = nil) {
         store.dispatch(ActionEnvelop(emitter: subscriptionName,
                                      action: action,
                                      recipients: recipients,
@@ -63,7 +63,7 @@ extension Presenting where Self: Reducing, Self: Storing {
                          file: String = #file,
                          function: String = #function,
                          line: Int = #line,
-                         completion: @escaping () -> Void) {
+                         completion: (() -> Void)? = nil) {
         dispatch(action,
                  recipients: recipients,
                  file: file,
