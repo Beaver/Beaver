@@ -16,7 +16,7 @@ public final class Store<StateType: State> {
 
     /// Responsible of applying side effects for a given action or a state update
     public struct Middleware {
-        public typealias Run = (_ action: ActionEnvelop?,
+        public typealias Run = (_ action: ActionEnvelop?, 
             _ stateUpdate: (oldState: StateType?, newState: StateType)?) -> Void
 
         public let name: String
@@ -42,9 +42,7 @@ public final class Store<StateType: State> {
 
         middleware.run(envelop, (oldState: oldState, newState: newState))
 
-        // TODO: Use an ordered set to iterate through the subscribers.
-        //       We want this to be deterministic!!!
-        for subscriber in subscribers.values {
+        for subscriber in subscribers {
             switch envelop.recipients {
             case .emitter:
                 if subscriber.name != envelop.emitter {
@@ -70,7 +68,7 @@ public final class Store<StateType: State> {
 
     fileprivate let reducer: Reducer
 
-    fileprivate(set) public var subscribers = [String: Subscriber]()
+    fileprivate(set) public var subscribers = [Subscriber]()
 
     fileprivate var middleware: Middleware {
         return Middleware.composite(middlewares)
@@ -126,7 +124,7 @@ extension Store {
 extension Store {
     /// Adds a new subscriber
     public func subscribe(_ subscriber: Subscriber) {
-        subscribers[subscriber.name] = subscriber
+        subscribers.append(subscriber)
 
         // Dispatching the state update permits to avoid infinite recursions when
         // the `stateDidUpdate` method implementation refers the store
@@ -146,7 +144,10 @@ extension Store {
 
     /// Removes a subscriber
     public func unsubscribe(_ name: String) {
-        subscribers.removeValue(forKey: name)
+        guard let index = subscribers.index(where: { $0.name == name }) else {
+            return
+        }
+        subscribers.remove(at: index)
     }
 }
 
@@ -154,7 +155,7 @@ extension Store {
 
 extension Store: CustomDebugStringConvertible {
     public var debugDescription: String {
-        return "\(self) - subscribers: [\(subscribers.map { $0.value.debugDescription })]"
+        return "\(self) - subscribers: [\(subscribers.map { $0.debugDescription })]"
     }
 }
 
