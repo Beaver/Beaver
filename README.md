@@ -57,7 +57,7 @@ Beaver's architecture implements a strict [unidirectional data flow](https://red
 
 # Project structure
 
-A freshly generated Beaver project is structure like so:
+A fresh Beaver project is structured like so:
 ```bash
 $ tree
 NewProject/
