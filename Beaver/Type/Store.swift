@@ -46,9 +46,14 @@ public final class Store<StateType: State> {
         var pendingStateUpdateCompletions = subscribers.count
         let stateDidUpdateCompletion = {
             pendingStateUpdateCompletions -= 1
-            if pendingStateUpdateCompletions == 0 {
+            if pendingStateUpdateCompletions <= 0 {
                 completion()
             }
+        }
+        
+        guard subscribers.count > 0 else {
+            stateDidUpdateCompletion()
+            return
         }
         
         for subscriber in subscribers {

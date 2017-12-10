@@ -37,6 +37,16 @@ final class StoreSpec: QuickSpec {
             var subscriberOne: SubscriberMock<StateMock>!
 
             context("with a synchronous action") {
+                context("with no registerd subscribder") {
+                    it("should call the completion block") {
+                        let action = ActionMock()
+                        
+                        store.dispatch(ActionEnvelop(emitter: "emitter", action: action)) { completionCallCount += 1 }
+                        
+                        expect(completionCallCount).toEventually(equal(1))
+                    }
+                }
+                
                 context("with one registered subscriber") {
                     beforeEach {
                         subscriberOne = SubscriberMock(name: "SubscriberOne")

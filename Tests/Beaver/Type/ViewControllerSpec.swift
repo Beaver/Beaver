@@ -22,6 +22,7 @@ final class ViewControllerSpec: QuickSpec {
                 controllerStub = ViewControllerStub(store: ChildStore<StateMock, AppStateMock>(store: storeStub.base) { (appState: AppStateMock) -> StateMock? in
                     return appState.childState
                 })
+                controllerStub.viewWillAppear(true)
 
                 reducerMock.clear()
                 controllerStub.clear()
