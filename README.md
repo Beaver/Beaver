@@ -435,6 +435,6 @@ github "Beaver/Beaver"
 
 ### TODO
 
+- [x] Pass down a callback when dispatching in order to be aware of when the action has been entirely processed.
 - [ ] Auto generate the tests.
-- [ ] Pass down a callback when dispatching in order to be aware of when the action has been entirely processed.
 - [ ] Find out how to share a state between modules without breaking modules' encapsulation.
